@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.edu.seu.train.dao.UserDao">
+    <select id="selectAllUsers" resultType="cn.edu.seu.train.domain.User">
+        SELECT
+        id as id,username as username,pwd as password
+        FROM
+        login
+     </select>
+
+    <select id="getAllNames" resultType="String">
+        SELECT
+        username
+        FROM
+        login
+     </select>
+
+    <select id="selectUser" resultType="cn.edu.seu.train.domain.User">
+        SELECT
+        id as id,username as username,pwd as password,regEmain as email
+        FROM
+        login
+        WHERE username = #{username}
+    </select>
+
+</mapper>
