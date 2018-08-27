@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'HelloWorld.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
-        'NAME': 'web',
+        'NAME': 'temp1',
         'USER': 'root',
-        'PASSWORD': 'zct',
+        'PASSWORD': 'rootpwd',
         'HOST': 'localhost',
         'PORT': '3306',
     }

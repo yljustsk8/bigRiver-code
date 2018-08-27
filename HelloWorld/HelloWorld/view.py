@@ -68,3 +68,7 @@ def regist(request):
 
 def calendar(request):
     return render_to_response('calendar.html')
+
+
+def face(request):
+    return render_to_response('face.html')
