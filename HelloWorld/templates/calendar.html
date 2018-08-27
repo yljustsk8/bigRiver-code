@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<!--html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>签到效果实现</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="/static/js/jquery.min.js"></script>
+<!--<script type="text/javascript" src="/static/js/jquery.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="/static/css/sign.css"/>
+<script src="/static/js/calendar.my.js"></script>
+<script type="text/javascript">
+$(function(){
+  //ajax获取日历json数据
+  var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"}];
+   calUtil.init(signList);
+});
+</script>
+</head>
+<body>
+<div style="width:300px;height:300px;" id="calendar"></div>
+</body>
+</html>
