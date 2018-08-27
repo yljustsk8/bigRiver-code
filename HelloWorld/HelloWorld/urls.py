@@ -11,5 +11,6 @@ urlpatterns = [
     path('login/', view.login),
     path('index/', view.index),
     path('login/regist/', view.regist),
-    path('testdb/',testdb.testdb)
+    path('testdb/',testdb.testdb),
+    path('face/', view.face)
 ]
