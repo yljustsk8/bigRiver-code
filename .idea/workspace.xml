@@ -2,147 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec876c9f-4805-4aed-a0f2-4bf8c616a92b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/.idea/HelloWorld.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/check_code.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/serch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/settings.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/testdb.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/urls.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/view.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/HelloWorld/wsgi.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/animate.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/icomoon.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/magnific-popup.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/owl.carousel.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/owl.theme.default.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/css/themify-icons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/bootstrap/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/bootstrap/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/bootstrap/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/icomoon/icomoon.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/icomoon/icomoon.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/icomoon/icomoon.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/icomoon/icomoon.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/themify-icons/themify.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/themify-icons/themify.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/themify-icons/themify.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/fonts/themify-icons/themify.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_7.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_bg_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_bg_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/img_bg_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/loader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/macbook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/person_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/person_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/images/person_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.countTo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.easing.1.3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.magnific-popup.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.stellar.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/jquery.waypoints.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/magnific-popup-options.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/modernizr-2.6.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/owl.carousel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/static/js/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/tests.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/TestModel/views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/db.sqlite3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/manage.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/animate.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/icomoon.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/magnific-popup.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/owl.carousel.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/owl.theme.default.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/sign.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/css/themify-icons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/bootstrap/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/bootstrap/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/bootstrap/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/icomoon/icomoon.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/icomoon/icomoon.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/icomoon/icomoon.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/icomoon/icomoon.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/themify-icons/themify.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/themify-icons/themify.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/themify-icons/themify.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/fonts/themify-icons/themify.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_6.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_7.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_bg_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_bg_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/img_bg_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/iphone.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/loader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/macbook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/person_1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/person_2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/images/person_3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/calendar.my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.countTo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.easing.1.3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.magnific-popup.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.stellar.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/jquery.waypoints.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/magnific-popup-options.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/modernizr-2.6.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/owl.carousel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/static/js/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/base.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/calendar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/face.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/hello.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HelloWorld/templates/login1.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/bigRiver-code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bigRiver-code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/bigRiver/templates/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1418329703">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="Python" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="3" />
+          <entry key="py" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="3" />
+          <entry key="Python" value="21" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2550">
+              <caret line="130" column="17" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+              <folding>
+                <element signature="e#22#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/bigRiver/templates/login.html" />
+        <option value="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -150,34 +103,57 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="32" />
-    <option name="y" value="22" />
-    <option name="width" value="1227" />
-    <option name="height" value="778" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyInterpreterInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
               <item name="bigRiver-code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver-code" type="462c0819:PsiDirectoryNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver-code" type="462c0819:PsiDirectoryNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver-code" type="462c0819:PsiDirectoryNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,8 +163,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/SEU/实训2/Django/HelloWorld" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -202,20 +179,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.bigRiver-code">
-    <configuration name="bigRiver-code" type="Python.DjangoServer" factoryName="Django server">
+  <component name="RunManager">
+    <configuration name="bigRiver" type="Python.DjangoServer" factoryName="Django server">
+      <module name="bigRiver-code" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="bigRiver.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\zct\AppData\Local\Programs\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="bigRiver-code" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
@@ -225,10 +202,11 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method v="2" />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -241,27 +219,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="32" y="22" width="1227" height="778" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25400844" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1940874" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32928476" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,8 +251,33 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="130" column="17" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
