@@ -16,6 +16,10 @@ Including another URLconf
 from django.urls import path
 from . import view
 from django.conf.urls.static import static
+import os, django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.settings")
+django.setup()
 
 urlpatterns = [
     #path('hello/', view.hello),
