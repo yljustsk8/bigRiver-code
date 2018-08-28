@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bigRiver',
         'USER': 'root',
-        'PASSWORD': 'zct',
+        'PASSWORD': 'rootpwd',
         'HOST': 'localhost',
         'PORT': '3306',
     }
