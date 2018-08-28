@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bigRiver',
         'USER': 'root',
-        'PASSWORD': 'rootpwd',
+        'PASSWORD': 'zct',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -127,10 +127,11 @@ USE_TZ = True
 
 STATIC_URL ='/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
-STATIC_ROOT= BASE_DIR + STATIC_URL
-print(STATIC_URL)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print(STATIC_ROOT)
 STATICFILES_DIRS = [('css',os.path.join(STATIC_ROOT,'css').replace('\\','/') ),
                     os.path.join(STATIC_ROOT,'js').replace('\\','/'),
                     os.path.join(STATIC_ROOT,'images').replace('\\','/'),
                     os.path.join(STATIC_ROOT,'fonts').replace('\\','/'),
                     ]
+
