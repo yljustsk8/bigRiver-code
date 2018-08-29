@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../python/FaceProject/.idea/FaceProject.iml" filepath="$PROJECT_DIR$/../../../python/FaceProject/.idea/FaceProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bigRiver.iml" filepath="$PROJECT_DIR$/.idea/bigRiver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../python/face_identify_model/.idea/face_identify_model.iml" filepath="$PROJECT_DIR$/../../../python/face_identify_model/.idea/face_identify_model.iml" />
     </modules>
   </component>
 </project>
