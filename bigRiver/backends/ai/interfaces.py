@@ -1,12 +1,7 @@
-#人脸识别模块
+import  face_model
 
+def face_enter(userID,imgs):
+    return face_model.face_enter(userID,imgs)
 
-def face_to_matrix():
-    #传入一个图片文件，传出对应矩阵
-    return True
-
-def face_to_matrices():
-    #传入多个图片文件，传出对应矩阵列表(list)
-    return True
-
-    
+def face_identify(img):
+    return face_model.face_identify(img)

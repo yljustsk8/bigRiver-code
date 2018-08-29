@@ -24,6 +24,7 @@ def select_demo():
 
     #获取整个数据集
     entire_model = personal_info.objects.all()
+
     print(entire_model[0].userID)
     #输出的是第一条数据的userID,即为100001
 
@@ -66,4 +67,5 @@ def delete_demo():
         the_model.delete()
 
 
-delete_demo()
+if __name__=="__main__":
+    insert_demo("1000004","pwd4")
