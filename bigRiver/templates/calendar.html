@@ -1,22 +1,39 @@
-<!DOCTYPE>
-<!--html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!--<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>签到效果实现</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="/static/js/jquery.min.js"></script>
-<!--<script type="text/javascript" src="/static/js/jquery.min.js"></script>-->
-<link rel="stylesheet" type="text/css" href="/static/css/sign.css"/>
-<script src="/static/js/calendar.my.js"></script>
-<script type="text/javascript">
-$(function(){
-  //ajax获取日历json数据
-  var signList=[{"signDay":"10"},{"signDay":"11"},{"signDay":"12"},{"signDay":"13"}];
-   calUtil.init(signList);
-});
-</script>
+    <meta charset="UTF-8">
+    <title>calendar</title>
 </head>
 <body>
-<div style="width:300px;height:300px;" id="calendar"></div>
+
+<input type="date" value="2018-08-30" min="2018-07-19" max="2018-09-08" />
+
 </body>
-</html>
+</html>-->
+<div id="AttendanceDataDetailDiv">
+<div class="A_close">
+<div id="AttendanceDataLevelTitle">考勤明细</div>
+<a href="javascript:void(0)" class="aAX" id="PowerA"> X</a>
+</div>
+
+<div class="conn">
+<div id="CalendarMonthDiv">
+<span></span>月
+</div>
+<table id="CalendarTab" cellspacing="0" border="1">
+<thead>
+<tr>
+<td>周日</td>
+<td>周一</td>
+<td>周二</td>
+<td>周三</td>
+<td>周四</td>
+<td>周五</td>
+<td>周六</td>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<script src="/static/js/calendar.js"></script>
+</div>
+</div>
