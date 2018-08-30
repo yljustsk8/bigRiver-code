@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../python/FaceProject/.idea/FaceProject.iml" filepath="$PROJECT_DIR$/../python/FaceProject/.idea/FaceProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/bigRiver-code.iml" filepath="$PROJECT_DIR$/.idea/bigRiver-code.iml" />
     </modules>
   </component>
