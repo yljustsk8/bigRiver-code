@@ -1,9 +1,6 @@
 import numpy as np
 import tensorflow as tf
 
-saver = tf.train.Saver()
-sess=tf.Session()
-
 def weight(shape):
     init=tf.random_normal(shape,stddev=0.01)
     return tf.Variable(init)
@@ -73,32 +70,37 @@ def train(x_input,y_input,save_path):
     accuracy=tf.reduce_mean(tf.cast(tf.equal(tf.argmax(pred,1),tf.argmax(y_input,1)),tf.float32))
     op = tf.train.AdamOptimizer(0.01).minimize(loss)
 
-    sess.run(tf.global_variables_initializer())
+    saver=tf.train.Saver()
 
-    batch_size=10
-    batch_num=len(x_input)//batch_size
-    print("batch_num:",batch_num)
-    for i in range(10):
-        r=np.random.permutation(len(x_input))
-        train_x=x_input[r,:]
-        train_y=y_input[r,:]
-        print("train_x:",train_x.shape)
-        print("train_y:",train_y.shape)
-        for j in range(batch_num):
-            feed_x=train_x[j*batch_size:(j+1)*batch_size]
-            feed_y=train_y[j*batch_size:(j+1)*batch_size]
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
 
-            _,_loss=sess.run([op,loss],feed_dict={x_data:feed_x,y_data:feed_y,prob1:0.75,prob2:0.75})
-            print(i*batch_size+j,_loss)
-        acc=accuracy.eval({x_data:train_x,y_data:train_y,prob1:1.0,prob2:1.0})
-        print("times:{} accuracy:{}".format(i+1,acc))
-        saver.save(sess,save_path)
+        batch_size=10
+        batch_num=len(x_input)//batch_size
+        print("batch_num:",batch_num)
+        for i in range(10):
+            r=np.random.permutation(len(x_input))
+            train_x=x_input[r,:]
+            train_y=y_input[r,:]
+            print("train_x:",train_x.shape)
+            print("train_y:",train_y.shape)
+            for j in range(batch_num):
+                feed_x=train_x[j*batch_size:(j+1)*batch_size]
+                feed_y=train_y[j*batch_size:(j+1)*batch_size]
+
+                _,_loss=sess.run([op,loss],feed_dict={x_data:feed_x,y_data:feed_y,prob1:0.75,prob2:0.75})
+                print(i*batch_size+j,_loss)
+            acc=accuracy.eval({x_data:train_x,y_data:train_y,prob1:1.0,prob2:1.0})
+            print("times:{} accuracy:{}".format(i+1,acc))
+            saver.save(sess,save_path)
 
 
 def predict(x,classnum,loadpath):
-    sess.run(tf.global_variables_initializer())
-    saver.restore(sess,loadpath)
-    pred=Network(x,classnum)
-    _pred=sess.run(pred,feed_dict={x_data:pred,prob1:1.0,prob2:1.0})
+    saver=tf.train.Saver()
+    with tf.Session() as sess:
+        saver.restore(sess,loadpath)
+        pred = Network(x, classnum)
+
+        _pred=sess.run(pred,feed_dict={x_data:pred,prob1:1.0,prob2:1.0})
 
     return tf.argmax(_pred),tf.reduce_max(_pred)

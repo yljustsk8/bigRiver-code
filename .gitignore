@@ -1,3 +1,13 @@
 
 bigRiver/.idea/bigRiver.iml
 *.iml
+*.pyc
+*.xml
+*.iml
+bigRiver/.DS_Store
+bigRiver/backends/.DS_Store
+bigRiver/backends/ai/.DS_Store
+.DS_Store
+*.xml
+bigRiver/.idea/bigRiver.iml
+*.pyc

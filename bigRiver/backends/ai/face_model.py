@@ -1,11 +1,14 @@
 import tensorflow as tf
 import numpy as np
 import cv2
-import CNN_Net
+from bigRiver.backends.ai import CNN_Net
 import os
 import re
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.bigRiver.settings")
+django.setup()
 
-from basic_info.models import personal_info
+from bigRiver.basic_info.models import personal_info
 def train(model):
     #调用模型函数
     model_path="./models/model_%d"%model
@@ -127,14 +130,14 @@ def img2face(img):
 def imgs2faces(imgs):
     haar = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
     faces = []
-
-    for n in range(200):
-        gray_sample = cv2.cvtColor(imgs[n], cv2.COLOR_BGR2GRAY)
+    n=0
+    for img in imgs:
+        gray_sample = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         pin = haar.detectMultiScale(gray_sample, 1.3, 5)
         for f_x, f_y, f_w, f_h in pin:
-            faces[n] = imgs[n][f_y:f_y + f_h, f_x:f_x + f_w]
+            faces[n] = img[f_y:f_y + f_h, f_x:f_x + f_w]
             faces[n] = cv2.resize(faces[n], (IMGSIZE, IMGSIZE))
-
+        n += 1
             # faces[n] = relight(face, random.uniform(0.5, 1.5), random.randint(-50, 50))
 
     return faces
@@ -161,4 +164,12 @@ def make_shade(img, alpha=1, bias=0):
     return img
 
 if __name__=="__main__":
-    p
+    imgs=[]
+    dir="C:\\Users\\87216\\Documents\\bigRiverSystem\\python\\FaceProject\\image\\fan"
+    for file in os.listdir(dir):
+        if file.endswith(".jpg"):
+            jpg=os.path.join(dir,file)
+            print("img path:",jpg)
+            imgs.append(cv2.imread(jpg))
+
+    face_enter("1000001",imgs)
