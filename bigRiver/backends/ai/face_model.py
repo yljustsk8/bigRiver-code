@@ -188,8 +188,8 @@ def test_face_enter():
             jpg = os.path.join(dir, file)
             # print("img path:",jpg)
             imgs.append(cv2.imread(jpg))
-    new_user = personal_info(userID="1000002", password="1000002")
-    new_user.save()
+    # new_user = personal_info(userID="1000002", password="1000002")
+    # new_user.save()
     face_enter("1000002", imgs)
 
 def test_face_identify():
