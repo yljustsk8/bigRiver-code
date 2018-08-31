@@ -2,11 +2,12 @@ import numpy as np
 import tensorflow as tf
 
 def weight(shape):
-    init=tf.random_normal(shape,stddev=0.01)
+    init=tf.random_normal(shape,dtype=tf.float32,stddev=0.01)
+
     return tf.Variable(init)
 
 def bias(shape):
-    init=tf.random_normal(shape)
+    init=tf.random_normal(shape,dtype=tf.float32)
     return tf.Variable(init)
 
 def conv(x,w):
@@ -64,6 +65,7 @@ def train(x_input,y_input,save_path):
     pred=Network(x_data,y_input.shape[1])
 
     print("pred:",pred)
+    print("x_input:",x_input.shape)
     print("y_input:",y_input.shape)
 
     loss=tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred,labels=y_data))
@@ -96,11 +98,19 @@ def train(x_input,y_input,save_path):
 
 
 def predict(x,classnum,loadpath):
+
+    print("input_x:",x.shape)
+    pred = Network(x_data, classnum)
+
     saver=tf.train.Saver()
     with tf.Session() as sess:
         saver.restore(sess,loadpath)
-        pred = Network(x, classnum)
 
-        _pred=sess.run(pred,feed_dict={x_data:pred,prob1:1.0,prob2:1.0})
-
-    return tf.argmax(_pred),tf.reduce_max(_pred)
+        _pred=sess.run(pred,feed_dict={x_data:x,prob1:1.0,prob2:1.0})
+        print("predict:",_pred)
+        person,possibility=np.argmax(_pred,1),np.max(_pred,1)
+        # person,possibility=tf.argmax(_pred,1),tf.reduce_max(_pred,1)
+        # with sess.as_default():
+        print("person:",person)
+        print("possibility:",possibility)
+    return person,possibility
