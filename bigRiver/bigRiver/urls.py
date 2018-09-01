@@ -27,5 +27,7 @@ urlpatterns = [
     path('login/', view.login),
     path('index/', view.index),
     path('login/regist/', view.regist),
-    path('face/', view.face)
+    path('face/', view.face),
+    path('face/uploadimage/',view.upload_image)
+
 ]

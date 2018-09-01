@@ -164,10 +164,12 @@ def save_faces(save_path, faces):
         os.makedirs(save_path)
     n=0
     for face in faces:
+        face = np.array(face, dtype=np.int64)
         cv2.imwrite(os.path.join(save_path, str(n) + '.jpg'), face)
         n+=1
 
 def save_face(save_path, face):
+    face=np.array(face,dtype=np.int64)
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     cv2.imwrite(os.path.join(save_path, 'test.jpg'), face)
