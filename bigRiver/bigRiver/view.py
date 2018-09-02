@@ -91,7 +91,7 @@ def upload_image(request):
         if img != "":
             img = base64.b64decode(img)
             cur = os.path.abspath(".")
-            save_path = os.path.join(cur, "bigRiver\\static\\images" + name)
+            save_path = os.path.join(cur, "bigRiver\\static\\images\\" + name)
             with open(save_path, "wb") as file:
                 file.write(img)
             data['success'] = 1
