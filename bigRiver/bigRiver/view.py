@@ -117,9 +117,9 @@ def admin(request):
     if request.method=="GET":
         return render(request,'admin.html')
     if request.method=='POST':
-        time=datetime.datetime.now().strftime('%Y-%m-%d')
-        userID=request.GET.get('userID')
-        ac.view_all_calendar(time,userID)
+        # time=datetime.datetime.now().strftime('%Y-%m-%d')
+        # userID=request.GET.get('userID')
+        # ac.view_all_calendar(time,userID)
 
         user_table={
             'count':10,

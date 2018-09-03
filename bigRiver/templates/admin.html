@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">   
  <head>  
-  <title> 导出到Excel </title>  
+  <title> 大江打卡系统管理系统 </title>
   <meta charset='utf-8'>
   <link rel="stylesheet" href="/static/css/jquery.datatables.min.css" />
   <link rel="stylesheet" href="/static/css/buttons.dataTables.min.css" />
@@ -12,7 +12,7 @@
  </head>  
   
  <body>  
- 	<h1>大江打卡系统管理界面</h1>
+ 	<h1>大江打卡系统管理系统</h1>
  	<table id="user_table" class="display" role="grid" aria-describedby="user_table_info">
  		<thead>
             <tr>
@@ -97,31 +97,17 @@
 	            infoFiltered: '(总 _MAX_ 条)',
 	        },
 	        buttons: [
-	        	{
-	        		extend: 'copyHtml5',
-	        	},
 	            {
 	                extend: 'excelHtml5',
 	                title: 'Data export'
 	            },
-	            {
-	                extend: 'pdfHtml5',
-	                title: 'Data export'
-	            },
-	            {
-	        		extend: 'csvHtml5',
-	        		title: 'Data export'
-	        	},
 	        	{
 	        		extend:'print',
 	        	}
 	        ]
 	    } );
 
-        $(".buttons-copy").text('复制');
 	    $(".buttons-excel").text('导出到excel');
-	    $(".buttons-pdf").text('导出到pdf');
-	    $(".buttons-csv").text('导出到csv');
 	    $(".buttons-print").text('打印');
     }
   </script>  
