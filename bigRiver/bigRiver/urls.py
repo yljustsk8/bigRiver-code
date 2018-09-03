@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import view
+from django.conf import settings
 from django.conf.urls.static import static
 import os, django
 
@@ -28,6 +29,6 @@ urlpatterns = [
     path('index/', view.index),
     path('login/regist/', view.regist),
     path('face/', view.face),
-    path('face/uploadimage/',view.upload_image)
-
-]
+    path('face/uploadimage/',view.upload_image),
+    path('admin/', view.admin)
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

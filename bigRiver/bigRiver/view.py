@@ -110,3 +110,32 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+
+def admin(request):
+    if request.method=="GET":
+        return render(request,'admin.html')
+    if request.method=='POST':
+
+
+        user_table={
+            'count':10,
+            'info':[
+                {
+                    'id':"250",
+                    'name':"lyw",
+                    'dpmt':"qianduan",
+                    'time_in':"05:00",
+                    'time_out':"20:00",
+                    'status':"早退"
+                },
+                {
+                    'id': "251",
+                    'name': "lqf",
+                    'dpmt': "qianduan",
+                    'time_in': "06:00",
+                    'time_out': "21:00",
+                    'status': "迟到"
+                }
+            ]
+        }
+        return HttpResponse(json.dumps(user_table),content_type="application/json")
