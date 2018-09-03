@@ -2,7 +2,13 @@ from django.shortcuts import render,HttpResponse,redirect,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django import forms
 from backends.personal_info_management import interfaces as pim
+from backends.attendance_checking import interfaces as ac
+import json
+import base64
+import os
+import datetime
 
+from backends.ai.face_model import save_face
 #表单
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名',max_length=100)
@@ -73,3 +79,67 @@ def calendar(request):
 def face(request):
     return render_to_response('face.html')
 
+def upload_image(request):
+    data = {'success': 0}
+    if request.method=="POST":
+        img = ""
+        name = ""
+        if 'image' in request.POST:
+            img = request.POST['image'].split(',')[1]
+        if 'name' in request.POST:
+            name = request.POST['name']
+        if name=="":
+            name="temp.jpg"
+        if img != "":
+            img = base64.b64decode(img)
+            cur = os.path.abspath(".")
+            save_path = os.path.join(cur, "bigRiver\\static\\images\\" + name)
+            with open(save_path, "wb") as file:
+                file.write(img)
+            data['success'] = 1
+    elif request.method=="GET":
+        img=""
+        name="temp.jpg"
+        if 'image' in request.GET:
+            img=request.GET['image'].split(',')[1]
+        if 'name' in request.GET:
+            name=request.GET['name']
+        if img!="":
+            img=base64.b64decode(img)
+            cur=os.path.abspath(".")
+            save_path=os.path.join(cur,"bigRiver\\static\\images\\"+name)
+            with open(save_path, "wb") as file:
+                file.write(img)
+            data['success']=1
+    return HttpResponse(json.dumps(data),content_type="application/json")
+
+def admin(request):
+    if request.method=="GET":
+        return render(request,'admin.html')
+    if request.method=='POST':
+        # time=datetime.datetime.now().strftime('%Y-%m-%d')
+        # userID=request.GET.get('userID')
+        # ac.view_all_calendar(time,userID)
+
+        user_table={
+            'count':10,
+            'info':[
+                {
+                    'id':"250",
+                    'name':"lyw",
+                    'dpmt':"qianduan",
+                    'time_in':"05:00",
+                    'time_out':"20:00",
+                    'status':"早退"
+                },
+                {
+                    'id': "251",
+                    'name': "lqf",
+                    'dpmt': "qianduan",
+                    'time_in': "06:00",
+                    'time_out': "21:00",
+                    'status': "迟到"
+                }
+            ]
+        }
+        return HttpResponse(json.dumps(user_table),content_type="application/json")

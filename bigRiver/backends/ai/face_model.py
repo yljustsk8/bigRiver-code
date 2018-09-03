@@ -164,10 +164,12 @@ def save_faces(save_path, faces):
         os.makedirs(save_path)
     n=0
     for face in faces:
+        face = np.array(face, dtype=np.int64)
         cv2.imwrite(os.path.join(save_path, str(n) + '.jpg'), face)
         n+=1
 
 def save_face(save_path, face):
+    face=np.array(face,dtype=np.int64)
     if not os.path.exists(save_path):
         os.makedirs(save_path)
     cv2.imwrite(os.path.join(save_path, 'test.jpg'), face)
@@ -188,8 +190,8 @@ def test_face_enter():
             jpg = os.path.join(dir, file)
             # print("img path:",jpg)
             imgs.append(cv2.imread(jpg))
-    new_user = personal_info(userID="1000002", password="1000002")
-    new_user.save()
+    # new_user = personal_info(userID="1000002", password="1000002")
+    # new_user.save()
     face_enter("1000002", imgs)
 
 def test_face_identify():
