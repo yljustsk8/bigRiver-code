@@ -2,9 +2,11 @@ from django.shortcuts import render,HttpResponse,redirect,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django import forms
 from backends.personal_info_management import interfaces as pim
+from backends.attendance_checking import interfaces as ac
 import json
 import base64
 import os
+import datetime
 
 from backends.ai.face_model import save_face
 #表单
@@ -115,7 +117,9 @@ def admin(request):
     if request.method=="GET":
         return render(request,'admin.html')
     if request.method=='POST':
-
+        time=datetime.datetime.now().strftime('%Y-%m-%d')
+        userID=request.GET.get('userID')
+        ac.view_all_calendar(time,userID)
 
         user_table={
             'count':10,
