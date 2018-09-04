@@ -9,6 +9,7 @@ class personal_info(models.Model):
     name = models.CharField(max_length=10, default='')
     company = models.CharField(max_length=20, default='')
     departName = models.CharField(max_length=10, default='')
+    title = models.IntegerField(default=0)#0=user;1=stuff;2=administrator;3=boss
     modelLocation = models.CharField(max_length=10, default='')
 
 class company_info(models.Model):
