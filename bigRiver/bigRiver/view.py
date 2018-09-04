@@ -72,8 +72,8 @@ def regist(request):
         # response.set_cookie('username', username, 3600)
         # return response
 
-def calendar(request):
-    return render_to_response('calendar.html')
+def calendar1(request):
+    return render_to_response('calendar1.html')
 
 
 def face(request):
