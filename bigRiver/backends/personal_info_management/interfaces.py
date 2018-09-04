@@ -129,5 +129,15 @@ def get_info_by_id(userID):
         return False
     return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
+def join_department(stuffID, department):
+    try:
+        the_model = personal_info.objects.get(userID=stuffID)
+        the_model.departName = department
+        the_model.save()
+    except BaseException:
+        print('not found.')
+        return False
+    return True
+
 if(__name__ == "__main__"):
     dbtest()
