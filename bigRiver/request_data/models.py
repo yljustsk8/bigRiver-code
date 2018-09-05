@@ -14,4 +14,5 @@ class requests(models.Model):
     type = models.IntegerField(default=-1)
     content = models.CharField(max_length=100, default='')
     dealed = models.BooleanField(default=False)
+    #如果同意，则为1，如果是不同意，则为0
     result = models.IntegerField(default=-1)

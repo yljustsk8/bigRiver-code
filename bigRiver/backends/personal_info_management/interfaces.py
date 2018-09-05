@@ -62,7 +62,7 @@ def modify_info(status, userID, info):
     select_result = personal_info.objects.filter(userID=userID)
     if not select_result:
         print("id doesn't exist!")
-        return Flase
+        return False
     the_model=select_result[0]
     if(status==1):
         the_model.password=info
@@ -86,7 +86,10 @@ def create_company(request):
     userID = request.POST['userID']
     company_name = request.POST['companyName']
     taxNumber = request.POST['taxNumber']
-
+    # 更新user的title条目
+    user = personal_info.objects.filter(userID=userID)[0]
+    user.title = 3
+    user.save()
     # 当前companyID自增，获取新的companyID
     entire_model = company_info.objects.all()
     l = len(entire_model)
@@ -94,6 +97,46 @@ def create_company(request):
     new_model = company_info(companyID=new_company_id, bossID=userID, name=company_name, taxNumber=taxNumber)
     new_model.save()
     #按照逻辑，税号和公司名需要进行判断，此处暂未进行编写
+    return True
+
+def join_company(stuffID, companyID):
+    try:
+        the_model = personal_info.objects.get(userID=stuffID)
+        company = company_info.objects.get(companyID=companyID)
+        the_model.company = companyID
+        the_model.title = 1
+        the_model.save()
+    except BaseException:
+        print('not found.')
+        return False
+    return True
+
+def get_company_ID(userID):
+    try:
+        the_model = personal_info.objects.get(userID=userID)
+    except BaseException:
+        print('user not found in get_company_name')
+        return False
+    company_name = the_model.company
+    companyID = company_info.objects.filter(name=company_name)[0].companyID
+    return companyID
+
+def get_info_by_id(userID):
+    try:
+        the_model = personal_info.objects.get(userID=userID)
+    except BaseException:
+        print('user not found in get_company_name')
+        return False
+    return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
+
+def join_department(stuffID, department):
+    try:
+        the_model = personal_info.objects.get(userID=stuffID)
+        the_model.departName = department
+        the_model.save()
+    except BaseException:
+        print('not found.')
+        return False
     return True
 
 if(__name__ == "__main__"):
