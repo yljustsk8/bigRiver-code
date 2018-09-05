@@ -16,21 +16,22 @@
  	<table id="user_table" class="display" role="grid" aria-describedby="user_table_info">
  		<thead>
             <tr>
-                <th>ID</th>
+                <th>请求号</th>
+                <th>员工ID</th>
                 <th>姓名</th>
                 <th>部门</th>
-                <th>上班时间</th>
-                <th>下班时间</th>
-                <th>考勤状态</th>
+                <th>请求内容</th>
+                <th>员工记录</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            
+
         </tbody>
 
  	</table>
- 	
+
  	<script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/jquery.datatables.min.js"></script>
     <script src="/static/js/dataTables.buttons.min.js"></script>
@@ -40,7 +41,7 @@
 	<script src="/static/js/pdfmake.min.js"></script>
 	<script src="/static/js/vfs_fonts.js"></script>
 	<script src="/static/js/buttons.print.min.js"></script>
-  <script>  
+  <script>
     $(document).ready(function(){
 
         function getCookie(name)
@@ -60,14 +61,16 @@
 
         $.ajax({
             type: 'POST',
-            url: "/admin/",
-            data: {'content':"employees"},
+            url: "/admin/requests/",
+            data: {'content':"requests"},
             success:function(data) {
                 data.info.forEach(function(value, i){
-                    var html = "<tr><td>" + value.user_id + "</td><td>" + value.name +
-                        "</td><td>" + value.dpmt + "</td><td>" + value.time_in +
-                        "</td><td>" + value.time_out + "</td><td>" + value.status +
-                        "</td><td>" + '<button style="width:60px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' + "</td></tr>" ;
+                    var html = "<tr><td>" + value.request_id + "</td><td>" + value.user_id +
+                        "</td><td>" + value.name + "</td><td>" + value.dpmt + "</td><td>" + value.type +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request('+value.request_id+',1)">同意</button>' +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request('+value.request_id+',0)">否决</button>' + "</td></tr>" ;
+
                     $("#user_table tbody").append(html);
                 });
                 load_page();
@@ -80,6 +83,13 @@
 
     function check_employee(user_id) {
         alert("id = " + user_id + " checked!");
+    }
+
+    function handle_request(request_id, result) {
+        if(result==1)
+            alert("id = " + request_id + " approved!");
+        else
+            alert("id = " + request_id + " declined!");
     }
 
     function load_page() {
@@ -111,9 +121,9 @@
 	        		extend:'print',
 	        	},
                 {
-                    text: '查看请求',
+                    text: '查看员工',
                     action: function(){
-                        window.location.href="../admin_requests/"
+                        window.location.href="../"
                     }
                 }
 	        ]
@@ -121,7 +131,6 @@
 
 	    $(".buttons-excel").text('导出到excel');
 	    $(".buttons-print").text('打印');
-
     }
   </script>  
  </body>  

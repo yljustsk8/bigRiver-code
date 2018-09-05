@@ -140,9 +140,9 @@ def admin_employees(request):
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
         if request.GET.get('content') == None:
-            return render(request, 'manage_employees.html')
+            return render(request, 'admin_employees.html')
         elif request.GET.get('content')=='requests':
-            response = HttpResponseRedirect('../admin_requests/')
+            response = HttpResponseRedirect('/requests/')
             return response
 
     if request.method=='POST':
@@ -181,8 +181,78 @@ def admin_requests(request):
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
         if request.GET.get('content') == None:
-            return render(request, 'manage_requests.html')
+            return render(request, 'admin_requests.html')
         elif request.GET.get('content')=='employees':
+            response = HttpResponseRedirect('../admin/')
+            return response
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+
+def boss_admins(request):
+    user_table = {
+        'count': 10,
+        'info': [
+            {
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'status': "早退",
+                'title': "普通员工"
+            },
+            {
+                'user_id': "251",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'status': "迟到",
+                'title': "管理员"
+            }
+        ]
+    }
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'boss_admins.html')
+        elif request.GET.get('content')=='not_boss':
+            response = HttpResponseRedirect('../admin/')
+            return response
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def boss_requests(request):
+    user_table2 = {
+        'count': 10,
+        'info': [
+            {
+                'request_id': "1",
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "2",
+                'user_id': "255",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "3",
+                'user_id': "260",
+                'name': "jyl",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            }
+        ]
+    }
+
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'boss_requests.html')
+        elif request.GET.get('content')=='not_boss':
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
