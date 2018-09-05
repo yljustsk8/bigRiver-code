@@ -22,6 +22,7 @@
                 <th>上班时间</th>
                 <th>下班时间</th>
                 <th>考勤状态</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -60,12 +61,13 @@
         $.ajax({
             type: 'POST',
             url: "/admin/",
-            data: "confirm admin",
-            dataType: "json",
-            contentType:"application/json",
+            data: {'content':"employees"},
             success:function(data) {
                 data.info.forEach(function(value, i){
-                    var html = "<tr><td>" + value.id + "</td><td>" + value.name + "</td><td>" + value.dpmt + "</td><td>" + value.time_in + "</td><td>" + value.time_out + "</td><td>" + value.status + "</td></tr>" ;
+                    var html = "<tr><td>" + value.user_id + "</td><td>" + value.name +
+                        "</td><td>" + value.dpmt + "</td><td>" + value.time_in +
+                        "</td><td>" + value.time_out + "</td><td>" + value.status +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' + "</td></tr>" ;
                     $("#user_table tbody").append(html);
                 });
                 load_page();
@@ -75,6 +77,10 @@
             }
         })
 	});
+
+    function check_employee(user_id) {
+        alert("id = " + user_id + " checked!");
+    }
 
     function load_page() {
         $('#user_table').DataTable( {
@@ -103,12 +109,19 @@
 	            },
 	        	{
 	        		extend:'print',
-	        	}
+	        	},
+                {
+                    text: '查看请求',
+                    action: function(){
+                        window.location.href="../admin_requests/"
+                    }
+                }
 	        ]
 	    } );
 
 	    $(".buttons-excel").text('导出到excel');
 	    $(".buttons-print").text('打印');
+
     }
   </script>  
  </body>  

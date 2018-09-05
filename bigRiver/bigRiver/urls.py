@@ -30,5 +30,6 @@ urlpatterns = [
     path('login/regist/', view.regist),
     path('face/', view.face),
     path('face/uploadimage/',view.upload_image),
-    path('admin/', view.admin)
+    path('admin/', view.admin_employees),
+    path('admin_requests/', view.admin_requests),
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
