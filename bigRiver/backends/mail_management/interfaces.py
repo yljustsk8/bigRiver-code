@@ -80,6 +80,7 @@ def send_invitation(u, c):
 def send_request(uID, d, t, c):
     #t=3 请假申请，t=4 补卡申请
     sender = uID
+    date = d
     receiver = pim.get_company_ID(userID=sender)
     type = t
     content = c
@@ -139,7 +140,7 @@ def answer_invitation(rID, r):
 
 #处理"请假、补卡"
 def answer_other_req(rID, r):
-    #打卡模块结束后编写
+
     return True
 
 def get_request(uID):
