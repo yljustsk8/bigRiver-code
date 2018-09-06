@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">   
+ <head>  
+  <title> 大江打卡系统管理系统 </title>
+  <meta charset='utf-8'>
+  <link rel="stylesheet" href="/static/css/jquery.datatables.min.css" />
+  <link rel="stylesheet" href="/static/css/buttons.dataTables.min.css" />
+  <style>
+  	tbody td{
+  		text-align: center;
+  	}
+  </style>
+ </head>  
+  
+ <body>  
+ 	<h1>大江打卡系统管理系统</h1>
+ 	<table id="user_table" class="display" role="grid" aria-describedby="user_table_info">
+ 		<thead>
+            <tr>
+                <th>请求号</th>
+                <th>员工ID</th>
+                <th>姓名</th>
+                <th>部门</th>
+                <th>请求内容</th>
+                <th>员工记录</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+
+ 	</table>
+ 	
+ 	<script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.datatables.min.js"></script>
+    <script src="/static/js/dataTables.buttons.min.js"></script>
+    <script src="/static/js/jszip.min.js"></script>
+    <script src="/static/js/buttons.html5.min.js"></script>
+	<script src="/static/js/buttons.flash.min.js"></script>
+	<script src="/static/js/pdfmake.min.js"></script>
+	<script src="/static/js/vfs_fonts.js"></script>
+	<script src="/static/js/buttons.print.min.js"></script>
+  <script>  
+    $(document).ready(function(){
+
+        function getCookie(name)
+        {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+            if(arr=document.cookie.match(reg))
+
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/requests/",
+            data: {'content':"requests"},
+            success:function(data) {
+                data.info.forEach(function(value, i){
+                    var html = "<tr><td>" + value.request_id + "</td><td>" + value.user_id +
+                        "</td><td>" + value.name + "</td><td>" + value.dpmt + "</td><td>" + value.type +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request('+value.request_id+',1)">同意</button>' +
+                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request('+value.request_id+',0)">否决</button>' + "</td></tr>" ;
+
+                    $("#user_table tbody").append(html);
+                });
+                load_page();
+            },
+            error : function() {
+                alert("连接数据库异常，请刷新重试");
+            }
+        })
+	});
+
+    function check_employee(user_id) {
+        alert("id = " + user_id + " checked!");
+    }
+
+    function handle_request(request_id, result) {
+        if(result==1)
+            alert("id = " + request_id + " approved!");
+        else
+            alert("id = " + request_id + " declined!");
+    }
+
+    function load_page() {
+        $('#user_table').DataTable( {
+	        dom: 'Bfrtip',
+	        language: {
+                emptyTable: '没有数据',
+                loadingRecords: '加载中...',
+                processing: '查询中...',
+                search: '检索:',
+                lengthMenu: '每页 _MENU_ 件',
+                zeroRecords: '没有数据',
+                paginate: {
+                    'first':      '第一页',
+                    'last':       '最后一页',
+                    'next':       '下一页',
+                    'previous':   '上一页'
+            	},
+	            info: '第 _PAGE_ 页 / 总 _PAGES_ 页',
+	            infoEmpty: '没有数据',
+	            infoFiltered: '(总 _MAX_ 条)',
+	        },
+	        buttons: [
+	            {
+	                extend: 'excelHtml5',
+	                title: 'Data export'
+	            },
+	        	{
+	        		extend:'print',
+	        	},
+                {
+                    text: '查看员工',
+                    action: function(){
+                        window.location.href="../"
+                    }
+                }
+	        ]
+	    } );
+
+	    $(".buttons-excel").text('导出到excel');
+	    $(".buttons-print").text('打印');
+    }
+  </script>  
+ </body>  
+</html>
+
