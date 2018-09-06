@@ -74,7 +74,10 @@ def regist(request):
         # return response
 
 def calendar1(request):
-    return render_to_response('calendar1.html')
+    return render_to_response('calendar.html')
+
+def user(req):
+    return render_to_response('user.html')
 
 
 def face(request):
