@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django import forms
 from backends.personal_info_management import interfaces as pim
+from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
 import json
 import base64
@@ -73,7 +74,10 @@ def regist(request):
         # return response
 
 def calendar1(request):
-    return render_to_response('calendar1.html')
+    return render_to_response('calendar.html')
+
+def user(req):
+    return render_to_response('user.html')
 
 
 def face(request):
@@ -136,7 +140,6 @@ def admin_employees(request):
         ]
     }
 
-
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
         if request.GET.get('content') == None:
@@ -186,8 +189,8 @@ def admin_requests(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+        if request.POST.get('content') == 'show requests':
+            return HttpResponse(json.dumps(user_table2), content_type="application/json")
 
 def boss_admins(request):
     user_table = {
@@ -217,8 +220,16 @@ def boss_admins(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table), content_type="application/json")
+        print("POST ", request.POST.get('content'))
+        if request.POST.get('content') == 'show admins':
+            return HttpResponse(json.dumps(user_table), content_type="application/json")
+        elif request.POST.get('content') == 'delete admin':
+            result=cm.delete_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            return result
+        elif request.POST.get('content') == 'add admin':
+            result=cm.set_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            return result
+
 
 def boss_requests(request):
     user_table2 = {
@@ -256,5 +267,5 @@ def boss_requests(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+        if request.POST.get('content') == 'show requests':
+            return HttpResponse(json.dumps(user_table2), content_type="application/json")
