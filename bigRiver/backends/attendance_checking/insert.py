@@ -201,7 +201,7 @@ class data(object):
             self.model.day31 = "08:00:00&1@17:00:00&1"
         self.model.save()
         return True
-    #早退
+    #请假
     def leave(self):
         if (self.date == 1):
             self.model.day1 = "00:00:00&2@00:00:00&2"

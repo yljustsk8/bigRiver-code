@@ -5,6 +5,7 @@ django.setup()
 from backends.attendance_checking import insert, get_calendar
 from attendance_data.models import *
 from backends.ai.interfaces import *
+from backends.personal_info_management import interfaces as pim
 import cv2
 import datetime
 
@@ -60,29 +61,48 @@ def view_all_calendar(m, d, c):
     month = m
     date = d
     company = c
-    result = get_calendar.get_daily_calendar(month=month, date=date, company=company)
+    result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=company)
+    print(result_dict)
+    result = {
+        'count': 10,
+        'info': []
+    }
+    i = 1
+
+    for key, value in result_dict.items():
+        name, _, department,_,_ = pim.get_info_by_id(userID=key)
+        # value的值模板：07:40&1@17:02&1
+        # 读取时间和状态
+        l = value.split('@')
+        t1 = l[0].split('&')[0]
+        status1 = int(l[0].split('&')[1])
+        t2 = l[1].split('&')[0]
+        status2 = int(l[1].split('&')[1])
+        status = ''
+        if(status1==1 and status2==1):
+            status = '正常出席'
+        elif(status1==0 and status2==1):
+            status = '迟到'
+        elif(status1==1 and status2==0):
+            status = '早退'
+        elif(status1==0 and status2==0):
+            status = '迟到早退'
+        elif(status1==2 and status2==2):
+            status = '请假'
+        #构造result字典
+        attendance_dict = {
+            'user_id': key,
+            'name': name,
+            'dpmt': department,
+            'time_in': t1,
+            'time_out': t2,
+            'status': status
+        }
+        #插入
+        result['info'].insert(len(result['info']), attendance_dict)
+
+    # print(result)
     return result
 
-
-    # user_table = {
-    #     'count': 10,
-    #     'info': [
-    #         {
-    #             'user_id': "250",
-    #             'name': "lyw",
-    #             'dpmt': "qianduan",
-    #             'time_in': "05:00",
-    #             'time_out': "20:00",
-    #             'status': "早退"
-    #         },
-    #         {
-    #             'user_id': "251",
-    #             'name': "lqf",
-    #             'dpmt': "qianduan",
-    #             'time_in': "06:00",
-    #             'time_out': "21:00",
-    #             'status': "迟到"
-    #         }
-    #     ]
-    # }
-
+if(__name__=='__main__'):
+    view_all_calendar(8, 31, '10001')

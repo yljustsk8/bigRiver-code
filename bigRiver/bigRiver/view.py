@@ -224,6 +224,7 @@ def boss_admins(request):
             result=cm.delete_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
             return result
         elif request.POST.get('content') == 'add admin':
+            print("here")
             result=cm.set_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
             return result
 

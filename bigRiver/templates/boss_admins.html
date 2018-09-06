@@ -84,6 +84,7 @@
     }
 
     function change_title(user_id, name, title) {
+        alert(title);
         if(title == "管理员")
             new_title = "普通员工";
         else
@@ -94,9 +95,10 @@
                 $.ajax({
                     type: 'POST',
                     url: '/boss/',
-                    data: {'content':'delete admin',
-                            'enforcer':$.cookie('user_id'),
-                            'employee':user_id},
+                    data: {'content':'add admin',
+{#                            'enforcer':$.cookie('user_id'),#}
+                            'enforcer':'1000001',
+                            'employee':'1000010'},
                     success:function (data) {
                         if (data==1)
                             alert("已将 "+name+"(id:"+user_id+")"+" 改变为 "+new_title);
@@ -108,7 +110,7 @@
                 $.ajax({
                     type: 'POST',
                     url: '/boss/',
-                    data: {'content':'add admin',
+                    data: {'content':'delete admin',
                             'enforcer':$.cookie('user_id'),
                             'employee':user_id},
                     success:function (data) {
