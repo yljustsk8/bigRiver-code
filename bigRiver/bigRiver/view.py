@@ -63,15 +63,17 @@ def regist(request):
 def user(request):
     if request.method == "GET":
         return render_to_response('user.html')
-    if request.method == "POST":
-        month=request.POST.get('content')
-        user_id=request.POST.get('user_id')
-        # result=ac.view_single_calendar(month, user_id)
-        return HttpResponse(json.dumps("result"), content_type="application/json")
+
 
 def calendar(request):
     if request.method == "GET":
         return render_to_response('calendar.html')
+    if request.method == "POST":
+        print("CCCCC P")
+        user_id=request.POST.get('user_id')
+        # result=ac.view_single_calendar(month, user_id)
+        result={'a':1}
+        return HttpResponse(json.dumps(result), content_type="application/json")
 
 
 def face(request):
