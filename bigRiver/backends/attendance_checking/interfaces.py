@@ -38,20 +38,22 @@ def view_single_calendar(m, uid):
     return result
 
 #补卡
-def do_makeup(uid, d):
+def do_makeup(uid, m, d):
     #执行补卡操作
     userID = uid
+    month = m
     date = d
-    the_data = insert.data(userID=userID, date=d)
-    the_data.makeup()
+    the_data = insert.data(userID=userID, month=month, date=date)
+    return the_data.makeup()
 
 #请假
-def do_leave(uid, d):
+def do_leave(uid, m, d):
     #执行请假操作
     userID = uid
+    month = m
     date = d
-    the_data = insert.data(userID=userID, date=d)
-    the_data.leave()
+    the_data = insert.data(userID=userID, month=month, date=date)
+    return the_data.leave()
 
 #查看公司员工单日日历
 def view_all_calendar(m, d, c):
