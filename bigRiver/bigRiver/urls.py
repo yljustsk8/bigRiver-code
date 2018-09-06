@@ -25,9 +25,8 @@ django.setup()
 urlpatterns = [
     #path('hello/', view.hello),
     path('user/',view.user),
-    path('calendar/',view.calendar1),
     path('login/', view.login),
-    path('index/', view.index),
+    path('calendar/',view.calendar),
     path('login/regist/', view.regist),
     path('face/', view.face),
     path('face/uploadimage/',view.upload_image),
