@@ -62,3 +62,27 @@ def view_all_calendar(m, d, c):
     company = c
     result = get_calendar.get_daily_calendar(month=month, date=date, company=company)
     return result
+
+
+    # user_table = {
+    #     'count': 10,
+    #     'info': [
+    #         {
+    #             'user_id': "250",
+    #             'name': "lyw",
+    #             'dpmt': "qianduan",
+    #             'time_in': "05:00",
+    #             'time_out': "20:00",
+    #             'status': "早退"
+    #         },
+    #         {
+    #             'user_id': "251",
+    #             'name': "lqf",
+    #             'dpmt': "qianduan",
+    #             'time_in': "06:00",
+    #             'time_out': "21:00",
+    #             'status': "迟到"
+    #         }
+    #     ]
+    # }
+

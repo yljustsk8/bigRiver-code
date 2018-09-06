@@ -4,6 +4,7 @@ from django import forms
 from backends.personal_info_management import interfaces as pim
 from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
+from backends.mail_management import interfaces as mm
 import json
 import base64
 import os
@@ -197,7 +198,7 @@ def boss_admins(request):
         'count': 10,
         'info': [
             {
-                'user_id': "250",
+                'user_id': "100010",
                 'name': "lyw",
                 'dpmt': "qianduan",
                 'status': "早退",
@@ -232,32 +233,32 @@ def boss_admins(request):
 
 
 def boss_requests(request):
-    user_table2 = {
-        'count': 10,
-        'info': [
-            {
-                'request_id': "1",
-                'user_id': "250",
-                'name': "lyw",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            },
-            {
-                'request_id': "2",
-                'user_id': "255",
-                'name': "lqf",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            },
-            {
-                'request_id': "3",
-                'user_id': "260",
-                'name': "jyl",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            }
-        ]
-    }
+    # user_table2 = {
+    #     'count': 10,
+    #     'info': [
+    #         {
+    #             'request_id': "1",
+    #             'user_id': "250",
+    #             'name': "lyw",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         },
+    #         {
+    #             'request_id': "2",
+    #             'user_id': "255",
+    #             'name': "lqf",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         },
+    #         {
+    #             'request_id': "3",
+    #             'user_id': "260",
+    #             'name': "jyl",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         }
+    #     ]
+    # }
 
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
@@ -268,4 +269,5 @@ def boss_requests(request):
             return response
     if request.method=='POST':
         if request.POST.get('content') == 'show requests':
-            return HttpResponse(json.dumps(user_table2), content_type="application/json")
+            user_table=mm.get_request(request.POST.get('user_id'))
+            return HttpResponse(json.dumps(user_table), content_type="application/json")

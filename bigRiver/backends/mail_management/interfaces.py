@@ -14,6 +14,8 @@ import datetime
 #申请请假   type=3  senderID = userID  receiverID = companyID
 #申请补卡   type=4  senderID = userID  receiverID = companyID
 
+msg_type = ['申请加入', '邀请加入', '申请请假', '申请补卡']
+
 #获取当前日期
 def get_date():
     date = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -171,9 +173,60 @@ def get_request(uID):
         send_list = requests.objects.filter(senderID=uID)
         the_list = receive_list + send_list
     elif(title == 2 or title == 3):
-        #管理员/boss
+        # 管理员/boss
         company_id = pim.get_company_ID(uID)
         receive_list = requests.objects.filter(receiverID=company_id)
         send_list = requests.objects.filter(senderID=uID)
-        the_list = receive_list + send_list
-    return the_list
+        # the_list = receive_list + send_list
+    result = {'count':len(receive_list) + len(send_list),
+              'info':[]}
+    # 收到的
+    for msg in receive_list:
+        name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
+        msg_dict = {
+                        'request_id': msg.requestID,
+                        'user_id': msg.senderID,
+                        'name': name,
+                        'dpmt': department,
+                        'type': msg_type[msg.type-1]
+                    }
+        result['info'].insert(len(result['info']), msg_dict)
+    # 发出的
+    for msg in send_list:
+        name, _, department, _, _ = pim.get_info_by_id(msg.receiverID)
+        msg_dict = {
+            'request_id': msg.requestID,
+            'user_id': msg.receiverID,
+            'name': name,
+            'dpmt': department,
+            'type': msg_type[msg.type - 1]
+        }
+        result['info'].insert(len(result['info']), msg_dict)
+    return result
+# def boss_requests(request):
+#     user_table2 = {
+#         'count': 10,
+#         'info': [
+#             {
+#                 'request_id': "1",
+#                 'user_id': "250",
+#                 'name': "lyw",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             },
+#             {
+#                 'request_id': "2",
+#                 'user_id': "255",
+#                 'name': "lqf",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             },
+#             {
+#                 'request_id': "3",
+#                 'user_id': "260",
+#                 'name': "jyl",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             }
+#         ]
+#     }
