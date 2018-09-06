@@ -1,149 +1,217 @@
-function show(personnelId) {
-$("#AttendanceDataDetailDiv").show();//显示日历
-$("#AttendanceDataDetailDiv").createDialogFun();
-var year = $("#YearSelect").val();//年
-var month = $("#MonthSelect").val();//月
-showDate(year, month);//加载日历
-//根据员工的编号查询员工在当期月份的考勤信息放在日历上
-ShowAttendanceDateFun(personnelId);
-}
-
-var NumDay = "", //一个月有多少天
-Week = "", //这个月第一天是星期几
-ldate = "", //日期行数
-iHtmlNow = ""; //日历结构
-
-//显示日历
-function showDate(year, month) {
-//获得当前月的第一天是星期一
-getlWeek(year, month);
-
-creatHtml();//创建HTML结构
-
-
-}
-
-//创建日期行 l:行
-function creatTr(l) {
-$("#CalendarTab tbody").empty();
-var lstrTd = ""; //行的DOM结构
-for (var i = 0; i < l; i++) {
-lstrTd += "<tr style='height:90px;'><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>";
-}
-$("#CalendarTab tbody").append(lstrTd);
-
-insertdate(Week);
-}
-
-//获得当前月的第一天是星期一
-function getlWeek(nowYear, nowMonth) {
-$("#CalendarMonthDiv span").html("");
-var date = nowMonth + "/" + "1/" + nowYear; //此处也可以写成 17/07/2014 一样识别
-var day = new Date(Date.parse(date)); //需要正则转换的则 此处为 ： var day = new Date(Date.parse(date.replace(/-/g, '/')));
-Week = day.getDay();//获取星期
-var monthArray = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
-$("#CalendarMonthDiv span").html(monthArray[nowMonth - 1]);
-getTdDay(nowMonth, nowYear);//根据大小月份取得天数
-}
-
-
-////根据大小月份取得天数
-//function getTdDay(m1, y1) {
-// NumDay = new Date(y1, m1, 0).getDate();
-//}
-//根据大小月份取得天数
-function getTdDay(m1, y1) {
-if (m1 == 1 || m1 == 3 || m1 == 5 || m1 == 7 || m1 == 8 || m1 == 10 || m1 == 12) {
-NumDay = 31;
-} else if (m1 == 4 || m1 == 6 || m1 == 9 || m1 == 11) {
-NumDay = 30;
-} else if (m1 == 2 && isRunYear(y1)) {
-NumDay = 29;
-} else if (m1 == 2) {
-NumDay = 28;
-}
-}
-
-//根据传入的年份参数，判断是否是润年，即能够被4整除，但不能被100整除，同时满足时；或者能被400整除；
-function isRunYear(y) {
-if (y % 4 == 0 && y % 100 != 0) {
-return true;
-} else if (y % 400 == 0) {
-return true;
-} else {
-return false;
-}
-}
-
-//创建HMTL结构
-function creatHtml() {
-//根据当前月份的一号是星期几，来生成有几行存放所有日期
-if (Week >= 5) {
-ldate = 6;
-} else {
-ldate = 5;
-}
-creatTr(ldate);
-
-}
-
-//将日期插入到对应的TD当中 d:当前月的第一天是星期几
-function insertdate(d) {
-//$("#CalendarTab tbody td").add($(".nextDate table tbody td")).css({ "background-color": "", "color": "" }).empty();
-//插入到左边
-for (var i = 0; i < NumDay; i++) {
-$("#CalendarTab tbody td").eq(i + d).html(i + 1);
-$("#CalendarTab tbody td").eq(i + d).append($("<div style='background-color:white;'>"));
-}
-}
-
-
-
-//根据员工的编号查询员工在当期月份的考勤信息放在日历上
-function ShowAttendanceDateFun(personnelId) {
-$.ajax({
-    type: "POST",
-    contentType: "application/json",
-    //返回给后端日期格式：{userID:'xxx',year:'xxxx',month:'xx'}
-    data: "{userID:'" + userID + "',year:" + $("#YearSelect").val() + ",month:" + $("#MonthSelect").val() + "}",
-    dataType: "json",
-    url: "/AttendanceDataManager/GetAttendanceById",
-    success: function (r) {
-    if (r != null && r.Data != null) {
-    for (var i = 0; i < r.Data.length; i++) {
-    var date = dayFormatter(r.Data[i].AttendanceDay);
-    $("#CalendarTab tbody td").each(function () {
-    if ($(this).text() == date) {
-        $(this).find("div").css("width", "97px");
-        var content = "";
-        if (r.Data[i].AttendanceType == "正常") {
-        content = r.Data[i].AttendanceType + "<br/>" + "打卡:" + (r.Data[i].OnDutyTime == null ? "" : r.Data[i].OnDutyTime) + "-" + (r.Data[i].OffDutyTime == null ? "" : r.Data[i].OffDutyTime);
-        }
-        else if (r.Data[i].AttendanceType == "迟到") {
-        $(this).css("background-color", "#FFE5E6");
-        content = r.Data[i].AttendanceType + ":" + r.Data[i].LaterMinutes + "分<br/>" + "打卡:" + (r.Data[i].OnDutyTime == null ? "" : r.Data[i].OnDutyTime) + "-" + (r.Data[i].OffDutyTime == null ? "" : r.Data[i].OffDutyTime);
-        }
-        else if (r.Data[i].AttendanceType == "早退") {
-        $(this).css("background-color", "#E1EEC2");
-        content = r.Data[i].AttendanceType + ":" + r.Data[i].EarlyMinutes + "分<br/>" + "打卡:" + (r.Data[i].OnDutyTime == null ? "" : r.Data[i].OnDutyTime) + "-" + (r.Data[i].OffDutyTime == null ? "" : r.Data[i].OffDutyTime);
-        }
-        else if (r.Data[i].AttendanceType == "迟到早退") {
-        $(this).css("background-color", "red");
-        content ="迟到:" + r.Data[i].LaterMinutes +"分<br/>早退:"+ r.Data[i].EarlyMinutes + "分<br/>" + "打卡:" + (r.Data[i].OnDutyTime) + "-" + (r.Data[i].OffDutyTime == null ? "" : r.Data[i].OffDutyTime);
-        }
-        else if (r.Data[i].AttendanceType == "") {
-        //content = r.Data[i].AttendanceType + "<br/>" + "打卡：" + (r.Data[i].OnDutyTime == null ? "" : r.Data[i].OnDutyTime) + "-" + (r.Data[i].OffDutyTime == null ? "" : r.Data[i].OffDutyTime);
-        content = "";
-        }
-    else {
-    $(this).css("background-color", "#FBCA4A");
-    content = r.Data[i].AttendanceType + "<br/>" + (r.Data[i].AttendanceType=='未打下班卡'?("打卡:"+r.Data[i].OnDutyTime):"");
+//本地模拟已签到日期天数
+    var localDate = {
+        date: []
     }
-    $(this).find("div").html(content);
+    localDate.date.push("0901");localDate.date.push("0912");localDate.date.push("0908");
+    localDate.date.push("0913");localDate.date.push("0911");localDate.date.push("0906");
+    /**
+    for (var j = 0; j < 30; j++) {
+        var a = Math.ceil(Math.random() * 11);
+        if (a < 10) {
+            a = "0" + a;
+        }
+
+        var b = Math.ceil(Math.random() * 30);
+        if (b < 10) {
+            b = "0" + b;
+        }
+
+        var c = a.toString() + b.toString();
+        localDate.date.push(c);
+    }*/
+
+    //初始化日期数据
+    var slidate = new Date();
+    var m = slidate.getMonth() + 1;
+    var x = slidate.getMonth() + 1;
+    var n = slidate.getMonth();
+    var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+    var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
+    var conter = d.getDate(); //获取当前月的天数
+    var monthNum = "0" + (slidate.getMonth() + 1) + "月";
+    var yearNum = slidate.getFullYear() +"年";
+    var monthCheck = (slidate.getMonth() + 1);
+    var y = slidate.getDate();
+
+    function initall() {
+        dateHandler(monthFirst, d, conter, monthNum);
+        checkDate(monthCheck);
     }
-});
-}
-}
-}
-});
-}
+
+    /**调整表格行数，并把每个用到的td加上内容&赋予id*/
+    function dateHandler(monthFirst, d, conter, monthNum) {
+        var blank = true;
+        var $tbody = $('#tbody'), //日历网格
+            $month = $("#month"),  //“09月”
+            _nullnei = '';
+        var p = document.createElement("p");
+        var monthText = document.createTextNode(monthNum);
+        var yearText = document.createTextNode(yearNum);
+        p.appendChild(yearText);p.appendChild(monthText);
+        $month.append(p);
+        //遍历日历网格
+        for (var i = 1; i <= 6; i++) {
+            _nullnei += "<tr>";
+            for (var j = 1; j <= 7; j++) {
+                _nullnei += '<td></td>';
+            }
+            _nullnei += "</tr>";
+        }
+        $tbody.html(_nullnei);
+
+        //遍历网格内容
+        var $slitd = $tbody.find("td");
+        for (var i = 0; i < conter; i++) {
+            //eq(index)将匹配元素集缩减指定index上的一个
+            $slitd.eq(i + monthFirst).html("<p>" + parseInt(i + 1) + "</p>")
+        }
+        //给有日期的td加上id
+        var u = 1;
+        var dayBlock = document.getElementsByTagName("td");
+        for (var i = 0; i < dayBlock.length; i++) {
+            if (dayBlock[i].textContent != "") {
+                dayBlock[i].setAttribute("id", "td" + u);
+                u++;
+            }
+        }
+        //若日期不足排满每一行的tr，则删除最后一个tr
+        var blankTr = document.getElementsByTagName("tr");
+        var blankTd = blankTr[5].getElementsByTagName("td");
+        for (var i = 0; i < blankTd.length; i++) {
+            if (blankTd[i].textContent != "") {
+                blank = false;
+            }
+        }
+        if (blank == true) {
+            blankTr[5].remove();
+        }
+    }
+
+    //确认本月签到日期，并把他们加上标红buff
+    function checkDate(prep) {
+        var dateArray = [];
+        var newArray = [];
+        //删除不是本月的签到日期
+        //把签到本地日期copy至datearray
+        for (var i = 0; i < localDate.date.length; i++) {
+            dateArray.push(localDate.date[i]);
+        }
+        for (var i = 0; i < dateArray.length; i++) {
+            if (dateArray[i].charAt(1) != prep) {
+                dateArray[i] = undefined;
+            }
+        }
+        for (var i = 0; i < dateArray.length; i++) {
+            if (dateArray[i] != undefined) {
+                newArray.push(dateArray[i]);
+            }
+        }
+        //遍历数组为已签到日期添加class
+        for (var i = 0; i < newArray.length; i++) {
+            if (newArray[i].charAt(2) == 0) {
+                for (var j = 0; j < 10; j++) {
+                    if (newArray[i].charAt(3) == j) {
+                        var checked = "#td" + j;
+                        $(checked).addClass("qiandao");
+                    }
+                }
+            } else if (newArray[i].charAt(2) == 1) {
+                for (var j = 0; j < 10; j++) {
+                    if (newArray[i].charAt(3) == j) {
+                        var checked = "#td1" + j;
+                        $(checked).addClass('qiandao');
+                    }
+                }
+            } else {
+                for (var j = 0; j < 10; j++) {
+                    if (newArray[i].charAt(3) == j) {
+                        var checked = "#td2" + j;
+                        $(checked).addClass("qiandao");
+                    }
+                }
+            }
+        }
+    }
+
+    $(document).on('mouseover','#sign_btn',function () {
+        $("#sign_btn").addClass("animated tada");
+    })
+    //当天签到添加样式
+    $(document).on('click','#sign_btn',function () {
+        $("tr").remove();
+        $("p").remove();
+        //initall();
+        dateHandler(monthFirst, d, conter, monthNum);
+        //给此月签到的加BUFF*/
+        checkDate(monthCheck);
+        /**y = slidate.getDate();*/
+        var thisDay = "#td" + y;
+        var checkPic = false;
+        /**thisBlock="0909"*/
+        if (m > 10 && y < 10) {
+            var thisBlock = m.toString() + y.toString();
+        } else if (m < 10 && y> 10) {
+            var thisBlock = "0" + m.toString() + y.toString();
+        } else if (m > 10 && y < 10) {
+            var thisBlock = m.toString() + "0" + y.toString();
+        } else if (m < 10 && y < 10) {
+            var thisBlock = "0" + m.toString() + "0" + y.toString();
+        }
+
+        for (var e = 0; e < localDate.date.length; e++) {
+            if (localDate.date[e] === thisBlock) {
+                checkPic = true;
+            }
+        }
+        if (checkPic == true) {
+            alert("您今天已经签到了！");
+        } else {
+            $(thisDay).addClass("qiandao");
+            alert("已签到！");
+            localDate.date.push(thisBlock);
+        }
+    });
+
+    //查询已签到天数
+    $(document).on('click','#sign_days',function () {
+        alert("您已经签到了" + localDate.date.length + "天！");
+    });
+
+    //查询历史记录
+    $(document).on('click','#check_lastmonth',function () {
+        $("tr").remove();
+        $("p").remove();
+        if (m > 0 && n > 0) {
+            m--;n--;
+        }
+        var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+        var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
+        var conter = d.getDate(); //获取当前月的天数
+        var monthNum = "0" + (m) + "月";
+        var monthCheck = m;
+        dateHandler(monthFirst, d, conter, monthNum);
+        checkDate(monthCheck);
+    });
+
+    //返回上月记录
+    $(document).on('click','#back',function () {
+        $("tr").remove();
+        $("p").remove();
+        if (m < x) {
+            m++;n++;
+        }
+        var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+        var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
+        var conter = d.getDate(); //获取当前月的天数
+        var monthNum = "0" + (m) + "月";
+        var monthCheck = m;
+        dateHandler(monthFirst, d, conter, monthNum);
+        checkDate(monthCheck);
+    })
+
+    //联系
+    $(document).on('click','#sign_btn',function () {
+        
+    })
+
+ window.addEventListener("load", initall, false);
