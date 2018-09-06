@@ -31,11 +31,38 @@
     var monthNum = "0" + (slidate.getMonth() + 1) + "月";
     var yearNum = slidate.getFullYear() +"年";
     var monthCheck = (slidate.getMonth() + 1);
+    // var user_id = $.cookie('user_id');
     var y = slidate.getDate();
 
     function initall() {
-        dateHandler(monthFirst, d, conter, monthNum);
-        checkDate(monthCheck);
+        function getCookie(name)
+        {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+            if(arr=document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "/calendar/",
+            data: {'user_id':'123'},
+            success:function(data) {
+                // data.info.forEach(function(value, i){
+                //
+                // });
+                dateHandler(monthFirst, d, conter, monthNum);
+                checkDate(monthCheck);
+            },
+            error : function() {
+                alert("连接数据库异常，请刷新重试");
+            }
+        })
     }
 
     /**调整表格行数，并把每个用到的td加上内容&赋予id*/
@@ -214,4 +241,4 @@
         
     })
 
- window.addEventListener("load", initall, false);
+    window.addEventListener("load",initall,false);
