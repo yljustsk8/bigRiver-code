@@ -116,33 +116,148 @@ def upload_image(request):
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
 
-def admin(request):
-    if request.method=="GET":
-        return render(request,'admin.html')
-    if request.method=='POST':
-        # time=datetime.datetime.now().strftime('%Y-%m-%d')
-        # userID=request.GET.get('userID')
-        # ac.view_all_calendar(time,userID)
+def admin_employees(request):
+    user_table = {
+        'count': 10,
+        'info': [
+            {
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'time_in': "05:00",
+                'time_out': "20:00",
+                'status': "早退"
+            },
+            {
+                'user_id': "251",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'time_in': "06:00",
+                'time_out': "21:00",
+                'status': "迟到"
+            }
+        ]
+    }
 
-        user_table={
-            'count':10,
-            'info':[
-                {
-                    'id':"250",
-                    'name':"lyw",
-                    'dpmt':"qianduan",
-                    'time_in':"05:00",
-                    'time_out':"20:00",
-                    'status':"早退"
-                },
-                {
-                    'id': "251",
-                    'name': "lqf",
-                    'dpmt': "qianduan",
-                    'time_in': "06:00",
-                    'time_out': "21:00",
-                    'status': "迟到"
-                }
-            ]
-        }
-        return HttpResponse(json.dumps(user_table),content_type="application/json")
+
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'admin_employees.html')
+        elif request.GET.get('content')=='requests':
+            response = HttpResponseRedirect('/requests/')
+            return response
+
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def admin_requests(request):
+
+    user_table2 = {
+        'count': 10,
+        'info': [
+            {
+                'request_id': "1",
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "2",
+                'user_id': "255",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "3",
+                'user_id': "260",
+                'name': "jyl",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            }
+        ]
+    }
+
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'admin_requests.html')
+        elif request.GET.get('content')=='employees':
+            response = HttpResponseRedirect('../admin/')
+            return response
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+
+def boss_admins(request):
+    user_table = {
+        'count': 10,
+        'info': [
+            {
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'status': "早退",
+                'title': "普通员工"
+            },
+            {
+                'user_id': "251",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'status': "迟到",
+                'title': "管理员"
+            }
+        ]
+    }
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'boss_admins.html')
+        elif request.GET.get('content')=='not_boss':
+            response = HttpResponseRedirect('../admin/')
+            return response
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def boss_requests(request):
+    user_table2 = {
+        'count': 10,
+        'info': [
+            {
+                'request_id': "1",
+                'user_id': "250",
+                'name': "lyw",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "2",
+                'user_id': "255",
+                'name': "lqf",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            },
+            {
+                'request_id': "3",
+                'user_id': "260",
+                'name': "jyl",
+                'dpmt': "qianduan",
+                'type': "请病假"
+            }
+        ]
+    }
+
+    if request.method=="GET":
+        print("GET ", request.GET.get('content'))
+        if request.GET.get('content') == None:
+            return render(request, 'boss_requests.html')
+        elif request.GET.get('content')=='not_boss':
+            response = HttpResponseRedirect('../admin/')
+            return response
+    if request.method=='POST':
+        print("POST ",request.POST.get('content'))
+        return HttpResponse(json.dumps(user_table2), content_type="application/json")

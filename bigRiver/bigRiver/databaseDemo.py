@@ -11,6 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.settings")
 django.setup()
 
 from basic_info.models import personal_info
+from attendance_data.models import *
 
 #插入一条数据
 def insert_demo(id, pwd):
@@ -68,4 +69,4 @@ def delete_demo():
 
 
 if __name__=="__main__":
-    insert_demo("1000004","pwd4")
+    delete_demo()
