@@ -1,5 +1,6 @@
 from request_data.models import requests
 from backends.personal_info_management import interfaces as pim
+from backends.attendance_checking import interfaces as ac
 import datetime
 # 1.	bool send_invitation(userID,companyID)
 # 2.	bool answer_invitation(requestID, bool)
@@ -12,6 +13,8 @@ import datetime
 #邀请加入   type=2  senderID = companyID  receiverID = userID
 #申请请假   type=3  senderID = userID  receiverID = companyID
 #申请补卡   type=4  senderID = userID  receiverID = companyID
+
+msg_type = ['申请加入', '邀请加入', '申请请假', '申请补卡']
 
 #获取当前日期
 def get_date():
@@ -77,10 +80,12 @@ def send_invitation(u, c):
     return True
 
 #申请请假、补卡
-def send_request(uID, d, t, c):
+def send_request(uID, m, d, t, c):
     #t=3 请假申请，t=4 补卡申请
     sender = uID
+    month = m
     date = d
+    the_date = str(month) + '@' + str(date)
     receiver = pim.get_company_ID(userID=sender)
     type = t
     content = c
@@ -91,7 +96,8 @@ def send_request(uID, d, t, c):
                          type=type,
                          content=content,
                          dealed=False,
-                         result=-1)
+                         result=-1,
+                         requestdate=the_date)
     the_model.save()
 
 #处理"申请加入"
@@ -140,7 +146,23 @@ def answer_invitation(rID, r):
 
 #处理"请假、补卡"
 def answer_other_req(rID, r):
-
+    requestID = rID
+    result = r
+    if(handle_request(requestID, result)):
+        #更改消息条目本身
+        the_model = requests.objects.get(requestID=requestID)
+        stuff_id = the_model.senderID
+        company_id = the_model.receiverID
+        month = the_model.requestdate.split('@')[0]
+        date = the_model.requestdate.split('@')[1]
+        if(result):
+            #执行操作
+            if(the_model.type == 3):
+                #请假
+                ac.do_leave(uid=stuff_id, m=month, d=date)
+            elif(the_model.type == 4):
+                #补卡
+                ac.do_makeup(uid=stuff_id, m=month, d=date)
     return True
 
 def get_request(uID):
@@ -151,9 +173,60 @@ def get_request(uID):
         send_list = requests.objects.filter(senderID=uID)
         the_list = receive_list + send_list
     elif(title == 2 or title == 3):
-        #管理员/boss
+        # 管理员/boss
         company_id = pim.get_company_ID(uID)
         receive_list = requests.objects.filter(receiverID=company_id)
         send_list = requests.objects.filter(senderID=uID)
-        the_list = receive_list + send_list
-    return the_list
+        # the_list = receive_list + send_list
+    result = {'count':len(receive_list) + len(send_list),
+              'info':[]}
+    # 收到的
+    for msg in receive_list:
+        name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
+        msg_dict = {
+                        'request_id': msg.requestID,
+                        'user_id': msg.senderID,
+                        'name': name,
+                        'dpmt': department,
+                        'type': msg_type[msg.type-1]
+                    }
+        result['info'].insert(len(result['info']), msg_dict)
+    # 发出的
+    for msg in send_list:
+        name, _, department, _, _ = pim.get_info_by_id(msg.receiverID)
+        msg_dict = {
+            'request_id': msg.requestID,
+            'user_id': msg.receiverID,
+            'name': name,
+            'dpmt': department,
+            'type': msg_type[msg.type - 1]
+        }
+        result['info'].insert(len(result['info']), msg_dict)
+    return result
+# def boss_requests(request):
+#     user_table2 = {
+#         'count': 10,
+#         'info': [
+#             {
+#                 'request_id': "1",
+#                 'user_id': "250",
+#                 'name': "lyw",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             },
+#             {
+#                 'request_id': "2",
+#                 'user_id': "255",
+#                 'name': "lqf",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             },
+#             {
+#                 'request_id': "3",
+#                 'user_id': "260",
+#                 'name': "jyl",
+#                 'dpmt': "qianduan",
+#                 'type': "请病假"
+#             }
+#         ]
+#     }

@@ -10,9 +10,9 @@ import os, django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.settings")
 django.setup()
 
-from basic_info.models import personal_info
+from basic_info.models import *
 from attendance_data.models import *
-
+from request_data.models import *
 #插入一条数据
 def insert_demo(id, pwd):
     temp_personal_info = personal_info(userID=id, password=pwd)
@@ -67,6 +67,126 @@ def delete_demo():
         print(the_model.password)
         the_model.delete()
 
+def basic_db_initialize():
+    cimodel1 = company_info(companyID='10001', taxNumber='91440300708461136T', bossID='1000001', name='tencent',
+                            adminID='1000004@1000005', departNames='Project@Propaganda@HumanResources')
+    cimodel2 = company_info(companyID='10002', taxNumber='91110108717743469K', bossID='1000002', name='baidu',
+                            adminID='1000006@1000007', departNames='Project@PublicRelations@HumanResources')
+    cimodel3 = company_info(companyID='10003', taxNumber='91330100716105852F', bossID='1000003', name='ali',
+                            adminID='1000008@1000009', departNames='Technique@Market@HumanResources')
+
+    pimodel1 = personal_info(userID='1000001', password='pwd1', name='Huateng.M', company='10001',
+                             departName='Project', modelLocation='1_1', email='htm@qq.com', title=3)
+    pimodel2 = personal_info(userID='1000002', password='pwd2', name='Yanhong.L', company='10002',
+                             departName='PublicRelations', modelLocation='1_2', email='yhl@qq.com', title=3)
+    pimodel3 = personal_info(userID='1000003', password='pwd3', name='Yun.M', company='10003',
+                             departName='HumanResources', modelLocation='1_3', email='mayun@qq.com', title=3)
+
+    pimodel4 = personal_info(userID='1000004', password='pwd4', name='jyl', company='10001',
+                             departName='Propaganda', modelLocation='1_4', email='jyl@qq.com', title=2)
+    pimodel5 = personal_info(userID='1000005', password='pwd5', name='ano', company='10001',
+                             departName='HumanResources', modelLocation='1_5', email='ano@qq.com', title=2)
+    pimodel6 = personal_info(userID='1000006', password='pwd6', name='lyw', company='10002',
+                             departName='Project', modelLocation='1_6', email='lyw@qq.com', title=2)
+    pimodel7 = personal_info(userID='1000007', password='pwd7', name='bno', company='10002',
+                             departName='HumanResources', modelLocation='1_7', email='htm@qq.com', title=2)
+    pimodel8 = personal_info(userID='1000008', password='pwd8', name='lqf', company='10003',
+                             departName='Technique', modelLocation='1_8', email='lqf@hotmail.com', title=2)
+    pimodel9 = personal_info(userID='1000009', password='pwd9', name='cno', company='10003',
+                             departName='Technique', modelLocation='1_9', email='cno@qq.com', title=2)
+
+    pimodel10 = personal_info(userID='1000010', password='pwd10', name='tx1', company='10001',
+                             departName='Project', modelLocation='1_10', email='tx1@qq.com', title=1)
+    pimodel11 = personal_info(userID='1000011', password='pwd11', name='bd1', company='10002',
+                             departName='PublicRelation', modelLocation='2_1', email='bd1@qq.com', title=1)
+    pimodel12 = personal_info(userID='1000012', password='pwd12', name='al1', company='10003',
+                             departName='Market', modelLocation='2_2', email='htm@qq.com', title=1)
+    pimodel13 = personal_info(userID='1000013', password='pwd13', name='tx2', company='10001',
+                             departName='Project', modelLocation='2_3', email='tx2@qq.com', title=1)
+    pimodel14 = personal_info(userID='1000014', password='pwd14', name='bd2', company='10002',
+                             departName='PublicRelation', modelLocation='2_4', email='bd1@qq.com', title=1)
+    pimodel15 = personal_info(userID='1000015', password='pwd15', name='al2', company='10003',
+                             departName='Market', modelLocation='2_5', email='htm@qq.com', title=1)
+
+    model_list = [cimodel1, cimodel2, cimodel3, pimodel1, pimodel2, pimodel3, pimodel4, pimodel5, pimodel6,
+                  pimodel7, pimodel8, pimodel9, pimodel10, pimodel11, pimodel12,pimodel13, pimodel14, pimodel15]
+    for model in model_list:
+        model.save()
+
+def request_data_initialize():
+    return True
+
+def attendance_data_initialize():
+    admodel1 = attendance_data_aug(userID='1000010',
+                                   day1='07:40&1@17:02&1',
+                                   day2='07:40&1@17:02&1',
+                                   day3='07:45&1@17:02&1',
+                                   day4='07:45&1@17:02&1',
+                                   day5='07:45&1@17:02&1',
+                                   day6='07:45&1@17:02&1',
+                                   day7='07:450&1@17:02&1',
+                                   day8='07:40&1@17:02&1',
+                                   day9='07:40&1@17:02&1',
+                                   day10='00:00&2@00:00&2',#请假
+                                   day11='08:10&0@17:05&1',#迟到
+                                   day12='07:42&1@16:30&0',#早退
+                                   day13='08:25&0@16:40&0',#迟到早退
+                                   day14='07:52&1@17:02&1',
+                                   day15='07:52&1@17:02&1',
+                                   day16='07:52&1@17:02&1',
+                                   day17='07:52&1@17:02&1',
+                                   day18='07:52&1@17:13&1',
+                                   day19='07:40&1@17:13&1',
+                                   day20='07:40&1@17:13&1',
+                                   day21='07:40&1@17:13&1',
+                                   day22='07:40&1@17:13&1',
+                                   day23='07:40&1@17:13&1',
+                                   day24='07:40&1@17:13&1',
+                                   day25='07:40&1@17:02&1',
+                                   day26='07:40&1@17:02&1',
+                                   day27='07:40&1@17:02&1',
+                                   day28='07:40&1@17:02&1',
+                                   day29='07:40&1@17:02&1',
+                                   day30='07:40&1@17:02&1',
+                                   day31='07:40&1@17:02&1',
+                                   )
+    admodel2 = attendance_data_aug(userID='1000013',
+                                   day1='00:00&2@00:00&2',#请假
+                                   day2='07:40&1@17:02&1',
+                                   day3='07:45&1@17:02&1',
+                                   day4='07:45&1@17:02&1',
+                                   day5='07:45&1@17:02&1',
+                                   day6='07:45&1@17:02&1',
+                                   day7='07:450&1@17:02&1',
+                                   day8='07:40&1@17:02&1',
+                                   day9='07:40&1@17:02&1',
+                                   day10='07:40&1@17:02&1',
+                                   day11='07:52&1@17:02&1',
+                                   day12='07:42&1@16:30&0',#早退
+                                   day13='07:40&1@17:02&1',
+                                   day14='07:52&1@17:02&1',
+                                   day15='07:52&1@17:02&1',
+                                   day16='07:52&1@17:02&1',
+                                   day17='07:52&1@17:02&1',
+                                   day18='08:10&0@17:05&1',#迟到
+                                   day19='07:40&1@17:13&1',
+                                   day20='07:40&1@17:13&1',
+                                   day21='07:40&1@17:13&1',
+                                   day22='07:40&1@17:13&1',
+                                   day23='07:40&1@17:13&1',
+                                   day24='07:40&1@17:13&1',
+                                   day25='07:40&1@17:02&1',
+                                   day26='07:40&1@17:02&1',
+                                   day27='07:40&1@17:02&1',
+                                   day28='07:40&1@17:02&1',
+                                   day29='07:40&1@17:02&1',
+                                   day30='07:40&1@17:02&1',
+                                   day31='08:25&0@16:40&0',#迟到早退
+                                   )
+    admodel1.save()
+    admodel2.save()
 
 if __name__=="__main__":
-    delete_demo()
+    print('yes!')
+    # attendance_data_initialize()
+    # basic_db_initialize()

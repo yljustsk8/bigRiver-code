@@ -16,3 +16,4 @@ class requests(models.Model):
     dealed = models.BooleanField(default=False)
     #如果同意，则为1，如果是不同意，则为0
     result = models.IntegerField(default=-1)
+    requestdate = models.CharField(max_length=10, default='')

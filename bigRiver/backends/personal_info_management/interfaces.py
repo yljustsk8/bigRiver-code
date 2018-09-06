@@ -117,8 +117,9 @@ def get_company_ID(userID):
     except BaseException:
         print('user not found in get_company_name')
         return False
-    company_name = the_model.company
-    companyID = company_info.objects.filter(name=company_name)[0].companyID
+    # company_name = the_model.company
+    # companyID = company_info.objects.filter(name=company_name)[0].companyID
+    companyID = the_model.company
     return companyID
 
 def get_info_by_id(userID):

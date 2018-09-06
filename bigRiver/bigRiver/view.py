@@ -2,7 +2,9 @@ from django.shortcuts import render,HttpResponse,redirect,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django import forms
 from backends.personal_info_management import interfaces as pim
+from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
+from backends.mail_management import interfaces as mm
 import json
 import base64
 import os
@@ -21,27 +23,13 @@ def login(request):
         return render(request,'login.html')
     if request.method=='POST':
         if(pim.login(request)):
-            response = HttpResponseRedirect('../index/')
+            request.set_cookie('user_id', request.POST.get('userID'), 3600)
+            response = HttpResponseRedirect('../user/')
             return response
 
 
-            # user = User.objects.filter(username__exact=username, password__exact=password)
-            # if user:
-                # 比较成功，跳转index
-                # response = HttpResponseRedirect('../index/')
-                # 将username写入浏览器cookie,失效时间为3600
-                # response.set_cookie('username', username, 3600)
-                # return response
-            # else:
-                # 比较失败，还在login
-                # return render(request, 'login.html')
-        # else:
-        #     return render(request,'login.html',{'uf':uf})
 
-#登陆成功
-def index(request):
-    username = request.COOKIES.get('username','')
-    return render_to_response('index.html' ,{'username':username})
+
 
 def regist(request):
     uf = UserForm(request.POST)
@@ -72,11 +60,21 @@ def regist(request):
         # response.set_cookie('username', username, 3600)
         # return response
 
-def calendar1(request):
-    return render_to_response('calendar.html')
 
-def user(req):
-    return render_to_response('user.html')
+def user(request):
+    if request.method == "GET":
+        return render_to_response('user.html')
+
+
+def calendar(request):
+    if request.method == "GET":
+        return render_to_response('calendar.html')
+    if request.method == "POST":
+        print("CCCCC P")
+        user_id=request.POST.get('user_id')
+        # result=ac.view_single_calendar(month, user_id)
+        result={'a':1}
+        return HttpResponse(json.dumps(result), content_type="application/json")
 
 
 def face(request):
@@ -139,7 +137,6 @@ def admin_employees(request):
         ]
     }
 
-
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
         if request.GET.get('content') == None:
@@ -189,15 +186,15 @@ def admin_requests(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+        if request.POST.get('content') == 'show requests':
+            return HttpResponse(json.dumps(user_table2), content_type="application/json")
 
 def boss_admins(request):
     user_table = {
         'count': 10,
         'info': [
             {
-                'user_id': "250",
+                'user_id': "100010",
                 'name': "lyw",
                 'dpmt': "qianduan",
                 'status': "早退",
@@ -220,36 +217,45 @@ def boss_admins(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table), content_type="application/json")
+        print("POST ", request.POST.get('content'))
+        if request.POST.get('content') == 'show admins':
+            return HttpResponse(json.dumps(user_table), content_type="application/json")
+        elif request.POST.get('content') == 'delete admin':
+            result=cm.delete_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            return result
+        elif request.POST.get('content') == 'add admin':
+            print("here")
+            result=cm.set_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            return result
+
 
 def boss_requests(request):
-    user_table2 = {
-        'count': 10,
-        'info': [
-            {
-                'request_id': "1",
-                'user_id': "250",
-                'name': "lyw",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            },
-            {
-                'request_id': "2",
-                'user_id': "255",
-                'name': "lqf",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            },
-            {
-                'request_id': "3",
-                'user_id': "260",
-                'name': "jyl",
-                'dpmt': "qianduan",
-                'type': "请病假"
-            }
-        ]
-    }
+    # user_table2 = {
+    #     'count': 10,
+    #     'info': [
+    #         {
+    #             'request_id': "1",
+    #             'user_id': "250",
+    #             'name': "lyw",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         },
+    #         {
+    #             'request_id': "2",
+    #             'user_id': "255",
+    #             'name': "lqf",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         },
+    #         {
+    #             'request_id': "3",
+    #             'user_id': "260",
+    #             'name': "jyl",
+    #             'dpmt': "qianduan",
+    #             'type': "请病假"
+    #         }
+    #     ]
+    # }
 
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
@@ -259,5 +265,6 @@ def boss_requests(request):
             response = HttpResponseRedirect('../admin/')
             return response
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table2), content_type="application/json")
+        if request.POST.get('content') == 'show requests':
+            user_table=mm.get_request(request.POST.get('user_id'))
+            return HttpResponse(json.dumps(user_table), content_type="application/json")
