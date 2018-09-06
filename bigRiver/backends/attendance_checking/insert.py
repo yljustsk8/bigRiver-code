@@ -56,12 +56,14 @@ def get_current_time():
 
 class data(object):
     #初始化函数
-    def __init__(self, userID, date):
+    def __init__(self, userID, month, date):
         self.userID = userID
         self.month, self.date, _, _ = get_current_time()
         #可能是一个debug点
         if(date != ''):
             self.date = int(date)
+        if(month != ''):
+            self.month = int(month)
         # 该用户本月未录入，插入新的模型
         if (len(model_list[self.month-1].objects.filter(userID=self.userID)) == 0):
             new_model = model_list[self.month-1](userID=self.userID)
@@ -198,6 +200,7 @@ class data(object):
         elif (self.date == 31):
             self.model.day31 = "08:00:00&1@17:00:00&1"
         self.model.save()
+        return True
     #早退
     def leave(self):
         if (self.date == 1):
@@ -263,4 +266,4 @@ class data(object):
         elif (self.date == 31):
             self.model.day31 = "00:00:00&2@00:00:00&2"
         self.model.save()
-
+        return True

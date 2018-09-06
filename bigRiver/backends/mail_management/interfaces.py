@@ -1,5 +1,6 @@
 from request_data.models import requests
 from backends.personal_info_management import interfaces as pim
+from backends.attendance_checking import interfaces as ac
 import datetime
 # 1.	bool send_invitation(userID,companyID)
 # 2.	bool answer_invitation(requestID, bool)
@@ -77,10 +78,12 @@ def send_invitation(u, c):
     return True
 
 #申请请假、补卡
-def send_request(uID, d, t, c):
+def send_request(uID, m, d, t, c):
     #t=3 请假申请，t=4 补卡申请
     sender = uID
+    month = m
     date = d
+    the_date = str(month) + '@' + str(date)
     receiver = pim.get_company_ID(userID=sender)
     type = t
     content = c
@@ -91,7 +94,8 @@ def send_request(uID, d, t, c):
                          type=type,
                          content=content,
                          dealed=False,
-                         result=-1)
+                         result=-1,
+                         requestdate=the_date)
     the_model.save()
 
 #处理"申请加入"
@@ -140,7 +144,23 @@ def answer_invitation(rID, r):
 
 #处理"请假、补卡"
 def answer_other_req(rID, r):
-
+    requestID = rID
+    result = r
+    if(handle_request(requestID, result)):
+        #更改消息条目本身
+        the_model = requests.objects.get(requestID=requestID)
+        stuff_id = the_model.senderID
+        company_id = the_model.receiverID
+        month = the_model.requestdate.split('@')[0]
+        date = the_model.requestdate.split('@')[1]
+        if(result):
+            #执行操作
+            if(the_model.type == 3):
+                #请假
+                ac.do_leave(uid=stuff_id, m=month, d=date)
+            elif(the_model.type == 4):
+                #补卡
+                ac.do_makeup(uid=stuff_id, m=month, d=date)
     return True
 
 def get_request(uID):
