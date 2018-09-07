@@ -1,9 +1,11 @@
-//本地模拟已签到日期天数
+
     var localDate = {
-        date: []
-    }
-    localDate.date.push("0901");localDate.date.push("0912");localDate.date.push("0908");
-    localDate.date.push("0913");localDate.date.push("0911");localDate.date.push("0906");
+                    date: [],
+                    time_in:[],
+                    status_in:[],
+                    time_out:[],
+                    status_out:[]
+                }
     /**
     for (var j = 0; j < 30; j++) {
         var a = Math.ceil(Math.random() * 11);
@@ -34,6 +36,9 @@
     // var user_id = $.cookie('user_id');
     var y = slidate.getDate();
 
+
+
+
     function initall() {
         function getCookie(name)
         {
@@ -53,9 +58,16 @@
             url: "/calendar/",
             data: {'user_id':'123'},
             success:function(data) {
-                // data.info.forEach(function(value, i){
-                //
-                // });
+                data.forEach(function(value, i){
+                    value.forEach(function (item,j) {
+                        paras = item.split('@');
+                        localDate.date.push(paras[0]);
+                        localDate.time_in.push(paras[1].split('&')[0]);
+                        localDate.status_in.push(paras[1].split('&')[1]);
+                        localDate.time_out.push(paras[2].split('&')[0]);
+                        localDate.status_out.push(paras[2].split('&')[1]);
+                    })
+                })
                 dateHandler(monthFirst, d, conter, monthNum);
                 checkDate(monthCheck);
             },
@@ -116,21 +128,26 @@
 
     //确认本月签到日期，并把他们加上标红buff
     function checkDate(prep) {
-        var dateArray = [];
-        var newArray = [];
-        //删除不是本月的签到日期
+        var dateArray = [];var time_inArray = [];var time_outArray = [];
+        var newArray = [];var newinArray = []; var newoutArray = [];
+         //删除不是本月的签到日期
         //把签到本地日期copy至datearray
         for (var i = 0; i < localDate.date.length; i++) {
             dateArray.push(localDate.date[i]);
+            time_inArray.push(localDate.time_in[i]);time_outArray.push(localDate.time_out[i]);
         }
         for (var i = 0; i < dateArray.length; i++) {
             if (dateArray[i].charAt(1) != prep) {
                 dateArray[i] = undefined;
+                time_inArray.[i] = undefined;
+                time_outArray[i] = undefined;
             }
         }
         for (var i = 0; i < dateArray.length; i++) {
             if (dateArray[i] != undefined) {
                 newArray.push(dateArray[i]);
+                newinArray.push(time_inArray[i]);
+                newoutArray.push(time_outArray);
             }
         }
         //遍历数组为已签到日期添加class
@@ -140,6 +157,9 @@
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td" + j;
                         $(checked).addClass("qiandao");
+                        $(document).on('click',checked,function () {
+                            alert("上班时间："+ newinArray[j]+"\n下班时间："+ newoutArray[j]);
+                        })
                     }
                 }
             } else if (newArray[i].charAt(2) == 1) {
@@ -147,6 +167,9 @@
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td1" + j;
                         $(checked).addClass('qiandao');
+                        $(document).on('click',checked,function () {
+                            alert("上班时间：" );
+                        })
                     }
                 }
             } else {
@@ -154,6 +177,10 @@
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td2" + j;
                         $(checked).addClass("qiandao");
+                        $(document).on('click',checked,function () {
+                            var check="2"+j;
+                            alert("上班时间："+localDate.time_in[]);
+                        })
                     }
                 }
             }
