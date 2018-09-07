@@ -70,7 +70,6 @@ def calendar(request):
     if request.method == "GET":
         return render_to_response('calendar.html')
     if request.method == "POST":
-        print("CCCCC P")
         user_id=request.POST.get('user_id')
         # result=ac.view_single_calendar(month, user_id)
         result={'a':1}
@@ -190,25 +189,25 @@ def admin_requests(request):
             return HttpResponse(json.dumps(user_table2), content_type="application/json")
 
 def boss_admins(request):
-    user_table = {
-        'count': 10,
-        'info': [
-            {
-                'user_id': "100010",
-                'name': "lyw",
-                'dpmt': "qianduan",
-                'status': "早退",
-                'title': "普通员工"
-            },
-            {
-                'user_id': "251",
-                'name': "lqf",
-                'dpmt': "qianduan",
-                'status': "迟到",
-                'title': "管理员"
-            }
-        ]
-    }
+    # user_table = {
+    #     'count': 10,
+    #     'info': [
+    #         {
+    #             'user_id': "100010",
+    #             'name': "lyw",
+    #             'dpmt': "qianduan",
+    #             'status': "早退",
+    #             'title': "普通员工"
+    #         },
+    #         {
+    #             'user_id': "251",
+    #             'name': "lqf",
+    #             'dpmt': "qianduan",
+    #             'status': "迟到",
+    #             'title': "管理员"
+    #         }
+    #     ]
+    # }
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
         if request.GET.get('content') == None:
@@ -219,13 +218,14 @@ def boss_admins(request):
     if request.method=='POST':
         print("POST ", request.POST.get('content'))
         if request.POST.get('content') == 'show admins':
+            user_table=ac.view_all_calendar(datetime.date.today.strftime('%m'),datetime.date.today.strftime('%d'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
         elif request.POST.get('content') == 'delete admin':
-            result=cm.delete_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            result=cm.delete_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
         elif request.POST.get('content') == 'add admin':
             print("here")
-            result=cm.set_admin(pim.get_company_ID(request.GET.get('enforcer')), request.GET.get('employee'))
+            result=cm.set_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
 
 

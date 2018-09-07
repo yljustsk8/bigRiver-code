@@ -15,7 +15,7 @@ class personal_info(models.Model):
 
 class company_info(models.Model):
     companyID = models.CharField(max_length=20, default='')
-    name = models.CharField(max_length=20, default='')
+    name = models.CharField(max_length=30, default='')
     taxNumber = models.CharField(max_length=20, default='')
     bossID = models.CharField(max_length=10, default='')
     adminID = models.CharField(max_length=100, default='')

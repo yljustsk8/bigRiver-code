@@ -140,5 +140,15 @@ def join_department(stuffID, department):
         return False
     return True
 
+def set_title(userID, title):
+    try:
+        the_model = personal_info.objects.get(userID=userID)
+        the_model.title = title
+        the_model.save()
+    except BaseException:
+        print('not found.')
+        return False
+    return True
+
 if(__name__ == "__main__"):
     dbtest()
