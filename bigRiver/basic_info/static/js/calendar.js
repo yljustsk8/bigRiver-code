@@ -139,7 +139,7 @@
         for (var i = 0; i < dateArray.length; i++) {
             if (dateArray[i].charAt(1) != prep) {
                 dateArray[i] = undefined;
-                time_inArray.[i] = undefined;
+                time_inArray[i] = undefined;
                 time_outArray[i] = undefined;
             }
         }
@@ -147,7 +147,7 @@
             if (dateArray[i] != undefined) {
                 newArray.push(dateArray[i]);
                 newinArray.push(time_inArray[i]);
-                newoutArray.push(time_outArray);
+                newoutArray.push(time_outArray[i]);
             }
         }
         //遍历数组为已签到日期添加class
