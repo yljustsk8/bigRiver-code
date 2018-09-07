@@ -202,6 +202,7 @@ def get_request(uID):
             'type': msg_type[msg.type - 1]
         }
         result['info'].insert(len(result['info']), msg_dict)
+    print(result)
     return result
 # def boss_requests(request):
 #     user_table2 = {
