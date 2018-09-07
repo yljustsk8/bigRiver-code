@@ -28,6 +28,7 @@ def set_admin(cID, aID):
         new_admins = adminID
     company_model.adminID = new_admins
     company_model.save()
+    pim.set_title(userID=adminID, title=2)
 
 def delete_admin(cID, aID):
     companyID = cID
@@ -37,7 +38,7 @@ def delete_admin(cID, aID):
     new_admins = get_delete_result(original_str=original_admins, delete_str=adminID)
     company_model.adminID = new_admins
     company_model.save()
-    return True
+    pim.set_title(userID=adminID, title=1)
 
 def create_department(cID, d_name):
     companyID = cID

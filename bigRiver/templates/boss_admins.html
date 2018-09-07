@@ -64,11 +64,12 @@
             data: {'content':"show admins"},
             success:function(data) {
                 data.info.forEach(function(value, i){
+                    paras = value.user_id+'@'+value.name+'@'+value.title;
                     var item = "<tr><td>" + value.user_id + "</td><td>" + value.name +
                         "</td><td>" + value.dpmt + "</td><td>" + value.status +
                         "</td><td>" + '<button style="width:80px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' +
                         "</td><td>" + value.title +
-                        "</td><td>" + '<button style="width:80px;height:30px" onclick="change_title('+value.user_id+','+value.name+','+value.title+')">修改权限</button>' + "</td></tr>" ;
+                        "</td><td>" + '<button style="width:80px;height:30px" onclick="change_title(&quot;'+paras+'&quot;)">修改权限</button>' + "</td></tr>" ;
                     $("#user_table tbody").append(item);
                 });
                 load_page();
@@ -83,13 +84,16 @@
         alert("id = " + user_id + " checked!");
     }
 
-    function change_title(user_id, name, title) {
-        alert(title);
+    function change_title(paras) {
+        data=paras.split('@');
+        user_id = data[0];
+        user_name = data[1];
+        title = data[2];
         if(title == "管理员")
             new_title = "普通员工";
         else
             new_title = "管理员";
-        result = confirm("你确定要将 "+name+"(id:"+user_id+")"+" 改变为 "+new_title+" 吗？")
+        result = confirm("你确定要将 "+user_name+"(id:"+user_id+")"+" 改变为 "+new_title+" 吗？")
         if (result==1)
             if (new_title == "管理员")
                 $.ajax({
@@ -101,7 +105,7 @@
                             'employee':'1000010'},
                     success:function (data) {
                         if (data==1)
-                            alert("已将 "+name+"(id:"+user_id+")"+" 改变为 "+new_title);
+                            alert("已将 "+user_name+"(id:"+user_id+")"+" 改变为 "+new_title);
                         else
                             alert("变更失败，请刷新后重试");
                     }
@@ -115,7 +119,7 @@
                             'employee':user_id},
                     success:function (data) {
                         if (data==1)
-                            alert("已将 "+name+"(id:"+user_id+")"+" 改变为 "+new_title);
+                            alert("已将 "+user_name+"(id:"+user_id+")"+" 改变为 "+new_title);
                         else
                             alert("变更失败，请刷新后重试");
                     }
