@@ -29,6 +29,9 @@ def get_month_calendar(month, userID):
         result_list = []
         return result_list
     #为普通员工
+    if not (model.objects.filter(userID=userID)):
+        new_model = model(userID=userID)
+        new_model.save()
     user_model = model.objects.filter(userID=userID)[0]
     result_list = [userID]
     result_list.append(user_model.day1)

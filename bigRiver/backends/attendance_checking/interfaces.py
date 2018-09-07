@@ -37,6 +37,16 @@ def view_single_calendar(m, uid):
     userID = uid
     result = get_calendar.get_month_calendar(month, userID)
     return result
+#查看单个员工单年日历
+def view_single_year_calendar(userID):
+    result_dict = {}
+    for month in range(12):
+        result_dict[month+1] = view_single_calendar(month+1, uid=userID)
+    for month in range(12):
+        for date in range(31):
+            result_dict[month+1][date+1] = str(month+1).rjust(2, '0')+str(date+1).rjust(2, '0')+'@'+result_dict[month+1][date+1]
+        # result += view_single_calendar(month+1, uid=userID)
+    return result_dict
 
 #补卡
 def do_makeup(uid, m, d):
@@ -105,4 +115,6 @@ def view_all_calendar(m, d, c):
     return result
 
 if(__name__=='__main__'):
-    view_all_calendar(8, 31, '10001')
+    # view_all_calendar(8, 31, '10001')
+    print ('1')
+    print (view_single_year_calendar(userID='1000010'))
