@@ -63,7 +63,7 @@
             type: 'POST',
             url: "/boss/requests/",
             data: {'content':"show requests",
-                    'user_id':'1000001'},
+                    'user_id':getCookie('user_id')},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     var item = "<tr><td>" + value.request_id + "</td><td>" + value.user_id +
@@ -82,6 +82,14 @@
             }
         })
 	});
+
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
 
     function show_content(user_id) {
         alert("id = " + user_id + " fucked!");

@@ -62,7 +62,8 @@
         $.ajax({
             type: 'POST',
             url: "/admin/requests/",
-            data: {'content':"show requests"},
+            data: {'content':"show requests",
+                    'user_id':getCookie('user_id')},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     var item = "<tr><td>" + value.request_id + "</td><td>" + value.user_id +
@@ -81,6 +82,15 @@
             }
         })
 	});
+
+    function getCookie(name) {
+        alert('cool!')
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
 
     function check_employee(user_id) {
         alert("id = " + user_id + " checked!");

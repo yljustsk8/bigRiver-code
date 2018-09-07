@@ -81,7 +81,7 @@
             type: 'POST',
             url: "/admin/",
             data: {'content':"show employees",
-                    'user_id':'1000004'},
+                    'user_id':getCookie('user_id')},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     var item = "<tr><td>" + value.user_id + "</td><td>" + value.name +
@@ -97,6 +97,14 @@
             }
         })
 	});
+
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
 
     function check_employee(user_id) {
         alert("id = " + user_id + " checked!");

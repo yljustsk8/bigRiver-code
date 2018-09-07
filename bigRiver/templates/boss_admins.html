@@ -62,7 +62,7 @@
             type: 'POST',
             url: "/boss/",
             data: {'content':"show admins",
-                    'user_id':'1000001'},
+                    'user_id':getCookie('user_id')},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     paras = value.user_id+'@'+value.name+'@'+value.title;
@@ -80,6 +80,14 @@
             }
         })
 	});
+
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
 
     function check_employee(user_id) {
         alert("id = " + user_id + " checked!");
