@@ -58,16 +58,19 @@
             url: "/calendar/",
             data: {'user_id':'123'},
             success:function(data) {
-                data.forEach(function(value, i){
+                for(var i = 1;i<12;i++){
+                    value =data[i.toString()];
                     value.forEach(function (item,j) {
-                        paras = item.split('@');
-                        localDate.date.push(paras[0]);
-                        localDate.time_in.push(paras[1].split('&')[0]);
-                        localDate.status_in.push(paras[1].split('&')[1]);
-                        localDate.time_out.push(paras[2].split('&')[0]);
-                        localDate.status_out.push(paras[2].split('&')[1]);
-                    })
-                })
+                        if(item != ""&&item.length!=5 &&j!=0){
+                            paras = item.split('@');
+                            localDate.date.push(paras[0]);
+                            localDate.time_in.push(paras[1].split('&')[0]);
+                            localDate.status_in.push(paras[1].split('&')[1]);
+                            localDate.time_out.push(paras[2].split('&')[0]);
+                            localDate.status_out.push(paras[2].split('&')[1]);
+                        }
+                    });
+                };
                 dateHandler(monthFirst, d, conter, monthNum);
                 checkDate(monthCheck);
             },
@@ -168,7 +171,7 @@
                         var checked = "#td1" + j;
                         $(checked).addClass('qiandao');
                         $(document).on('click',checked,function () {
-                            alert("上班时间：" );
+                            alert("上班时间："+ newinArray[j+10]+"\n下班时间："+ newoutArray[j+10]);
                         })
                     }
                 }
@@ -179,7 +182,7 @@
                         $(checked).addClass("qiandao");
                         $(document).on('click',checked,function () {
                             var check="2"+j;
-                            alert("上班时间："+localDate.time_in[]);
+                            alert("上班时间："+ newinArray[j+20]+"\n下班时间："+ newoutArray[j+20]);
                         })
                     }
                 }
