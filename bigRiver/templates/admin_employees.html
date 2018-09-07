@@ -80,7 +80,8 @@
         $.ajax({
             type: 'POST',
             url: "/admin/",
-            data: {'content':"show employees"},
+            data: {'content':"show employees",
+                    'user_id':'1000004'},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     var item = "<tr><td>" + value.user_id + "</td><td>" + value.name +
