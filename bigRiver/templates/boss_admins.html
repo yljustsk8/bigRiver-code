@@ -61,7 +61,8 @@
         $.ajax({
             type: 'POST',
             url: "/boss/",
-            data: {'content':"show admins"},
+            data: {'content':"show admins",
+                    'user_id':'1000001'},
             success:function(data) {
                 data.info.forEach(function(value, i){
                     paras = value.user_id+'@'+value.name+'@'+value.title;
@@ -102,12 +103,13 @@
                     data: {'content':'add admin',
 {#                            'enforcer':$.cookie('user_id'),#}
                             'enforcer':'1000001',
-                            'employee':'1000010'},
+                            'employee':user_id},
                     success:function (data) {
                         if (data==1)
                             alert("已将 "+user_name+"(id:"+user_id+")"+" 改变为 "+new_title);
                         else
                             alert("变更失败，请刷新后重试");
+                        window.location.reload();
                     }
                 })
             else
@@ -115,13 +117,14 @@
                     type: 'POST',
                     url: '/boss/',
                     data: {'content':'delete admin',
-                            'enforcer':$.cookie('user_id'),
+                            'enforcer':'1000001',
                             'employee':user_id},
                     success:function (data) {
                         if (data==1)
                             alert("已将 "+user_name+"(id:"+user_id+")"+" 改变为 "+new_title);
                         else
                             alert("变更失败，请刷新后重试");
+                        window.location.reload();
                     }
                 })
     }

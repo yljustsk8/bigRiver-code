@@ -8,7 +8,7 @@ from backends.mail_management import interfaces as mm
 import json
 import base64
 import os
-import datetime
+import time
 
 from backends.ai.face_model import save_face
 #表单
@@ -114,27 +114,27 @@ def upload_image(request):
     return HttpResponse(json.dumps(data),content_type="application/json")
 
 def admin_employees(request):
-    user_table = {
-        'count': 10,
-        'info': [
-            {
-                'user_id': "250",
-                'name': "lyw",
-                'dpmt': "qianduan",
-                'time_in': "05:00",
-                'time_out': "20:00",
-                'status': "早退"
-            },
-            {
-                'user_id': "251",
-                'name': "lqf",
-                'dpmt': "qianduan",
-                'time_in': "06:00",
-                'time_out': "21:00",
-                'status': "迟到"
-            }
-        ]
-    }
+    # user_table = {
+    #     'count': 10,
+    #     'info': [
+    #         {
+    #             'user_id': "250",
+    #             'name': "lyw",
+    #             'dpmt': "qianduan",
+    #             'time_in': "05:00",
+    #             'time_out': "20:00",
+    #             'status': "早退"
+    #         },
+    #         {
+    #             'user_id': "251",
+    #             'name': "lqf",
+    #             'dpmt': "qianduan",
+    #             'time_in': "06:00",
+    #             'time_out': "21:00",
+    #             'status': "迟到"
+    #         }
+    #     ]
+    # }
 
     if request.method=="GET":
         print("GET ", request.GET.get('content'))
@@ -145,8 +145,10 @@ def admin_employees(request):
             return response
 
     if request.method=='POST':
-        print("POST ",request.POST.get('content'))
-        return HttpResponse(json.dumps(user_table), content_type="application/json")
+        print("POST ", request.POST.get('content'))
+        if request.POST.get('content') == 'show employees':
+            user_table = ac.view_all_calendar(time.strftime('%m'), time.strftime('%d'), request.POST.get('user_id'))
+            return HttpResponse(json.dumps(user_table), content_type="application/json")
 
 def admin_requests(request):
 
@@ -218,7 +220,7 @@ def boss_admins(request):
     if request.method=='POST':
         print("POST ", request.POST.get('content'))
         if request.POST.get('content') == 'show admins':
-            user_table=ac.view_all_calendar(datetime.date.today.strftime('%m'),datetime.date.today.strftime('%d'))
+            user_table=ac.view_all_calendar(time.strftime('%m'),time.strftime('%d'),request.POST.get('user_id'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
         elif request.POST.get('content') == 'delete admin':
             result=cm.delete_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
