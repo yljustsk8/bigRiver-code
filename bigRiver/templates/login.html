@@ -146,7 +146,7 @@
                                                         <div class="col-md-12">
                                                             <label for="username">Username or Email</label>
                                                             <input type="text" class="form-control" autofocus="autofocus"
-                                                                   name="username" id="username" placeholder="请输入姓名或注册ID">
+                                                                   name="user_id" id="user_id" placeholder="请输入姓名或注册ID">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -159,7 +159,7 @@
 
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <input type="submit" class="btn btn-primary" value="Login">
+                                                            <button class="btn btn-primary" id="login">Login </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -184,6 +184,21 @@
         <div class="gototop js-top">
             <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
+
+        <script>
+            $(ducument).on("click",'#login',function () {
+                $.ajax({
+                    type: 'POST',
+                    url: "/login/",
+                    data: {'password':$(document).getElementById('password'),
+                            'user_id':$(document).getElementById('user_id')}
+                    success:function (data) {
+                        alert(data);
+                    }
+                })
+            })
+
+        </script>
 
         <!-- jQuery -->
         <script src="/static/jquery.min.js"></script>

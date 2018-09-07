@@ -11,22 +11,37 @@ from basic_info.models import *
 def dbtest():
     return True
 
-def login(request):
+def login(userID, password):
     #提取输入的userID和password
-    userID = request.POST['userID']
-    password = request.POST['password']
+    # userID = request.POST['userID']
+    # password = request.POST['password']
     #在数据库中找出userID匹配项
     select_result = personal_info.objects.filter(userID=userID)
+    #获取登录状态
+    userID_rt = ''
+    content_rt = ''
+    title_rt = ''
     if not select_result:
         #id不存在
-        print("id doesn't exist!")
-        return False
+        content_rt = "id doesn't exist!"
+        status = False
     elif(select_result[0].password != password):
         #密码错误
-        print("wrong password!")
-        return False
+        content_rt = "wrong password!"
+        status = False
     else:
-        return True
+        status = True
+        content_rt = 'success!'
+        userID_rt = userID
+        title_rt = select_result[0].title
+
+    result_dict = {
+        'status': status,
+        'content': content_rt,
+        'userID': userID_rt,
+        'title': title_rt,
+    }
+
 
 def register(request):
     #提取信息

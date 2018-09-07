@@ -22,10 +22,13 @@ def login(request):
     if request.method=="GET":
         return render(request,'login.html')
     if request.method=='POST':
-        if(pim.login(request)):
-            request.set_cookie('user_id', request.POST.get('userID'), 3600)
-            response = HttpResponseRedirect('../user/')
+        result = pim.login(request.POST.get('user_id'),request.POST.get('password'))
+        if result.status==True:
+            titles = {'user','user','admin','boss'}
+            response = HttpResponseRedirect('../'+titles[result.title]+'?user_id='+result.userID)
             return response
+        else:
+            return HttpResponse(result.content)
 
 
 
