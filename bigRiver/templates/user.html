@@ -4,11 +4,14 @@
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--加入公司-->
+        <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/style_user.css" />
-		<script type="text/javascript" src="/static/js/modernizr.custom.79639.js"></script>
+		<script type="text/javascript" src="/static/js/modernizer.custom.79639.js"></script>
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="/static/css/simple.css" />
 		<![endif]-->
@@ -18,7 +21,7 @@
 			<div class="st-container">
 			
 				<input type="radio" name="radio-set" checked="checked" id="st-control-1"/>
-				<a href="#st-panel-1">Serendipity</a>
+				<a href="#st-panel-1">BigRiver</a>
 				<input type="radio" name="radio-set" id="st-control-2"/>
 				<a href="#st-panel-2">MyCompany</a>
 				<input type="radio" name="radio-set" id="st-control-3"/>
@@ -38,15 +41,22 @@
 						<p style="font: 'Microsoft JhengHei'">BigRiver  |  @BOT._</p>
 						<p>
 							<!--需要修改的链接-->
-							<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> 加入公司</span></a> |
-							<a class="htmleaf-icon icon-arrow-right3" href="http://www.htmleaf.com/html5/html5muban/20141126596.html" title="今日打卡" target="_blank"><span> 返回下载页</span></a>
+							<a class="htmleaf-icon icon-home" href="../aboutBOT/" title="了解我们" target="_blank"></a> |
+							<a class="htmleaf-icon icon-arrow-right3" href="../face/" title="今日打卡" target="_blank"></a>
 						</p>
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-2">
 						<div class="st-deco" data-icon="S"></div>
 						<h2>BigRiver</h2>
-						<p>这里将会有检索栏~！</p>
+						<div id="search-container">
+                          <div class="search-bar">
+                            <form>
+                              <input type="text" placeholder="请输入公司名称或确切ID...">
+                              <button type="submit"></button>
+                            </form>
+                          </div>
+                        </div>
 					</section>
 					
 					<section class="st-panel" id="st-panel-3">
