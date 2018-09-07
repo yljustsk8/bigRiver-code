@@ -41,6 +41,7 @@ def login(userID, password):
         'userID': userID_rt,
         'title': title_rt,
     }
+    return result_dict
 
 
 def register(request):
@@ -139,9 +140,10 @@ def get_company_ID(userID):
 
 def get_info_by_id(userID):
     try:
+        print('userID: ' + userID)
         the_model = personal_info.objects.get(userID=userID)
     except BaseException:
-        print('user not found in get_company_name')
+        print('user not found in get_info_by_id')
         return False
     return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
