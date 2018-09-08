@@ -35,8 +35,18 @@ def check_in(img_url):
 def view_single_calendar(m, uid):
     month = m
     userID = uid
-    result = get_calendar.get_month_calendar(month, userID)
+    result = get_calendar.get_month_calendar(month, userID, query_title='3')
     return result
+#查看单个员工单年日历
+def view_single_year_calendar(userID):
+    result_dict = {}
+    for month in range(12):
+        result_dict[month+1] = view_single_calendar(month+1, uid=userID)
+    for month in range(12):
+        for date in range(31):
+            result_dict[month+1][date+1] = str(month+1).rjust(2, '0')+str(date+1).rjust(2, '0')+'@'+result_dict[month+1][date+1]
+        # result += view_single_calendar(month+1, uid=userID)
+    return result_dict
 
 #补卡
 def do_makeup(uid, m, d):
@@ -57,38 +67,55 @@ def do_leave(uid, m, d):
     return the_data.leave()
 
 #查看公司员工单日日历
-def view_all_calendar(m, d, c):
-    month = m
-    date = d
-    company = c
-    result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=company)
-    print(result_dict)
+def view_all_calendar(m, d, uid):
+    month = int(m)
+    date = int(d)
+    userID = uid
+    _, company, _, title, _ = pim.get_info_by_id(userID=uid)
+    result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=company, query_title=title)
+    # print(result_dict)
     result = {
         'count': 10,
         'info': []
     }
-    i = 1
 
+    i = 1
     for key, value in result_dict.items():
-        name, _, department,_,_ = pim.get_info_by_id(userID=key)
+        name, _, department, t,_ = pim.get_info_by_id(userID=key)
         # value的值模板：07:40&1@17:02&1
-        # 读取时间和状态
-        l = value.split('@')
-        t1 = l[0].split('&')[0]
-        status1 = int(l[0].split('&')[1])
-        t2 = l[1].split('&')[0]
-        status2 = int(l[1].split('&')[1])
+        # print(key + ': ' + str(t))
+        # 决定title_rt的值
+        if(str(t)=='1'):
+            title_rt = '普通员工'
+        elif(str(t)=='2'):
+            title_rt = '管理员'
+        elif(str(t)=='3'):
+            title_rt = '老板'
+        else:
+            title_rt = '异常值'
+        # 决定status的值
         status = ''
-        if(status1==1 and status2==1):
-            status = '正常出席'
-        elif(status1==0 and status2==1):
-            status = '迟到'
-        elif(status1==1 and status2==0):
-            status = '早退'
-        elif(status1==0 and status2==0):
-            status = '迟到早退'
-        elif(status1==2 and status2==2):
-            status = '请假'
+        if(value):
+            # 读取时间和状态
+            l = value.split('@')
+            t1 = l[0].split('&')[0]
+            status1 = int(l[0].split('&')[1])
+            t2 = l[1].split('&')[0]
+            status2 = int(l[1].split('&')[1])
+            if(status1==1 and status2==1):
+                status = '正常出席'
+            elif(status1==0 and status2==1):
+                status = '迟到'
+            elif(status1==1 and status2==0):
+                status = '早退'
+            elif(status1==0 and status2==0):
+                status = '迟到早退'
+            elif(status1==2 and status2==2):
+                status = '请假'
+        else:
+            t1 = ''
+            t2 = ''
+            status = '未打卡'
         #构造result字典
         attendance_dict = {
             'user_id': key,
@@ -96,7 +123,8 @@ def view_all_calendar(m, d, c):
             'dpmt': department,
             'time_in': t1,
             'time_out': t2,
-            'status': status
+            'status': status,
+            'title': title_rt
         }
         #插入
         result['info'].insert(len(result['info']), attendance_dict)
@@ -105,4 +133,6 @@ def view_all_calendar(m, d, c):
     return result
 
 if(__name__=='__main__'):
-    view_all_calendar(8, 31, '10001')
+    # view_all_calendar(8, 31, '10001')
+    print ('1')
+    print (view_single_year_calendar(userID='1000010'))

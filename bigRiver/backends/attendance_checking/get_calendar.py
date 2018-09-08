@@ -20,15 +20,18 @@ model_list = [attendance_data_jan,
               attendance_data_nov,
               attendance_data_dec]
 
-def get_month_calendar(month, userID):
+def get_month_calendar(month, userID, query_title):
     model = model_list[month-1]
     #判断其是否为普通员工，若是，则查看其数据。
     _, _, _, title, _ = pim.get_info_by_id(userID=userID)
-    if(title==2 or title==3):
+    if(int(query_title)<=int(title)):
         #不为普通员工
         result_list = []
         return result_list
-    #为普通员工
+    # 为普通员工
+    if not (model.objects.filter(userID=userID)):
+        new_model = model(userID=userID)
+        new_model.save()
     user_model = model.objects.filter(userID=userID)[0]
     result_list = [userID]
     result_list.append(user_model.day1)
@@ -64,7 +67,7 @@ def get_month_calendar(month, userID):
     result_list.append(user_model.day31)
     return result_list
 
-def get_daily_calendar(month, date, company):
+def get_daily_calendar(month, date, company, query_title):
     stuff_list = personal_info.objects.filter(company=company)
     stuff_id_list = []
     result_dict = dict()
@@ -72,9 +75,12 @@ def get_daily_calendar(month, date, company):
         #填充员工列表
         # print(s.userID)
         stuff_id_list.append(s.userID)
+    # print(stuff_list)
     for sid in stuff_id_list:
-        result_list = get_month_calendar(month, sid)
+        # print(sid)
+        result_list = get_month_calendar(month, sid, query_title)
+        # print(result_list)
         if(len(result_list)):
-            # print(date)
+            # print("in len ")
             result_dict[sid] = result_list[date]
     return result_dict

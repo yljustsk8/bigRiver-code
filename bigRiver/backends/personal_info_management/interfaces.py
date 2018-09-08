@@ -11,22 +11,38 @@ from basic_info.models import *
 def dbtest():
     return True
 
-def login(request):
+def login(userID, password):
     #提取输入的userID和password
-    userID = request.POST['userID']
-    password = request.POST['password']
+    # userID = request.POST['userID']
+    # password = request.POST['password']
     #在数据库中找出userID匹配项
     select_result = personal_info.objects.filter(userID=userID)
+    #获取登录状态
+    userID_rt = ''
+    content_rt = ''
+    title_rt = ''
     if not select_result:
         #id不存在
-        print("id doesn't exist!")
-        return False
+        content_rt = "id doesn't exist!"
+        status = False
     elif(select_result[0].password != password):
         #密码错误
-        print("wrong password!")
-        return False
+        content_rt = "wrong password!"
+        status = False
     else:
-        return True
+        status = True
+        content_rt = 'success!'
+        userID_rt = userID
+        title_rt = select_result[0].title
+
+    result_dict = {
+        'status': status,
+        'content': content_rt,
+        'userID': userID_rt,
+        'title': title_rt,
+    }
+    return result_dict
+
 
 def register(request):
     #提取信息
@@ -124,9 +140,10 @@ def get_company_ID(userID):
 
 def get_info_by_id(userID):
     try:
+        print('userID: ' + userID)
         the_model = personal_info.objects.get(userID=userID)
     except BaseException:
-        print('user not found in get_company_name')
+        print('user not found in get_info_by_id')
         return False
     return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
@@ -134,6 +151,16 @@ def join_department(stuffID, department):
     try:
         the_model = personal_info.objects.get(userID=stuffID)
         the_model.departName = department
+        the_model.save()
+    except BaseException:
+        print('not found.')
+        return False
+    return True
+
+def set_title(userID, title):
+    try:
+        the_model = personal_info.objects.get(userID=userID)
+        the_model.title = title
         the_model.save()
     except BaseException:
         print('not found.')
