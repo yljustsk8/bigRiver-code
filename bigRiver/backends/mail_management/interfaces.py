@@ -1,6 +1,7 @@
 from request_data.models import requests
 from backends.personal_info_management import interfaces as pim
 from backends.attendance_checking import interfaces as ac
+from backends.mail_management import inside_func as inf
 import datetime
 # 1.	bool send_invitation(userID,companyID)
 # 2.	bool answer_invitation(requestID, bool)

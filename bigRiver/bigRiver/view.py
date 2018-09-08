@@ -68,7 +68,11 @@ def regist(request):
 def user(request):
     if request.method == "GET":
         return render_to_response('user.html')
+def join_company(request):
+    return render_to_response('join_company.html')
 
+def about_us(request):
+    return render_to_response("BOT.html")
 
 def calendar(request):
     if request.method == "GET":
