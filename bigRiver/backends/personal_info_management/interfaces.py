@@ -148,7 +148,7 @@ def join_company(stuffID, companyID):
 # 返回值依次为：name, companyID, departName, title, modellocation
 def get_info_by_id(userID):
     try:
-        print('userID: ' + userID)
+        print('in get_info_by_id:userID: ' + userID)
         the_model = personal_info.objects.get(userID=userID)
     except BaseException:
         print('invalid userID. In backends.personal_info_management.get_info_by_id().')

@@ -2,6 +2,7 @@ from request_data.models import requests
 from backends.personal_info_management import interfaces as pim
 from backends.attendance_checking import interfaces as ac
 from backends.mail_management import inside_func as inf
+from backends.company_management import interfaces as cm
 import datetime
 # 1.	bool send_invitation(userID,companyID)
 # 2.	bool answer_invitation(requestID, bool)
@@ -158,13 +159,19 @@ def get_request(uID):
         # 管理员/boss
         company_id = pim.get_company_ID(uID)
         receive_list = requests.objects.filter(receiverID=company_id)
-        send_list = requests.objects.filter(senderID=uID)
+        print(receive_list)
+        send_list = requests.objects.filter(senderID=company_id)
+        print(send_list)
         # the_list = receive_list + send_list
-    result = {'count':len(receive_list) + len(send_list),
+    result = {'count':10,
               'info':[]}
     # 收到的
     for msg in receive_list:
-        name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
+        if(msg.type == 2):
+            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            department = ''
+        else:
+            name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
         msg_dict = {
                         'request_id': msg.requestID,
                         'user_id': msg.senderID,
@@ -175,7 +182,11 @@ def get_request(uID):
         result['info'].insert(len(result['info']), msg_dict)
     # 发出的
     for msg in send_list:
-        name, _, department, _, _ = pim.get_info_by_id(msg.receiverID)
+        if(msg.type == 2):
+            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            department = ''
+        else:
+            name, _, department, _, _ = pim.get_info_by_id(msg.senderID)
         msg_dict = {
             'request_id': msg.requestID,
             'user_id': msg.receiverID,
