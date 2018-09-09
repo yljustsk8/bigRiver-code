@@ -69,7 +69,7 @@ def user(request):
     if request.method == "GET":
         return render_to_response('user.html')
 
-def join_company(request):
+def user_company(request):
     if request.method == "GET":
         return render_to_response('join_company.html')
     if request.method == "POST":
@@ -80,6 +80,26 @@ def join_company(request):
             return HttpResponse(result)
         else:
             return HttpResponse(False)
+
+def search_company(request):
+    #result = request.POST.get('company_id')
+    result = "123"
+    if result!=False:
+        return HttpResponse("公司名称")
+    else:
+        return HttpResponse(False)
+
+def confirm_join(request):
+    user_id = request.POST.get('user_id')
+    company_id = request.POST.get('company_id')
+    if request==True:
+        result = pim.join_company(user_id, company_id)
+        if result != False:
+            return HttpResponse(True)
+        else:
+            return HttpResponse(False)
+    else:
+        return HttpResponse(False)
 
 def about_us(request):
     return render_to_response("BOT.html")

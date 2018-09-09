@@ -25,7 +25,9 @@ django.setup()
 urlpatterns = [
     #path('hello/', view.hello),
     path('aboutBOT/',view.about_us),
-    path('joincompany/',view.join_company),
+    path('usercompany/',view.user_company),
+    path('usercompany/search/',view.search_company),
+    path('usercompany/confirm/',view.confirm_join),
     path('user/',view.user),
     path('login/', view.login),
     path('calendar/',view.calendar),
