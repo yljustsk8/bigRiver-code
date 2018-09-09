@@ -2,6 +2,7 @@ from request_data.models import requests
 from backends.personal_info_management import interfaces as pim
 from backends.attendance_checking import interfaces as ac
 from backends.mail_management import inside_func as inf
+from backends.company_management import interfaces as cm
 import datetime
 # 1.	bool send_invitation(userID,companyID)
 # 2.	bool answer_invitation(requestID, bool)
@@ -17,46 +18,14 @@ import datetime
 
 msg_type = ['申请加入', '邀请加入', '申请请假', '申请补卡']
 
-#获取当前日期
-def get_date():
-    date = datetime.datetime.now().strftime('%Y-%m-%d')
-    return date
 
-#获取当前requestID
-def get_requestID():
-    entire_model = requests.objects.all()
-    l = len(entire_model)
-    new_request_id = int(entire_model[l - 1].requestID) + 1
-    return new_request_id
-
-#处理所有请求的接口
-def handle_request(rID, r):
-    #作为request的单元处理
-    requestID = rID
-    result = r
-    select_result = requests.objects.filter(requestID=requestID)
-    if not select_result:
-        print("request doesn't exist!")
-        return False
-    else:
-        the_model = select_result[0]
-
-    the_model.dealed = True
-    if(result):
-        the_model.result=1
-    else:
-        the_model.result=0
-    return True
-
-#申请加入公司
-def request_join(rID, cID, c):
-    receiver = cID
-    sender = rID
-    content = c
-    the_model = requests(requestID=get_requestID(),
+# 接口1：发出"加入公司"申请 输入：发送者ID，接收公司ID，内容
+def request_join(receiver, sender, content):
+    # 构建模型，将请求插入数据库
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=1,
                          content=content,
                          dealed=False,
@@ -64,54 +33,47 @@ def request_join(rID, cID, c):
     the_model.save()
     return True
 
-#邀请加入公司
-def send_invitation(u, c):
-    receiver = u
-    sender = c
-    #存入model
-    the_model = requests(requestID=get_requestID(),
+# 接口2：发出"邀请加入公司"申请 输入：发送者公司ID，接收者ID，内容
+def send_invitation(receiver, sender, content):
+    # 构建模型，将请求插入数据库
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=2,
-                         content='send_invitation',
+                         content=content,
                          dealed=False,
                          result=-1)
     the_model.save()
     return True
 
-#申请请假、补卡
-def send_request(uID, m, d, t, c):
+# 接口3：发出"请假/补卡"申请 输入：申请者ID，申请请假/补卡的月/日，申请类型（3：请假，4：补卡），内容
+def send_request(sender, month, date, type, content):
     #t=3 请假申请，t=4 补卡申请
-    sender = uID
-    month = m
-    date = d
     the_date = str(month) + '@' + str(date)
     receiver = pim.get_company_ID(userID=sender)
-    type = t
-    content = c
-    the_model = requests(requestID=get_requestID(),
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=type,
                          content=content,
                          dealed=False,
                          result=-1,
                          requestdate=the_date)
     the_model.save()
+    return True
 
-#处理"申请加入"
-def answer_join(rID, r):
-    requestID = rID
-    result = r
-    if(handle_request(requestID, result)):
+# 接口4：处理"申请加入" 输入：响应请求的ID，响应的结果：若同意则为1，反之为0
+# 返回布尔值
+def answer_join(requestID, result):
+    if(inf.handle_request(requestID, result)):
         #更改消息条目
         the_model = requests.objects.get(requestID=requestID)
         stuff_id = the_model.senderID
         company_id = the_model.receiverID
         if(result):
-            #更新公司
+            #更新员工所在公司
             if(pim.join_company(stuffID=stuff_id, companyID=company_id)):
                 return True
             else:
@@ -122,12 +84,10 @@ def answer_join(rID, r):
     else:
         return False
 
-#处理"邀请加入"
-def answer_invitation(rID, r):
-    #用户同意
-    requestID = rID
-    result = r
-    if(handle_request(requestID, result)):
+# 接口5：处理"邀请加入" 输入：响应请求的ID，响应的结果：若同意则为1，反之为0
+# 返回布尔值
+def answer_invitation(requestID, result):
+    if(inf.handle_request(requestID, result)):
         #更改消息条目本身
         the_model = requests.objects.get(requestID=requestID)
         stuff_id = the_model.receiverID
@@ -145,11 +105,11 @@ def answer_invitation(rID, r):
         #更改出现错误
         return False
 
-#处理"请假、补卡"
+# 接口6：处理"请假、补卡" 输入：
 def answer_other_req(rID, r):
     requestID = rID
     result = r
-    if(handle_request(requestID, result)):
+    if(inf.handle_request(requestID, result)):
         #更改消息条目本身
         the_model = requests.objects.get(requestID=requestID)
         stuff_id = the_model.senderID
@@ -166,6 +126,9 @@ def answer_other_req(rID, r):
                 ac.do_makeup(uid=stuff_id, m=month, d=date)
     return True
 
+# 接口7：输入：请求的用户ID
+# 返回：该用户若为普通员工或无公司员工，则返回该员工的私人消息字典
+#      该用户若为管理员或boss，则返回该公司的公共消息字典
 def get_request(uID):
     _,_,_,title,_ = pim.get_info_by_id(uID)
     if(title == 0 or title == 1):
@@ -177,13 +140,19 @@ def get_request(uID):
         # 管理员/boss
         company_id = pim.get_company_ID(uID)
         receive_list = requests.objects.filter(receiverID=company_id)
-        send_list = requests.objects.filter(senderID=uID)
+        print(receive_list)
+        send_list = requests.objects.filter(senderID=company_id)
+        print(send_list)
         # the_list = receive_list + send_list
-    result = {'count':len(receive_list) + len(send_list),
+    result = {'count':10,
               'info':[]}
     # 收到的
     for msg in receive_list:
-        name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
+        if(msg.type == 2):
+            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            department = ''
+        else:
+            name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
         msg_dict = {
                         'request_id': msg.requestID,
                         'user_id': msg.senderID,
@@ -194,7 +163,11 @@ def get_request(uID):
         result['info'].insert(len(result['info']), msg_dict)
     # 发出的
     for msg in send_list:
-        name, _, department, _, _ = pim.get_info_by_id(msg.receiverID)
+        if(msg.type == 2):
+            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            department = ''
+        else:
+            name, _, department, _, _ = pim.get_info_by_id(msg.senderID)
         msg_dict = {
             'request_id': msg.requestID,
             'user_id': msg.receiverID,
@@ -205,30 +178,3 @@ def get_request(uID):
         result['info'].insert(len(result['info']), msg_dict)
     print(result)
     return result
-# def boss_requests(request):
-#     user_table2 = {
-#         'count': 10,
-#         'info': [
-#             {
-#                 'request_id': "1",
-#                 'user_id': "250",
-#                 'name': "lyw",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             },
-#             {
-#                 'request_id': "2",
-#                 'user_id': "255",
-#                 'name': "lqf",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             },
-#             {
-#                 'request_id': "3",
-#                 'user_id': "260",
-#                 'name': "jyl",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             }
-#         ]
-#     }

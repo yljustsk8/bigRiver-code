@@ -37,6 +37,7 @@ def view_single_calendar(m, uid):
     userID = uid
     result = get_calendar.get_month_calendar(month, userID, query_title='3')
     return result
+
 #查看单个员工单年日历
 def view_single_year_calendar(userID):
     result_dict = {}

@@ -97,3 +97,14 @@ def distribution(stuffID, department):
         # 异常处理：员工未找到
         print('invalid stuffID. In backends.company_management.distribution().')
         return
+
+# 接口6：根据ID获取信息
+# 返回值依次为：taxNumber, bossID, adminID, departNames, name
+def get_cominfo_by_id(companyID):
+    try:
+        print('companyID: ' + companyID)
+        the_model = company_info.objects.get(companyID=companyID)
+    except BaseException:
+        print('invalid companyID. In backends.company_management.get_cominfo_by_id().')
+        return False
+    return the_model.taxNumber, the_model.bossID, the_model.adminID, the_model.departNames, the_model.name
