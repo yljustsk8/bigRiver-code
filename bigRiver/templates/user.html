@@ -11,7 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/style_user.css" />
-		<script type="text/javascript" src="/static/js/modernizer.custom.79639.js"></script>
+        <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="/static/js/modernizr.custom.79639.js"></script>
+        <script type="text/javascript" src="/static/js/join_company.js"></script>
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="/static/css/simple.css" />
 		<![endif]-->
@@ -32,15 +34,14 @@
 				<a href="#st-panel-5">AboutBOT_.</a>
 				
 				<div class="st-scroll">
-				
-					<!-- Placeholder text from http://hipsteripsum.me/ -->
-					
+
 					<section class="st-panel" id="st-panel-1">
 						<div class="st-deco" data-icon="2"></div>
 						<h2>Welcome Back To work</h2>
 						<p style="font: 'Microsoft JhengHei'">BigRiver  |  @BOT._</p>
 						<p>
 							<!--需要修改的链接-->
+
 							<a class="htmleaf-icon icon-home" href="../aboutBOT/" title="了解我们" target="_blank"></a> |
 							<a class="htmleaf-icon icon-arrow-right3" href="../face/" title="今日打卡" target="_blank"></a>
 						</p>
@@ -48,15 +49,16 @@
 					
 					<section class="st-panel st-color" id="st-panel-2">
 						<div class="st-deco" data-icon="S"></div>
-						<h2>BigRiver</h2>
-						<div id="search-container">
-                          <div class="search-bar">
-                            <form>
-                              <input type="text" placeholder="请输入公司名称或确切ID...">
-                              <button type="submit"></button>
-                            </form>
-                          </div>
-                        </div>
+                        <h2 id="joined-company"></h2>
+                        <tbody id = 'company-body' class="animated fadeInUp">
+                        <div id='search-container'>
+                            <p>您还未加入公司，请选择加入。</p>
+                            <div id='search-container'>
+                                <div class='search-bar'>
+                                    <form><input type='text' placeholder='请输入公司名称或确切ID...'><button id = 'submit-company'></button></form>
+                                </div>
+                            </div>
+                        </tbody>
 					</section>
 					
 					<section class="st-panel" id="st-panel-3">

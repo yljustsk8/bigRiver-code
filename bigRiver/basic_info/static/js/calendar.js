@@ -266,9 +266,5 @@
         checkDate(monthCheck);
     })
 
-    //联系
-    $(document).on('click','#sign_btn',function () {
-        
-    })
 
     window.addEventListener("load",initall,false);
