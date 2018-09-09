@@ -151,7 +151,7 @@ def get_info_by_id(userID):
         print('userID: ' + userID)
         the_model = personal_info.objects.get(userID=userID)
     except BaseException:
-        print('invalid userID. In backends.company_management.get_info_by_id().')
+        print('invalid userID. In backends.personal_info_management.get_info_by_id().')
         return False
     return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 

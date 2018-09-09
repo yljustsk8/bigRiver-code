@@ -17,17 +17,6 @@ import datetime
 
 msg_type = ['申请加入', '邀请加入', '申请请假', '申请补卡']
 
-#获取当前日期
-def get_date():
-    date = datetime.datetime.now().strftime('%Y-%m-%d')
-    return date
-
-#获取当前requestID
-def get_requestID():
-    entire_model = requests.objects.all()
-    l = len(entire_model)
-    new_request_id = int(entire_model[l - 1].requestID) + 1
-    return new_request_id
 
 #处理所有请求的接口
 def handle_request(rID, r):
@@ -48,15 +37,13 @@ def handle_request(rID, r):
         the_model.result=0
     return True
 
-#申请加入公司
-def request_join(rID, cID, c):
-    receiver = cID
-    sender = rID
-    content = c
-    the_model = requests(requestID=get_requestID(),
+# 接口1：发出"加入公司"申请 输入：发送者ID，接收公司ID，内容
+def request_join(receiver, sender, content):
+    # 构建模型，将请求插入数据库
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=1,
                          content=content,
                          dealed=False,
@@ -64,44 +51,38 @@ def request_join(rID, cID, c):
     the_model.save()
     return True
 
-#邀请加入公司
-def send_invitation(u, c):
-    receiver = u
-    sender = c
-    #存入model
-    the_model = requests(requestID=get_requestID(),
+# 接口2：发出"邀请加入公司"申请 输入：发送者公司ID，接收者ID，内容
+def send_invitation(receiver, sender, content):
+    # 构建模型，将请求插入数据库
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=2,
-                         content='send_invitation',
+                         content=content,
                          dealed=False,
                          result=-1)
     the_model.save()
     return True
 
-#申请请假、补卡
-def send_request(uID, m, d, t, c):
+# 接口3：发出"请假/补卡"申请 输入：申请者ID，申请请假/补卡的月/日，申请类型（3：请假，4：补卡），内容
+def send_request(sender, month, date, type, content):
     #t=3 请假申请，t=4 补卡申请
-    sender = uID
-    month = m
-    date = d
     the_date = str(month) + '@' + str(date)
     receiver = pim.get_company_ID(userID=sender)
-    type = t
-    content = c
-    the_model = requests(requestID=get_requestID(),
+    the_model = requests(requestID=inf.get_requestID(),
                          receiverID=receiver,
                          senderID=sender,
-                         date=get_date(),
+                         date=inf.get_date(),
                          type=type,
                          content=content,
                          dealed=False,
                          result=-1,
                          requestdate=the_date)
     the_model.save()
+    return True
 
-#处理"申请加入"
+# 接口4：处理"申请加入"
 def answer_join(rID, r):
     requestID = rID
     result = r
@@ -205,30 +186,3 @@ def get_request(uID):
         result['info'].insert(len(result['info']), msg_dict)
     print(result)
     return result
-# def boss_requests(request):
-#     user_table2 = {
-#         'count': 10,
-#         'info': [
-#             {
-#                 'request_id': "1",
-#                 'user_id': "250",
-#                 'name': "lyw",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             },
-#             {
-#                 'request_id': "2",
-#                 'user_id': "255",
-#                 'name': "lqf",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             },
-#             {
-#                 'request_id': "3",
-#                 'user_id': "260",
-#                 'name': "jyl",
-#                 'dpmt': "qianduan",
-#                 'type': "请病假"
-#             }
-#         ]
-#     }
