@@ -13,3 +13,20 @@ def get_requestID():
     l = len(entire_model)
     new_request_id = int(entire_model[l - 1].requestID) + 1
     return new_request_id
+
+#处理所有请求的接口
+def handle_request(requestID, result):
+    #作为request的单元处理
+    select_result = requests.objects.filter(requestID=requestID)
+    if not select_result:
+        print("request doesn't exist!")
+        return False
+    else:
+        the_model = select_result[0]
+
+    the_model.dealed = True
+    if(result):
+        the_model.result=1
+    else:
+        the_model.result=0
+    return True

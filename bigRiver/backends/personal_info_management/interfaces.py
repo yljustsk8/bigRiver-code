@@ -126,7 +126,7 @@ def get_company_ID(userID):
     return companyID
 
 # 接口6：（内部接口）加入公司 输入员工用户名和公司ID
-# 返回布尔值布尔值
+# 返回布尔值
 def join_company(stuffID, companyID):
     if(personal_info.objects.filter(userID=stuffID)):
         the_model = personal_info.objects.filter(userID=stuffID)[0]
@@ -148,9 +148,10 @@ def join_company(stuffID, companyID):
 # 返回值依次为：name, companyID, departName, title, modellocation
 def get_info_by_id(userID):
     try:
-        print('in get_info_by_id:userID: ' + userID)
+        print('userID: ' + userID)
         the_model = personal_info.objects.get(userID=userID)
     except BaseException:
+        print(user)
         print('invalid userID. In backends.personal_info_management.get_info_by_id().')
         return False
     return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation

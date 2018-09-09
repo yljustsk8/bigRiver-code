@@ -17,3 +17,4 @@ def get_delete_result(original_str, delete_str):
         else:
             pass
     return new_str
+
