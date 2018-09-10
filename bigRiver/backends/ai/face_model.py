@@ -18,7 +18,7 @@ def train(model):
     classnum=0
     for name in os.listdir(model_path):
 
-        pattern=re.compile("person_([\\d])")
+        pattern=re.compile("person_([\\curr_month_obj])")
         ret=re.findall(pattern,name)
         person_path=os.path.join(model_path,name)
         print(ret)

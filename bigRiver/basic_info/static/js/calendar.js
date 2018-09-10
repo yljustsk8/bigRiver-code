@@ -22,47 +22,49 @@
         localDate.date.push(c);
     }*/
 
-    //初始化日期数据
-    var slidate = new Date();
-    var m = slidate.getMonth() + 1;
-    var x = slidate.getMonth() + 1;
-    var n = slidate.getMonth();
-    var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
-    var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
-    var conter = d.getDate(); //获取当前月的天数
-    var monthNum = "0" + (slidate.getMonth() + 1) + "月";
-    var yearNum = slidate.getFullYear() +"年";
-    var monthCheck = (slidate.getMonth() + 1);
-    // var user_id = $.cookie('user_id');
-    var y = slidate.getDate();
+    function getCookie(name) {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
 
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    //初始化日期数据
+    var date_obj = new Date();
+
+    var curr_month_num = date_obj.getMonth() + 1;
+    var x = date_obj.getMonth() + 1;
+    var n = date_obj.getMonth();
+    var monthCheck = (date_obj.getMonth() + 1);
+
+    var month_first_day = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+    var curr_month_obj = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
+    var curr_month_day_num = curr_month_obj.getDate(); //获取当前月的天数
+
+    var curr_month_str = "0" + curr_month_num + "月";
+    var year_str = date_obj.getFullYear() +"年";
+
+    var user_id = getCookie('user_id');
+    var y = date_obj.getDate();
 
 
 
     function initall() {
-        function getCookie(name)
-        {
-            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-            if(arr=document.cookie.match(reg))
-                return unescape(arr[2]);
-            else
-                return null;
-        }
-
         $.ajaxSetup({
             headers: { "X-CSRFToken": getCookie("csrftoken") }
         });
         $.ajax({
             type: 'POST',
             url: "/calendar/",
-            data: {'user_id':'123'},
+            data: {'user_id':getCookie('user_id')},
             success:function(data) {
                 for(var i = 1;i<12;i++){
                     value =data[i.toString()];
                     value.forEach(function (item,j) {
                         if(item != ""&&item.length!=5 &&j!=0){
-                            paras = item.split('@');
+                            var paras = item.split('@');
                             localDate.date.push(paras[0]);
                             localDate.time_in.push(paras[1].split('&')[0]);
                             localDate.status_in.push(paras[1].split('&')[1]);
@@ -71,7 +73,7 @@
                         }
                     });
                 };
-                dateHandler(monthFirst, d, conter, monthNum);
+                dateHandler(month_first_day, curr_month_obj, curr_month_day_num, curr_month_str);
                 checkDate(monthCheck);
             },
             error : function() {
@@ -81,16 +83,19 @@
     }
 
     /**调整表格行数，并把每个用到的td加上内容&赋予id*/
-    function dateHandler(monthFirst, d, conter, monthNum) {
+    function dateHandler(month_first_day, curr_month_obj, curr_month_day_num, curr_month_str) {
+
         var blank = true;
         var $tbody = $('#tbody'), //日历网格
             $month = $("#month"),  //“09月”
             _nullnei = '';
         var p = document.createElement("p");
-        var monthText = document.createTextNode(monthNum);
-        var yearText = document.createTextNode(yearNum);
-        p.appendChild(yearText);p.appendChild(monthText);
+        var monthText = document.createTextNode(curr_month_str);
+        var yearText = document.createTextNode(year_str);
+        p.appendChild(yearText);
+        p.appendChild(monthText);
         $month.append(p);
+
         //遍历日历网格
         for (var i = 1; i <= 6; i++) {
             _nullnei += "<tr>";
@@ -103,9 +108,9 @@
 
         //遍历网格内容
         var $slitd = $tbody.find("td");
-        for (var i = 0; i < conter; i++) {
+        for (var i = 0; i < curr_month_day_num; i++) {
             //eq(index)将匹配元素集缩减指定index上的一个
-            $slitd.eq(i + monthFirst).html("<p>" + parseInt(i + 1) + "</p>")
+            $slitd.eq(i + month_first_day).html("<p>" + parseInt(i + 1) + "</p>")
         }
         //给有日期的td加上id
         var u = 1;
@@ -129,111 +134,66 @@
         }
     }
 
+
     //确认本月签到日期，并把他们加上标红buff
     function checkDate(prep) {
-        var dateArray = [];var time_inArray = [];var time_outArray = [];
-        var newArray = [];var newinArray = []; var newoutArray = [];
-         //删除不是本月的签到日期
+
+        var data_array = [];
+        var time_in_array = [];
+        var time_out_array = [];
+
+        //删除不是本月的签到日期
         //把签到本地日期copy至datearray
+
         for (var i = 0; i < localDate.date.length; i++) {
-            dateArray.push(localDate.date[i]);
-            time_inArray.push(localDate.time_in[i]);time_outArray.push(localDate.time_out[i]);
-        }
-        for (var i = 0; i < dateArray.length; i++) {
-            if (dateArray[i].charAt(1) != prep) {
-                dateArray[i] = undefined;
-                time_inArray[i] = undefined;
-                time_outArray[i] = undefined;
+
+            var month_num = parseInt(localDate.date[i].substr(0,2));
+            if (month_num == prep) {
+                var date_num = parseInt(localDate.date[i].substr(2,2));
+                var item_id = "#td" + date_num;
+                if (localDate.status_in[i]==1 && localDate.status_out[i]==1) {
+                    $(item_id).addClass("qiandao");
+                } else if (localDate.status_in[i]==1 && localDate.status_out[i]==0) {
+                    $(item_id).addClass("in_time");
+                } else if (!localDate.status_in[i]==0 && localDate.status_out[i]==1) {
+                    $(item_id).addClass("out_time");
+                }
+                var list = [date_num,localDate.time_in[date_num],localDate.time_out[date_num]];
+                $(document).on('click',item_id,list,function (list) {
+                    pop_up(list);
+                })
             }
         }
-        for (var i = 0; i < dateArray.length; i++) {
-            if (dateArray[i] != undefined) {
-                newArray.push(dateArray[i]);
-                newinArray.push(time_inArray[i]);
-                newoutArray.push(time_outArray[i]);
-            }
-        }
-        //遍历数组为已签到日期添加class
-        for (var i = 0; i < newArray.length; i++) {
-            if (newArray[i].charAt(2) == 0){
-                for (var j = 0; j < 10; j++) {
-                    if (newArray[i].charAt(3) == j) {
-                        var checked = "#td" + j;
-                        if (newinArray[j].split(":")[0]<=9 && newoutArray[j].split(":")[0]>=17){
-                            alert("第"+j+"日： "+"准时"+ newinArray[j]+ newoutArray[j]);
-                            $(checked).addClass("qiandao");
-                        }
+    }
 
-                        else if (0<newinArray[j].split(":")[0]< 8){
-                            alert("第"+j+"日： "+"早退"+newinArray[j]+ newoutArray[j])
-                            $(checked).addClass("in_time");
-                        }
-
-                        else if (0<newoutArray[j].split(":")[0]>17){
-                            alert("第"+j+"日： "+"迟到"+newinArray[j]+ newoutArray[j]);
-                            $(checked).addClass("out_time");}
-                        else
-                            alert("第"+j+"日： "+"异常"+newinArray[j]+ newoutArray[j]);
-
-                        $(document).on('click',checked,function () {
-                            alert("第"+j+"日： "+newinArray[j]);
-                            alert("上班时间："+ newinArray[j]+"\n下班时间："+ newoutArray[j]);
-                        })
-                    }
-                }
-            } else if (newArray[i].charAt(2) == 1) {
-                for (var j = 0; j < 10; j++) {
-                    if (newArray[i].charAt(3) == j) {
-                        var checked = "#td1" + j;
-                        if (newinArray[10+j].split(":")[0]< 8 && newoutArray[10+j].split(":")[0]>16)
-                            $(checked).addClass("qiandao");
-                        else if (newinArray[10+j].split(":")[0]< 8)
-                            $(checked).addClass("in_time");
-                        else if (newoutArray[10+j].split(":")[0]>17)
-                            $(checked).addClass("out_time");
-                        $(checked).on('click',function () {
-                            alert("上班时间："+ newinArray[j+10]+"\n下班时间："+ newoutArray[j+10]);
-                        })
-                    }
-                }
-            } else {
-                for (var j = 0; j < 10; j++) {
-                    if (newArray[i].charAt(3) == j) {
-                        var checked = "#td2" + j;
-                        $(checked).addClass("qiandao");
-                        $(document).on('click',checked,function () {
-                            var check="2"+j;
-                            alert("上班时间："+ newinArray[j+20]+"\n下班时间："+ newoutArray[j+20]);
-                        })
-                    }
-                }
-            }
-        }
+    function pop_up(list){
+        alert("第"+list[0]+"日\n上班时间："+ list[1]+"\n下班时间："+ list[2]);
     }
 
     $(document).on('mouseover','#sign_btn',function () {
         $("#sign_btn").addClass("animated tada");
     })
+
     //当天签到添加样式
     $(document).on('click','#sign_btn',function () {
         $("tr").remove();
         $("p").remove();
         //initall();
-        dateHandler(monthFirst, d, conter, monthNum);
+        dateHandler(month_first_day, curr_month_obj, curr_month_day_num, curr_month_str);
         //给此月签到的加BUFF*/
         checkDate(monthCheck);
-        /**y = slidate.getDate();*/
+        /**y = date_obj.getDate();*/
         var thisDay = "#td" + y;
         var checkPic = false;
         /**thisBlock="0909"*/
-        if (m > 10 && y < 10) {
-            var thisBlock = m.toString() + y.toString();
-        } else if (m < 10 && y> 10) {
-            var thisBlock = "0" + m.toString() + y.toString();
-        } else if (m > 10 && y < 10) {
-            var thisBlock = m.toString() + "0" + y.toString();
-        } else if (m < 10 && y < 10) {
-            var thisBlock = "0" + m.toString() + "0" + y.toString();
+        if (curr_month_num > 10 && y < 10) {
+            var thisBlock = curr_month_num.toString() + y.toString();
+        } else if (curr_month_num < 10 && y> 10) {
+            var thisBlock = "0" + curr_month_num.toString() + y.toString();
+        } else if (curr_month_num > 10 && y < 10) {
+            var thisBlock = curr_month_num.toString() + "0" + y.toString();
+        } else if (curr_month_num < 10 && y < 10) {
+            var thisBlock = "0" + curr_month_num.toString() + "0" + y.toString();
         }
 
         for (var e = 0; e < localDate.date.length; e++) {
@@ -259,14 +219,14 @@
     $(document).on('click','#check_lastmonth',function () {
         $("tr").remove();
         $("p").remove();
-        if (m > 0 && n > 0) {
-            m--;n--;
+        if (curr_month_num > 0 && n > 0) {
+            curr_month_num--;n--;
         }
-        var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
-        var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
+        var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+        var d = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
         var conter = d.getDate(); //获取当前月的天数
-        var monthNum = "0" + (m) + "月";
-        var monthCheck = m;
+        var monthNum = "0" + (curr_month_num) + "月";
+        var monthCheck = curr_month_num;
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     });
@@ -275,14 +235,14 @@
     $(document).on('click','#back',function () {
         $("tr").remove();
         $("p").remove();
-        if (m < x) {
-            m++;n++;
+        if (curr_month_num < x) {
+            curr_month_num++;n++;
         }
-        var monthFirst = new Date(slidate.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
-        var d = new Date(slidate.getFullYear(), parseInt(m), 0); //获取月
+        var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+        var d = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
         var conter = d.getDate(); //获取当前月的天数
-        var monthNum = "0" + (m) + "月";
-        var monthCheck = m;
+        var monthNum = "0" + (curr_month_num) + "月";
+        var monthCheck = curr_month_num;
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     })

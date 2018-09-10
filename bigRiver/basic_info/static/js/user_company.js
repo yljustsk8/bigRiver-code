@@ -17,8 +17,8 @@ function get_company_id(){
     $.ajax({
             type: 'POST',
             url: "/usercompany/",
-            data: {'user_id':'123'},
-            //data: {'user_id':getCookie('user_id')},
+
+            data: {'user_id':getCookie('user_id')},
             success:function(data) {
                 company=data.toString();
                 add_company_to_page();

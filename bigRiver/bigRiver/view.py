@@ -55,8 +55,9 @@ def user_company(request):
         return render_to_response('join_company.html')
     if request.method == "POST":
         user_id = request.POST.get('user_id')
-        #result = pim.get_company_ID('user_id')
-        result = False
+        company_id = pim.get_company_ID(user_id)
+        # result = cm.get_cominfo_by_id(company_id)[name];
+        result='10000'
         if result != False:
             return HttpResponse(result)
         else:
@@ -179,7 +180,7 @@ def admin_employees(request):
     if request.method=='POST':
         print("POST ", request.POST.get('content'))
         if request.POST.get('content') == 'show employees':
-            user_table = ac.view_all_calendar(time.strftime('%m'), time.strftime('%d'), request.POST.get('user_id'))
+            user_table = ac.view_all_calendar(time.strftime('%curr_month_num'), time.strftime('%curr_month_obj'), request.POST.get('user_id'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
 
 def admin_requests(request):
@@ -241,7 +242,7 @@ def handle_requests(request):
         else:
             confirm_code=mm.answer_other_req(request_id, result)
         if confirm_code:
-            confirm_data='修改成功'
+            confirm_data='操作成功'
         else:
-            confirm_data = '修改失败，请稍后重试'
+            confirm_data = '操作失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
