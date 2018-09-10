@@ -58,11 +58,13 @@
                         <tbody id = 'company-body' class="animated fadeInUp">
                         <div id='search-container'>
                             <p>您还未加入公司，请选择加入。</p>
+                            <p id="new_company"><img src="/static/images/building.png" height="50" width="50" title="新建一个"></p>
                             <div id='search-container'>
                                 <div class='search-bar'>
                                     <form><input id="input-company" type='text' placeholder='请输入公司确切ID...'><button id = 'submit-company'></button></form>
                                 </div>
                             </div>
+                        </div>
                         </tbody>
 					</section>
 					
@@ -72,7 +74,7 @@
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-4">
-						<a class="st-deco" data-icon="a"><span>退出登录</span></a>
+						<a class="st-deco" id="exit" data-icon="a" title="退出登录"></a>
                             <div id="edit-container">
                                 <div class="col-md-12">
                                     <label for="name_edit">Real Name</label>
