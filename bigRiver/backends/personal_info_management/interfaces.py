@@ -153,7 +153,17 @@ def get_info_by_id(userID):
     except BaseException:
         print('invalid userID. In backends.personal_info_management.get_info_by_id().')
         return False
-    return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
+    info_dict = {
+        'name': the_model.name,
+        'company': the_model.company,
+        'departmentName': the_model.departName,
+        'title': the_model.title,
+        'modelLocation': the_model.modelLocation,
+        'email': the_model.email,
+        'password': the_model.password
+    }
+    return info_dict
+    # return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
 # 接口8：（内外皆用接口）设置用户权限
 # 返回布尔值

@@ -131,7 +131,7 @@ def answer_other_req(rID, r):
 # 返回：该用户若为普通员工或无公司员工，则返回该员工的私人消息字典
 #      该用户若为管理员或boss，则返回该公司的公共消息字典
 def get_request(uID):
-    _,_,_,title,_ = pim.get_info_by_id(uID)
+    title = pim.get_info_by_id(uID)['title']
     if(title == 0 or title == 1):
         #普通用户
         receive_list = requests.objects.filter(receiverID=uID)
@@ -150,10 +150,12 @@ def get_request(uID):
     # 收到的
     for msg in receive_list:
         if(msg.type == 2):
-            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            name = cm.get_cominfo_by_id(msg.senderID)['name']
             department = ''
         else:
-            name,_,department,_,_ = pim.get_info_by_id(msg.senderID)
+            info_dict = pim.get_info_by_id(msg.senderID)
+            name = info_dict['name']
+            department = info_dict['departmentName']
         msg_dict = {
                         'request_id': msg.requestID,
                         'user_id': msg.senderID,
@@ -166,10 +168,12 @@ def get_request(uID):
     # 发出的
     for msg in send_list:
         if(msg.type == 2):
-            _, _, _, _, name = cm.get_cominfo_by_id(msg.senderID)
+            name = cm.get_cominfo_by_id(msg.senderID)['name']
             department = ''
         else:
-            name, _, department, _, _ = pim.get_info_by_id(msg.senderID)
+            info_dict = pim.get_info_by_id(msg.senderID)
+            name = info_dict['name']
+            department = info_dict['departmentName']
         msg_dict = {
             'request_id': msg.requestID,
             'user_id': msg.receiverID,
