@@ -1,3 +1,19 @@
+#edit-container{
+	margin:20% 30%;
+	padding: 30px 30px 0px 30px;
+	background: #f0e3e4;
+	width: 40%;
+	height: 30%;
+	position: center;
+	border-radius: 10px;
+}
+
+#submit-edit{
+	position: absolute;
+	left:55%;
+	top:55%;
+}
+
 .st-container {
 	position: absolute;
 	width: 100%;

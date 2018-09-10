@@ -75,14 +75,40 @@ def confirm_join(request):
     company_id = request.POST.get('company_id')
     status = request.POST.get('status')
     if status:
-        #result = pim.join_company(user_id, company_id)
-        result = True
+        result = pim.join_company(user_id, company_id)
         if result != False:
             return HttpResponse(True)
         else:
             return HttpResponse(False)
     else:
         return HttpResponse(False)
+
+def user_edit(request):
+    user_id = request.POST.get('user_id')
+    name = request.POST.get('name')
+    password =request.POST.get('password')
+    email = request.POST.get('email')
+    name_edit = True; password_edit = True; email_edit = True;
+    if name != '':
+        name_edit = pim.modify(user_id, 2, name)['status']
+    if password != '':
+        password_edit = pim.modify(user_id, 1, password)['status']
+    if email != '':
+        email_edit = pim.modify(user_id, 3, email)['status']
+    if name_edit and password_edit and email_edit:
+        result = True
+    else:
+        result = False
+    return HttpResponse(result)
+
+
+def user_info(request):
+    user_id = request.POST.get('user_id')
+    #name, company, _, _, _ = pim.get_info_by_id(user_id)
+    name = "zct"
+    result = {'name': name,}
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 def about_us(request):
     return render_to_response("BOT.html")
@@ -224,3 +250,24 @@ def boss_requests(request):
         if request.POST.get('content') == 'show requests':
             user_table=mm.get_request(request.POST.get('user_id'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def handle_requests(request):
+    # 申请加入   type=1  senderID = userID  receiverID = companyID
+    # 邀请加入   type=2  senderID = companyID  receiverID = userID
+    # 申请请假   type=3  senderID = userID  receiverID = companyID
+    # 申请补卡   type=4  senderID = userID  receiverID = companyID
+    if request.method == 'POST':
+        request_id=request.POST.get('request_id')
+        type=request.POST.get('type')
+        result_str=request.POST.get('result')
+        result=(result_str=='1')
+        print('handle_request: '+request_id+'  '+type+'  '+result_str)
+        if type=='1':
+            confirm_code=mm.answer_join(request_id,result)
+        else:
+            confirm_code=mm.answer_other_req(request_id, result)
+        if confirm_code:
+            confirm_data='修改成功'
+        else:
+            confirm_data = '修改失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
