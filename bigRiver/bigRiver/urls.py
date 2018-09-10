@@ -39,6 +39,7 @@ urlpatterns = [
     path('login/regist/', view.regist),
     path('face/', view.face),
     path('face/uploadimage/',view.upload_image),
+    path('face/face_enter/',view.face_enter),
     path('admin/', view.admin_employees),
     path('admin/employees/', view.admin_employees),
     path('admin/requests/', view.admin_requests),

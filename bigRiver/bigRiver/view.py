@@ -5,12 +5,11 @@ from backends.personal_info_management import interfaces as pim
 from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
 from backends.mail_management import interfaces as mm
+from backends.ai import face_model
 import json
 import base64
 import os
 import time
-
-from backends.ai.face_model import save_face
 #表单
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名',max_length=100)
@@ -157,8 +156,6 @@ def upload_image(request):
     if request.method=="POST":
         img = ""
         name = ""
-        if 'image' in request.POST:
-            img = request.POST['image'].split(',')[1]
         if 'name' in request.POST:
             name = request.POST['name']
         if name=="":
@@ -185,6 +182,53 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+def face_enter(request):
+    data = {'success': 0}
+
+    temp_save_path = "./bigRiver/static/temp"
+    if not os.path.exists(temp_save_path):
+        os.makedirs(temp_save_path)
+
+    if request.method=="GET":
+        userID=""
+        stop=""
+        if not 'stop' in request.GET or not 'user_id' in request.GET:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        stop=request.GET['stop']
+        userID=request.GET['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        success=face_model.face_enter_url(userID,save_path)
+        data['success']=success
+        os.remove(save_path)
+
+    if request.method=="POST":
+        userID=""
+        img=""
+
+        if not 'user_id' in request.POST or not 'image' in request.POST:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        userID=request.POST['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+
+        img_num=len(os.listdir(save_path))
+        img_save_path=os.path.join(save_path,"{}.jpg".format(img_num+1))
+
+
+        img = request.POST['image'].split(',')[1]
+        img=base64.b64decode(img)
+        with open(img_save_path,'w') as file:
+            file.write(img)
+        if face_model.is_useful(img_save_path):
+            data['success']=1
+        else:
+            os.remove(img_save_path)
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 def admin_employees(request):
     # user_table = {
