@@ -295,7 +295,6 @@ def boss_admins(request):
             result=cm.delete_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
         elif request.POST.get('content') == 'add admin':
-            print("here")
             result=cm.set_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
 
@@ -330,3 +329,18 @@ def handle_requests(request):
         else:
             confirm_data = '修改失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+
+def send_requsets(request):
+    if request.method == 'POST':
+        sender_id=request.POST.get('user_id')
+        type=request.POST.get('request_type')
+        content=request.POST.get('request_content')
+        month=request.POST.get('month')
+        date=request.POST.get('date')
+        confirm_code=mm.send_request(sender_id,month,date,type,content)
+        if confirm_code:
+            confirm_data='申请成功'
+        else:
+            confirm_data = '申请失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+

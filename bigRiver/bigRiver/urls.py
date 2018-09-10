@@ -46,5 +46,6 @@ urlpatterns = [
     path('boss/', view.boss_admins),
     path('boss/employees/', view.boss_admins),
     path('boss/requests/', view.boss_requests),
+    path('send_requests/',view.send_requests),
     path('handle_requests/', view.handle_requests)
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

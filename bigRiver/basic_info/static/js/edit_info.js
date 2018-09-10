@@ -4,10 +4,13 @@ var myInfo={
     email: null ,
 }
 
-function getCookie(name)
-{
+function getCookie(name) {
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+
+     if(arr=document.cookie.match(reg))
+         return unescape(arr[2]);
+     else
+         return null;
 }
 
 /**根据用户id初始化MyCompany界面*/
