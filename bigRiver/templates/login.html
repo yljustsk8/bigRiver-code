@@ -109,35 +109,42 @@
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-content-inner active" data-content="signup">
-                                                <form action="regist/" method="post" enctype="multipart/form-data">{% csrf_token %}
+                                                <!--<form action="regist/" method="post" enctype="multipart/form-data">-->{% csrf_token %}
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <label for="username1">Username/ID</label>
-                                                            <input type="text" class="form-control" autofocus="autofocus"
-                                                                   name="username1" id="username_signUp" placeholder="请输入姓名">
+                                                            <label for="name_signUp">Real Name</label>
+                                                            <input type="text" class="form-control" name = "name_signUp"
+                                                                   id="name_signUp" placeholder="请输入姓名">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <label for="password1">Password</label>
-                                                            <input type="password" class="form-control" id="password_signUp"
-                                                                   name="password1" placeholder="输入您的密码">
+                                                            <label for="userID_signUp">userID</label>
+                                                            <input type="text" class="form-control" name = "userID_signUp"
+                                                                   id="userID_signUp" placeholder="十位内的英文、数字和下划线">
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <label for="password2">Repeat Password</label>
-                                                            <input type="password" class="form-control" id="password_signUpRepeat"
-                                                                   name="password2" placeholder="请再输入一次">
+                                                            <label for="password_signUp">Password</label>
+                                                            <input type="password" class="form-control" name = "password_signUp"
+                                                                   id="password_signUp" placeholder="输入您的密码">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-12">
+                                                            <label for="e-mail_signUp">E-mail</label>
+                                                            <input type="text" class="form-control" id="e-mail_signUp"
+                                                                   name = "e-mail_signUp" placeholder="请输入注册邮箱">
                                                         </div>
                                                     </div>
 
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <input type="submit" class="btn btn-primary" value="Sign up">
+                                                            <button id = register class="btn btn-primary">Sign Up</button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                <!--</form>-->
                                             </div>
 
                                             <div class="tab-content-inner" data-content="login">
@@ -194,6 +201,23 @@
                             'user_id':$(document).getElementById('user_id')},
                     success:function (data) {
                         alert(data);
+                    }
+                })
+            })
+
+            $(ducument).on("click",'#register',function () {
+                $.ajax({
+                    type: 'POST',
+                    url: "/register/",
+                    data: {'password':$(document).getElementById('password_signUp'),
+                            'user_id':$(document).getElementById('user_id_signUp'),
+                            'e-mail':$(document).getElementById('e-mail_signUp'),
+                            'name':$(document).getElementById('name_signUp'),},
+                    success:function (data) {
+                        if (data!= False)
+                            alert("Register successed!");
+                        else
+                            alert('Repeated ID!');
                     }
                 })
             })
