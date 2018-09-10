@@ -104,9 +104,10 @@ def user_edit(request):
 
 def user_info(request):
     user_id = request.POST.get('user_id')
-    #name, company, _, _, _ = pim.get_info_by_id(user_id)
-    name = "zct"
-    result = {'name': name,}
+    result_dict = pim.get_info_by_id(user_id)
+    result = {'name': result_dict['name'],
+              'email':result_dict['email'],
+              'password':result_dict['password'],}
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 

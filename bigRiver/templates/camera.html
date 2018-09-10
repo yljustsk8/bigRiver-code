@@ -5,6 +5,7 @@
     <title>HTML5 GetUserMedia Demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script type="text/javascript" src="/static/js/face_enter.js"></script>
 </head>
 <body>
 <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
@@ -14,7 +15,7 @@
 <input type="button" title="拍照" value="拍照" onclick="getPhoto();" /><br />
 <canvas id="canvas1" height="240px" ></canvas><hr />
 <input type="button" title="视频" value="视频" onclick="getVedio();" /><br />
-<canvas id="canvas2" height="240px"></canvas>
+<canvas id="canvas2" width="640px" height="480px"></canvas>
 
 <script type="text/javascript">
     var video = document.querySelector('video');
@@ -77,6 +78,7 @@
             audio.play();
         }
     }
+
     function errorFunc(e) {
         alert('Error！'+e);
     }
@@ -115,6 +117,7 @@
     function getVedio() {
         drawVideoAtCanvas(video, context2);
     }
+
 
 </script>
 </body>

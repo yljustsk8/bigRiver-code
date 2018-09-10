@@ -20,14 +20,15 @@ function get_info(){
     $.ajax({
             type: 'POST',
             url: "/userinfo/",
-            data: {//'user_id':getCookie('user_id')
-                   'user_id':'123' },
+            data: {'user_id':getCookie('user_id') },
             success:function(data) {
                 myInfo.name=data['name'];
+                myInfo.email=data['email'];
+                myInfo.password =data['password'];
                 add_info_to_page();
             },
             error : function() {
-                alert("数据库异常，get不到个人信息");
+                alert("数据库异常，在edit界面初始化时获取不到个人信息");
                 //window.location.href="../login/";
             }
     })
@@ -40,17 +41,16 @@ function add_info_to_page(){
     $.ajax({
             type: 'POST',
             url: "/useredit/",
-            data: {//'user_id':getCookie('user_id')
-                   'user_id':'123' ,
+            data: {'user_id':getCookie('user_id'),
                     'name':myInfo.name,
                     'password':myInfo.password,
                     'email':myInfo.email,},
-            success:function(data) {
+            success:function(data){
                 myInfo.name=data['name'];
                 add_info_to_page();
             },
             error : function() {
-                alert("数据库异常，get不到个人信息");
+                alert("数据库异常，add to page时取不到个人信息");
                 //window.location.href="../login/";
             }
     })
