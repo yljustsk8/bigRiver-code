@@ -5,12 +5,11 @@ from backends.personal_info_management import interfaces as pim
 from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
 from backends.mail_management import interfaces as mm
+from backends.ai import face_model
 import json
 import base64
 import os
 import time
-
-from backends.ai.face_model import save_face
 #表单
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名',max_length=100)
@@ -32,38 +31,19 @@ def login(request):
             return HttpResponse(result['content'])
 
 
-
-
-
 def regist(request):
-    uf = UserForm(request.POST)
-    if uf.is_valid():
-        # 获取表单用户密码
-        username = uf.cleaned_data['username1']
-        password = uf.cleaned_data['password1']
-        password2 = request.POST.get('password2')
-
-        # user = User.objects.filter(username__exact=username)
-        # if user:
-        #     不能重名
-            # return render(request, 'login.html')
-            # 将username写入浏览器cookie,失效时间为3600
-            # return HttpResponse("<p>不能重名！</p>")
-        # else:
-        #     用户名独立，比较密码是否重复
-            # if password==password2:
-            # 存入数据库
-            #     reg = User(username=username, password=password)
-            #     reg.save()
-            #     return render(request, 'login.html')
-            #     return HttpResponse("<p>注册成功!</p>")
-            # else:
-            #     return HttpResponse("<p>两次输入密码不符！</p>")
-
-        # 将username写入浏览器cookie,失效时间为3600
-        # response.set_cookie('username', username, 3600)
-        # return response
-
+    if request.method=="GET":
+        return render_to_response("login.html");
+    if request.method=="POST":
+        user_id = request.POST.get('user_id')
+        password = request.POST.get('password')
+        name = request.POST.get('name')
+        email = request.POST.get('e-mail')
+        result = pim.register(user_id,password,name,email)
+        if result['status']:
+            return HttpResponse(result['userID'])
+        else:
+            return HttpResponse(False)
 
 def user(request):
     if request.method == "GET":
@@ -94,14 +74,41 @@ def confirm_join(request):
     company_id = request.POST.get('company_id')
     status = request.POST.get('status')
     if status:
-        #result = pim.join_company(user_id, company_id)
-        result = True
+        result = pim.join_company(user_id, company_id)
         if result != False:
             return HttpResponse(True)
         else:
             return HttpResponse(False)
     else:
         return HttpResponse(False)
+
+def user_edit(request):
+    user_id = request.POST.get('user_id')
+    name = request.POST.get('name')
+    password =request.POST.get('password')
+    email = request.POST.get('email')
+    name_edit = True; password_edit = True; email_edit = True;
+    if name != '':
+        name_edit = pim.modify(user_id, 2, name)['status']
+    if password != '':
+        password_edit = pim.modify(user_id, 1, password)['status']
+    if email != '':
+        email_edit = pim.modify(user_id, 3, email)['status']
+    if name_edit and password_edit and email_edit:
+        result = True
+    else:
+        result = False
+    return HttpResponse(result)
+
+
+def user_info(request):
+    user_id = request.POST.get('user_id')
+    result_dict = pim.get_info_by_id(user_id)
+    result = {'name': result_dict['name'],
+              'email':result_dict['email'],
+              'password':result_dict['password'],}
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 def about_us(request):
     return render_to_response("BOT.html")
@@ -119,7 +126,7 @@ def calendar(request):
                 5: ['1000010', '0501@', '0502@', '0503@', '0504@', '0505@', '0506@', '0507@', '0508@', '0509@', '0510@', '0511@', '0512@', '0513@', '0514@', '0515@', '0516@', '0517@', '0518@', '0519@', '0520@', '0521@', '0522@', '0523@', '0524@', '0525@', '0526@', '0527@', '0528@', '0529@', '0530@', '0531@'],
                 6: ['1000010', '0601@', '0602@', '0603@', '0604@', '0605@', '0606@', '0607@', '0608@', '0609@', '0610@', '0611@', '0612@', '0613@', '0614@', '0615@', '0616@', '0617@', '0618@', '0619@', '0620@', '0621@', '0622@', '0623@', '0624@', '0625@', '0626@', '0627@', '0628@', '0629@', '0630@', '0631@'],
                 7: ['1000010', '0701@', '0702@', '0703@', '0704@', '0705@', '0706@', '0707@', '0708@', '0709@', '0710@', '0711@', '0712@', '0713@', '0714@', '0715@', '0716@', '0717@', '0718@', '0719@', '0720@', '0721@', '0722@', '0723@', '0724@', '0725@', '0726@', '0727@', '0728@', '0729@', '0730@', '0731@'],
-                8: ['1000010', '0801@07:40&1@17:02&1', '0802@07:40&1@17:02&1', '0803@07:45&1@17:02&1', '0804@07:45&1@17:02&1', '0805@07:45&1@17:02&1', '0806@07:45&1@17:02&1', '0807@07:450&1@17:02&1', '0808@07:40&1@17:02&1', '0809@07:40&1@17:02&1', '0810@00:00&2@00:00&2', '0811@08:10&0@17:05&1', '0812@07:42&1@16:30&0', '0813@08:25&0@16:40&0', '0814@07:52&1@17:02&1', '0815@07:52&1@17:02&1', '0816@07:52&1@17:02&1', '0817@07:52&1@17:02&1', '0818@07:52&1@17:13&1', '0819@07:40&1@17:13&1', '0820@07:40&1@17:13&1', '0821@07:40&1@17:13&1', '0822@07:40&1@17:13&1', '0823@07:40&1@17:13&1', '0824@07:40&1@17:13&1', '0825@07:40&1@17:02&1', '0826@07:40&1@17:02&1', '0827@07:40&1@17:02&1', '0828@07:40&1@17:02&1', '0829@07:40&1@17:02&1', '0830@07:40&1@17:02&1', '0831@07:40&1@17:02&1'],
+                8: ['1000010', '0801@07:40&1@17:02&1', '0802@08:40&1@17:02&1', '0803@07:45&1@18:02&1', '0804@07:45&1@17:02&1', '0805@00:00&1@17:02&1', '0806@07:45&1@17:02&1', '0807@07:450&1@17:02&1', '0808@07:40&1@17:02&1', '0809@07:40&1@17:02&1', '0810@00:00&2@00:00&2', '0811@08:10&0@17:05&1', '0812@07:42&1@16:30&0', '0813@08:25&0@16:40&0', '0814@07:52&1@17:02&1', '0815@07:52&1@17:02&1', '0816@07:52&1@17:02&1', '0817@07:52&1@17:02&1', '0818@07:52&1@17:13&1', '0819@07:40&1@17:13&1', '0820@07:40&1@17:13&1', '0821@07:40&1@17:13&1', '0822@07:40&1@17:13&1', '0823@07:40&1@17:13&1', '0824@07:40&1@17:13&1', '0825@07:40&1@17:02&1', '0826@07:40&1@17:02&1', '0827@07:40&1@17:02&1', '0828@07:40&1@17:02&1', '0829@07:40&1@17:02&1', '0830@07:40&1@17:02&1', '0831@07:40&1@17:02&1'],
                 9: ['1000010', '0901@', '0902@', '0903@', '0904@', '0905@', '0906@', '0907@', '0908@', '0909@', '0910@', '0911@', '0912@', '0913@', '0914@', '0915@', '0916@', '0917@', '0918@', '0919@', '0920@', '0921@', '0922@', '0923@', '0924@', '0925@', '0926@', '0927@', '0928@', '0929@', '0930@', '0931@'],
                 10: ['1000010', '1001@', '1002@', '1003@', '1004@', '1005@', '1006@', '1007@', '1008@', '1009@', '1010@', '1011@', '1012@', '1013@', '1014@', '1015@', '1016@', '1017@', '1018@', '1019@', '1020@', '1021@', '1022@', '1023@', '1024@', '1025@', '1026@', '1027@', '1028@', '1029@', '1030@', '1031@'],
                 11: ['1000010', '1101@', '1102@', '1103@', '1104@', '1105@', '1106@', '1107@', '1108@', '1109@', '1110@', '1111@', '1112@', '1113@', '1114@', '1115@', '1116@', '1117@', '1118@', '1119@', '1120@', '1121@', '1122@', '1123@', '1124@', '1125@', '1126@', '1127@', '1128@', '1129@', '1130@', '1131@'],
@@ -135,8 +142,6 @@ def upload_image(request):
     if request.method=="POST":
         img = ""
         name = ""
-        if 'image' in request.POST:
-            img = request.POST['image'].split(',')[1]
         if 'name' in request.POST:
             name = request.POST['name']
         if name=="":
@@ -163,6 +168,53 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+def face_enter(request):
+    data = {'success': 0}
+
+    temp_save_path = "./bigRiver/static/temp"
+    if not os.path.exists(temp_save_path):
+        os.makedirs(temp_save_path)
+
+    if request.method=="GET":
+        userID=""
+        stop=""
+        if not 'stop' in request.GET or not 'user_id' in request.GET:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        stop=request.GET['stop']
+        userID=request.GET['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        success=face_model.face_enter_url(userID,save_path)
+        data['success']=success
+        os.remove(save_path)
+
+    if request.method=="POST":
+        userID=""
+        img=""
+
+        if not 'user_id' in request.POST or not 'image' in request.POST:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        userID=request.POST['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+
+        img_num=len(os.listdir(save_path))
+        img_save_path=os.path.join(save_path,"{}.jpg".format(img_num+1))
+
+
+        img = request.POST['image'].split(',')[1]
+        img=base64.b64decode(img)
+        with open(img_save_path,'w') as file:
+            file.write(img)
+        if face_model.is_useful(img_save_path):
+            data['success']=1
+        else:
+            os.remove(img_save_path)
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 def admin_employees(request):
     # user_table = {
@@ -243,3 +295,24 @@ def boss_requests(request):
         if request.POST.get('content') == 'show requests':
             user_table=mm.get_request(request.POST.get('user_id'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def handle_requests(request):
+    # 申请加入   type=1  senderID = userID  receiverID = companyID
+    # 邀请加入   type=2  senderID = companyID  receiverID = userID
+    # 申请请假   type=3  senderID = userID  receiverID = companyID
+    # 申请补卡   type=4  senderID = userID  receiverID = companyID
+    if request.method == 'POST':
+        request_id=request.POST.get('request_id')
+        type=request.POST.get('type')
+        result_str=request.POST.get('result')
+        result=(result_str=='1')
+        print('handle_request: '+request_id+'  '+type+'  '+result_str)
+        if type=='1':
+            confirm_code=mm.answer_join(request_id,result)
+        else:
+            confirm_code=mm.answer_other_req(request_id, result)
+        if confirm_code:
+            confirm_data='修改成功'
+        else:
+            confirm_data = '修改失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
