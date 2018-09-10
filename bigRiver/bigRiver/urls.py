@@ -24,6 +24,7 @@ django.setup()
 
 urlpatterns = [
     #path('hello/', view.hello),
+    path('',view.login),
     path('aboutBOT/',view.about_us),
     path('usercompany/',view.user_company),
     path('usercompany/search/',view.search_company),
@@ -40,4 +41,5 @@ urlpatterns = [
     path('boss/', view.boss_admins),
     path('boss/employees/', view.boss_admins),
     path('boss/requests/', view.boss_requests),
+    path('handle_requests/', view.handle_requests)
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

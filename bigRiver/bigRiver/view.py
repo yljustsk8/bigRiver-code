@@ -224,3 +224,24 @@ def boss_requests(request):
         if request.POST.get('content') == 'show requests':
             user_table=mm.get_request(request.POST.get('user_id'))
             return HttpResponse(json.dumps(user_table), content_type="application/json")
+
+def handle_requests(request):
+    # 申请加入   type=1  senderID = userID  receiverID = companyID
+    # 邀请加入   type=2  senderID = companyID  receiverID = userID
+    # 申请请假   type=3  senderID = userID  receiverID = companyID
+    # 申请补卡   type=4  senderID = userID  receiverID = companyID
+    if request.method == 'POST':
+        request_id=request.POST.get('request_id')
+        type=request.POST.get('type')
+        result_str=request.POST.get('result')
+        result=(result_str=='1')
+        print('handle_request: '+request_id+'  '+type+'  '+result_str)
+        if type=='1':
+            confirm_code=mm.answer_join(request_id,result)
+        else:
+            confirm_code=mm.answer_other_req(request_id, result)
+        if confirm_code:
+            confirm_data='修改成功'
+        else:
+            confirm_data = '修改失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
