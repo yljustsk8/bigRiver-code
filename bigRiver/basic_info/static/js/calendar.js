@@ -159,7 +159,18 @@
                 for (var j = 0; j < 10; j++) {
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td" + j;
-                        $(checked).addClass("qiandao");
+                        if (newinArray[j].split(":")[0]< 8 && newoutArray[j].split(":")[0]>16){
+                            alert("准时"+newinArray[j]+newinArray[j].split(":")[0])
+                            $(checked).addClass("qiandao");
+                        }
+
+                        else if (newinArray[j].split(":")[0]< 8){
+                            alert("早退"+newinArray[j].split(":")[0])
+                            $(checked).addClass("in_time");
+                        }
+
+                        else if (newoutArray[j].split(":")[0]>17)
+                            alert("迟到"+newoutArray[j].split(":")[0]);$(checked).addClass("out_time");
                         $(document).on('click',checked,function () {
                             alert("上班时间："+ newinArray[j]+"\n下班时间："+ newoutArray[j]);
                         })
@@ -169,7 +180,12 @@
                 for (var j = 0; j < 10; j++) {
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td1" + j;
-                        $(checked).addClass('qiandao');
+                        if (newinArray[10+j].split(":")[0]< 8 && newoutArray[10+j].split(":")[0]>16)
+                            $(checked).addClass("qiandao");
+                        else if (newinArray[10+j].split(":")[0]< 8)
+                            $(checked).addClass("in_time");
+                        else if (newoutArray[10+j].split(":")[0]>17)
+                            $(checked).addClass("out_time");
                         $(document).on('click',checked,function () {
                             alert("上班时间："+ newinArray[j+10]+"\n下班时间："+ newoutArray[j+10]);
                         })

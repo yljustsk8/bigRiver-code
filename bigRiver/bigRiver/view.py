@@ -75,25 +75,27 @@ def user_company(request):
     if request.method == "POST":
         user_id = request.POST.get('user_id')
         #result = pim.get_company_ID('user_id')
-        result =False
+        result = False
         if result != False:
             return HttpResponse(result)
         else:
             return HttpResponse(False)
 
 def search_company(request):
-    #result = request.POST.get('company_id')
-    result = "123"
+    #result = cm.get_cominfo_by_id(request.POST.get('company_id'))
+    result = "BOT"
     if result!=False:
-        return HttpResponse("公司名称")
+        return HttpResponse(result)
     else:
         return HttpResponse(False)
 
 def confirm_join(request):
     user_id = request.POST.get('user_id')
     company_id = request.POST.get('company_id')
-    if request==True:
-        result = pim.join_company(user_id, company_id)
+    status = request.POST.get('status')
+    if status:
+        #result = pim.join_company(user_id, company_id)
+        result = True
         if result != False:
             return HttpResponse(True)
         else:
