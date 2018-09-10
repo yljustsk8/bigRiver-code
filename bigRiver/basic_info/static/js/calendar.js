@@ -155,12 +155,28 @@
         }
         //遍历数组为已签到日期添加class
         for (var i = 0; i < newArray.length; i++) {
-            if (newArray[i].charAt(2) == 0) {
+            if (newArray[i].charAt(2) == 0){
                 for (var j = 0; j < 10; j++) {
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td" + j;
-                        $(checked).addClass("qiandao");
+                        if (newinArray[j].split(":")[0]<=9 && newoutArray[j].split(":")[0]>=17){
+                            alert("第"+j+"日： "+"准时"+ newinArray[j]+ newoutArray[j]);
+                            $(checked).addClass("qiandao");
+                        }
+
+                        else if (0<newinArray[j].split(":")[0]< 8){
+                            alert("第"+j+"日： "+"早退"+newinArray[j]+ newoutArray[j])
+                            $(checked).addClass("in_time");
+                        }
+
+                        else if (0<newoutArray[j].split(":")[0]>17){
+                            alert("第"+j+"日： "+"迟到"+newinArray[j]+ newoutArray[j]);
+                            $(checked).addClass("out_time");}
+                        else
+                            alert("第"+j+"日： "+"异常"+newinArray[j]+ newoutArray[j]);
+
                         $(document).on('click',checked,function () {
+                            alert("第"+j+"日： "+newinArray[j]);
                             alert("上班时间："+ newinArray[j]+"\n下班时间："+ newoutArray[j]);
                         })
                     }
@@ -169,8 +185,13 @@
                 for (var j = 0; j < 10; j++) {
                     if (newArray[i].charAt(3) == j) {
                         var checked = "#td1" + j;
-                        $(checked).addClass('qiandao');
-                        $(document).on('click',checked,function () {
+                        if (newinArray[10+j].split(":")[0]< 8 && newoutArray[10+j].split(":")[0]>16)
+                            $(checked).addClass("qiandao");
+                        else if (newinArray[10+j].split(":")[0]< 8)
+                            $(checked).addClass("in_time");
+                        else if (newoutArray[10+j].split(":")[0]>17)
+                            $(checked).addClass("out_time");
+                        $(checked).on('click',function () {
                             alert("上班时间："+ newinArray[j+10]+"\n下班时间："+ newoutArray[j+10]);
                         })
                     }
