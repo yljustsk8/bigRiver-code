@@ -23,10 +23,11 @@ def handle_request(requestID, result):
         return False
     else:
         the_model = select_result[0]
-
+    print('in handle_request:'+the_model.requestID)
     the_model.dealed = True
     if(result):
         the_model.result=1
     else:
         the_model.result=0
+    the_model.save()
     return True

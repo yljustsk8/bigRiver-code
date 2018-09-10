@@ -116,6 +116,7 @@ def answer_other_req(rID, r):
         company_id = the_model.receiverID
         month = the_model.requestdate.split('@')[0]
         date = the_model.requestdate.split('@')[1]
+        print(the_model.requestdate)
         if(result):
             #执行操作
             if(the_model.type == 3):
@@ -158,7 +159,8 @@ def get_request(uID):
                         'user_id': msg.senderID,
                         'name': name,
                         'dpmt': department,
-                        'type': msg_type[msg.type-1]
+                        'type': msg_type[msg.type-1],
+                        'content': msg.content
                     }
         result['info'].insert(len(result['info']), msg_dict)
     # 发出的
@@ -173,7 +175,8 @@ def get_request(uID):
             'user_id': msg.receiverID,
             'name': name,
             'dpmt': department,
-            'type': msg_type[msg.type - 1]
+            'type': msg_type[msg.type - 1],
+            'content': msg.content
         }
         result['info'].insert(len(result['info']), msg_dict)
     print(result)
