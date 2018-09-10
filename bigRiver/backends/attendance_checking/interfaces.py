@@ -72,8 +72,8 @@ def view_all_calendar(m, d, uid):
     month = int(m)
     date = int(d)
     userID = uid
-    info_dict = pim.get_info_by_id(userID=userID)
-    result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=info_dict['company'], query_title=info_dict['title'])
+    _, company, _, title, _ = pim.get_info_by_id(userID=uid)
+    result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=company, query_title=title)
     # print(result_dict)
     result = {
         'count': 10,
@@ -82,16 +82,15 @@ def view_all_calendar(m, d, uid):
 
     i = 1
     for key, value in result_dict.items():
-        info_dict_tmp = pim.get_info_by_id(userID=key)
-        # name, _, department, t,_ = pim.get_info_by_id(userID=key)
+        name, _, department, t,_ = pim.get_info_by_id(userID=key)
         # value的值模板：07:40&1@17:02&1
         # print(key + ': ' + str(t))
         # 决定title_rt的值
-        if(str(info_dict_tmp['title'])=='1'):
+        if(str(t)=='1'):
             title_rt = '普通员工'
-        elif(str(info_dict_tmp['title'])=='2'):
+        elif(str(t)=='2'):
             title_rt = '管理员'
-        elif(str(info_dict_tmp['title'])=='3'):
+        elif(str(t)=='3'):
             title_rt = '老板'
         else:
             title_rt = '异常值'
@@ -121,8 +120,8 @@ def view_all_calendar(m, d, uid):
         #构造result字典
         attendance_dict = {
             'user_id': key,
-            'name': info_dict_tmp['name'],
-            'dpmt': info_dict_tmp['departmentName'],
+            'name': name,
+            'dpmt': department,
             'time_in': t1,
             'time_out': t2,
             'status': status,
