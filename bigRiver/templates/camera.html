@@ -5,7 +5,7 @@
     <title>HTML5 GetUserMedia Demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <script type="text/javascript" src="/static/js/face_enter.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 </head>
 <body>
 <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
@@ -27,12 +27,15 @@
     var canvas2 = document.getElementById('canvas2');
     var context2 = canvas2.getContext('2d');
 
+    var counter=0;
+    var timer_id;
+    var flag=1;
     //获取摄像头对象
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
     var exArray = []; //存储设备源ID
-    MediaStreamTrack.getSources(function (sourceInfos) {
+    navigator.mediaDevices.enumerateDevices().then(function (sourceInfos) {
         for (var i = 0; i != sourceInfos.length; ++i) {
             var sourceInfo = sourceInfos[i];
             //这里会遍历audio,video，所以要加以区分
@@ -71,12 +74,12 @@
         //video.play();
 
         // 音频
-        audio = new Audio();
-        audioType = getAudioType(audio);
-        if (audioType) {
-            audio.src = 'polaroid.' + audioType;
-            audio.play();
-        }
+        {#audio = new Audio();#}
+        {#audioType = getAudioType(audio);#}
+        {#if (audioType) {#}
+        {#    audio.src = 'polaroid.' + audioType;#}
+        {#    audio.play();#}
+        {# } #}
     }
 
     function errorFunc(e) {
@@ -87,7 +90,7 @@
     // 将视频帧绘制到Canvas对象上,Canvas每60ms切换帧，形成肉眼视频效果
     function drawVideoAtCanvas(video,context) {
         window.setInterval(function () {
-            context.drawImage(video, 0, 0,90,120);
+            context.drawImage(video, 0, 0,640,480);
         }, 60);
     }
 
@@ -116,7 +119,88 @@
     //视频
     function getVedio() {
         drawVideoAtCanvas(video, context2);
+        initial();
     }
+function uploads(){
+    console.log(counter)
+    if(flag) {
+        flag=0;
+        uploadPhotos(canvas2.toDataURL("image/jpeg", 0.5))
+    }
+}
+function uploadPhotos(image) {
+    if(!image)
+    {
+        alert("上传照片为空");
+        return;
+    }
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+        if(arr=document.cookie.match(reg))
+
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": getCookie("csrftoken") }
+    });
+    $.ajax({
+        type:'POST',
+        url:'/face/face_enter/',
+        aysnc:false,
+        data:{
+            {#'user_id': getCookie('user_id'),#}
+            'user_id': "100003",
+            'image': image
+        },
+        dataType:'json',
+        success:function (data) {
+            flag=1;
+            if(!data.success){
+
+            }
+            else{
+                counter++;
+                if(counter==50){
+                    $.ajax({
+                        type:'GET',
+                        url:'/face/face_enter/',
+                        data:{
+                            {#'user_id': getCookie('user_id'),#}
+                            'user_id': "100003",
+                            'stop':1
+                        },
+                        aysnc:false,
+                        dataType:'json',
+                        success:function (data) {
+                            if(data.success) {
+                                alert('人脸录入成功！');
+                            }
+                            else{
+                                alert('人脸录入失败！')
+                            }
+                        },
+                        error:function (err) {
+                            alert("录制结束错误");
+                        }
+                    });
+                window.clearInterval(timer_id)
+                }
+            }
+        },
+        error:function (err) {
+            alert("未知错误");
+        }
+    });
+}
+
+function  initial() {
+    timer_id=self.setInterval("uploads()",500);
+}
 
 
 </script>

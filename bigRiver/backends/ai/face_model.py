@@ -6,6 +6,7 @@ import os
 import re
 import django
 import random
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.settings")
 django.setup()
 
@@ -36,7 +37,6 @@ def identify(matrix):
             img_num = len(os.listdir(person_path))
             r=np.random.permutation(range(img_num))
             select=r[0:20]
-            print(select)
             for i in range(20):
                 img_path = os.path.join(person_path, "{}.jpg".format(select[i]))
                 img=cv2.cvtColor(cv2.imread(img_path),cv2.COLOR_BGR2GRAY)
@@ -65,6 +65,8 @@ def identify(matrix):
 def face_enter(userID,imgs):
     # 调用face_identify.imgs2faces(imgs)把图片变为矩阵
     matrices=imgs2faces(imgs)
+    if matrices is None:
+        return False
 
     #获取数据库中userID对应的模型
     entire_model=personal_info.objects.exclude(modelLocation="")
@@ -74,7 +76,7 @@ def face_enter(userID,imgs):
         count-=1
 
     #将matrices存到相应的模型源文件下
-    file_name="./groups/{0}/person_{1}".format(count//10,count%10)
+    file_name="./bigRiver/backends/ai/groups/{0}/person_{1}".format(count//10,count%10)
     if os.path.exists(file_name) == False:
         os.makedirs(file_name)
     success=save_faces(file_name,matrices)
@@ -114,24 +116,34 @@ IMGSIZE = 128
 #################
 
 def img2face(img):
-    haar = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+    if img is None:
+        return None
+    cv2_path = os.path.dirname(cv2.__file__)
+    haar_path = os.path.join(cv2_path, "data/haarcascade_frontalface_alt2.xml")
+    haar = cv2.CascadeClassifier(haar_path)
+    print("haar_path exists:",os.path.exists(haar_path))
+    if haar is None:
+        return None
     gray_sample = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     pin = haar.detectMultiScale(gray_sample, 1.3, 5)
-    face = pin
+    face = None
     for f_x, f_y, f_w, f_h in pin:
-        # print(f_x, f_y, f_w, f_h)
         if f_w == 0 or f_h == 0:
             return None
         face = img[f_y:f_y + f_h, f_x:f_x + f_w]
         face = cv2.resize(face, (IMGSIZE, IMGSIZE))
         face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
-
-    return face
+    print("face is None:",face is None)
+    return np.array(face)
 
 def imgs2faces(imgs):
     if imgs is None:
         return None
-    haar = cv2.CascadeClassifier('haarcascade_frontalface_alt2.xml')
+    cv2_path=os.path.dirname(cv2.__file__)
+    haar_path=os.path.join(cv2_path,"data/haarcascade_frontalface_alt2.xml")
+    haar = cv2.CascadeClassifier(haar_path)
+    if haar is None:
+        return None
     faces = []
     for img in imgs:
         if img is None:
@@ -139,18 +151,18 @@ def imgs2faces(imgs):
         gray_sample = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         pin = haar.detectMultiScale(gray_sample, 1.3, 5)
         for f_x, f_y, f_w, f_h in pin:
-            if f_w==0 or f_h==0:
-                return None
             face= img[f_y:f_y + f_h, f_x:f_x + f_w]
             face = cv2.resize(face, (IMGSIZE, IMGSIZE))
             face=cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
             faces.append(face)
 
-            # faces[n] = relight(face, random.uniform(0.5, 1.5), random.randint(-50, 50))
-    # print(np.array(faces).shape)
+    if len(faces)==0:
+        return None
     return np.array(faces)
 
 def save_faces(save_path, faces):
+    if faces is None:
+        return False
     if faces.shape[1]!=128 or faces.shape[2]!=128:
         return False
     if not os.path.exists(save_path):
@@ -186,7 +198,7 @@ def is_useful(img_url):
     return True
 
 def face_enter_url(userID,imgs_url):
-    if os.path.exists(imgs_url):
+    if not os.path.exists(imgs_url):
         return False
     imgs=[]
     for i in os.listdir(imgs_url):
@@ -223,6 +235,5 @@ if __name__=="__main__":
    # user4 = personal_info(userID="100004", password="100004")
    # user3.save()
    # user4.save()
-
-
-   pass
+   #  img=cv2.imread("C:/Users/87216/Documents/bigRiverSystem/bigRiver-code/bigRiver/static/temp/100003/1.jpg")
+    pass

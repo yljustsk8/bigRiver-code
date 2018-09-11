@@ -9,6 +9,7 @@ from backends.ai import face_model
 import json
 import base64
 import os
+import shutil
 import time
 #表单
 class UserForm(forms.Form):
@@ -188,7 +189,7 @@ def face_camera(request):
 def face_enter(request):
     data = {'success': 0}
 
-    temp_save_path = "./bigRiver/static/temp"
+    temp_save_path = "bigRiver/static/temp"
     if not os.path.exists(temp_save_path):
         os.makedirs(temp_save_path)
 
@@ -205,7 +206,7 @@ def face_enter(request):
             return HttpResponse(json.dumps(data), content_type="application/json")
         success=face_model.face_enter_url(userID,save_path)
         data['success']=success
-        os.remove(save_path)
+        shutil.rmtree(save_path)
 
     if request.method=="POST":
         userID=""
@@ -225,12 +226,15 @@ def face_enter(request):
 
         img = request.POST['image'].split(',')[1]
         img=base64.b64decode(img)
-        with open(img_save_path,'w') as file:
+        with open(img_save_path,'wb') as file:
             file.write(img)
-        if face_model.is_useful(img_save_path):
+        useful=face_model.is_useful(img_save_path)
+        print(useful)
+        if useful:
             data['success']=1
         else:
-            os.remove(img_save_path)
+            if os.path.exists(save_path):
+                os.remove(img_save_path)
     return HttpResponse(json.dumps(data), content_type="application/json")
 
 def admin_employees(request):
