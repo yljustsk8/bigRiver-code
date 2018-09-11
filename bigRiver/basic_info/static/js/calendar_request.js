@@ -167,14 +167,18 @@
                      var item_id = parseInt(item_id_str) - 1;
                      var month = curr_month_Date.date[item_id].substr(0,2);
                      var date = curr_month_Date.date[item_id].substr(2,2);
-                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + '嘻嘻' + '吗？');
+                     var content = document.getElementById('content_info').value;
+                     var type = (month >= date_obj.getMonth() + 1) && (date >= y)
+                     alert('y='+y);
+                     var type_str = ["补卡","请假"];
+                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + type_str[type] + '吗？');
                      if (confirm_code == true){
                         $.ajax({
                             type: 'POST',
-                            url: "/calendar/",
+                            url: "/send_requests/",
                             data: {'user_id': getCookie('user_id'),
-                                    'request_type':'type',
-                                    'request_content':'content',
+                                    'request_type':type,
+                                    'request_content':content,
                                     'date':date,
                                     'month':month},
                             success: function (data) {

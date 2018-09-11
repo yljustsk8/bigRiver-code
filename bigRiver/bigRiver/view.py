@@ -335,18 +335,15 @@ def handle_requests(request):
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
 
 def send_requests(request):
-<<<<<<< HEAD
     if request.method =='GET':
         return render_to_response('calendar_request.html')
-=======
->>>>>>> b338d251012cad452d732de5675ed03b7539d376
     if request.method == 'POST':
         sender_id=request.POST.get('user_id')
         type=request.POST.get('request_type')
         content=request.POST.get('request_content')
         month=request.POST.get('month')
         date=request.POST.get('date')
-        confirm_code=mm.send_request(sender_id,month,date,type,content)
+        confirm_code=mm.send_request(sender_id,month,date,4-type,content)
         if confirm_code:
             confirm_data='申请成功'
         else:
