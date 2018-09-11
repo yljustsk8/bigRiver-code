@@ -45,6 +45,8 @@ def view_single_year_calendar(userID):
         result_dict[month+1] = view_single_calendar(month+1, uid=userID)
     for month in range(12):
         for date in range(31):
+            if(result_dict[month+1][date+1]==''):
+                result_dict[month + 1][date + 1] = '00:00&3@00:00&3'
             result_dict[month+1][date+1] = str(month+1).rjust(2, '0')+str(date+1).rjust(2, '0')+'@'+result_dict[month+1][date+1]
         # result += view_single_calendar(month+1, uid=userID)
     return result_dict
@@ -138,5 +140,4 @@ def view_all_calendar(m, d, uid):
 
 if(__name__=='__main__'):
     # view_all_calendar(8, 31, '10001')
-    print ('1')
-    print (view_single_year_calendar(userID='1000010'))
+    print(view_single_year_calendar('1000010'))
