@@ -100,6 +100,8 @@ def user_edit(request):
     name = request.POST.get('name')
     password =request.POST.get('password')
     email = request.POST.get('email')
+    print(user_id)
+    print(name)
     name_edit = True; password_edit = True; email_edit = True;
     if name != '':
         name_edit = pim.modify(user_id, 2, name)['status']
@@ -330,8 +332,11 @@ def handle_requests(request):
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
 
 def send_requests(request):
+<<<<<<< HEAD
     if request.method =='GET':
         return render_to_response('calendar_request.html')
+=======
+>>>>>>> b338d251012cad452d732de5675ed03b7539d376
     if request.method == 'POST':
         sender_id=request.POST.get('user_id')
         type=request.POST.get('request_type')
