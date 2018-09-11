@@ -183,6 +183,9 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+def face_camera(request):
+    return render_to_response("camera.html")
+
 def face_enter(request):
     data = {'success': 0}
 
