@@ -5,12 +5,11 @@ from backends.personal_info_management import interfaces as pim
 from backends.company_management import interfaces as cm
 from backends.attendance_checking import interfaces as ac
 from backends.mail_management import interfaces as mm
+from backends.ai import face_model
 import json
 import base64
 import os
 import time
-
-from backends.ai.face_model import save_face
 #表单
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名',max_length=100)
@@ -26,38 +25,38 @@ def login(request):
         if result['status']:
             titles = ('user','user','admin','boss')
             response = HttpResponseRedirect('../'+titles[result['title']]+'/')
-            response.set_cookie('user_id',request.POST.get('user_id'))
+            response.set_cookie('user_id', request.POST.get('user_id'))
             return response
         else:
             return HttpResponse(result['content'])
 
 
 def regist(request):
-    if request.method=="GET":
+    if request.method== "GET":
         return render_to_response("login.html");
     if request.method=="POST":
-        user_id = request.POST.get('user_id')
-        password = request.POST.get('password')
-        name = request.POST.get('name')
-        email = request.POST.get('e-mail')
-        result = pim.register(user_id,password,name,email)
+        user_id = request.POST.get('userID_signUp')
+        password = request.POST.get('password_signUp')
+        name = request.POST.get('name_signUp')
+        email = request.POST.get('email_signUp')
+        result = pim.register(user_id, password, name, email)
         if result['status']:
-            return HttpResponse(result['userID'])
+            return HttpResponse(result['content'])
         else:
             return HttpResponse(False)
 
 def user(request):
-    if request.method == "GET":
-        return render_to_response('user.html')
+    return render_to_response("user.html");
+
 
 def user_company(request):
     if request.method == "GET":
         return render_to_response('join_company.html')
     if request.method == "POST":
         user_id = request.POST.get('user_id')
-        company_id = pim.get_company_ID(user_id)
-        # result = cm.get_cominfo_by_id(company_id)[name];
-        result='10000'
+
+        result = pim.get_company_ID(user_id)
+
         if result != False:
             return HttpResponse(result)
         else:
@@ -76,14 +75,57 @@ def confirm_join(request):
     company_id = request.POST.get('company_id')
     status = request.POST.get('status')
     if status:
-        #result = pim.join_company(user_id, company_id)
-        result = True
+        result = pim.join_company(user_id, company_id)
         if result != False:
             return HttpResponse(True)
         else:
             return HttpResponse(False)
     else:
         return HttpResponse(False)
+
+def create_company(request):
+    if request.method == 'GET':
+        return render_to_response("create_company.html")
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id_create')
+        company_name = request.POST.get('name_create')
+        taxNumber_create = request.POST.get('taxNumber_create')
+        print(user_id+" "+company_name +" "+taxNumber_create)
+        result = pim.create_company(user_id, company_name, taxNumber_create)
+        return HttpResponse(json.dumps(result), content_type="application/json")
+
+
+
+
+def user_edit(request):
+    user_id = request.POST.get('user_id')
+    name = request.POST.get('name')
+    password =request.POST.get('password')
+    email = request.POST.get('email')
+    print(user_id)
+    print(name)
+    name_edit = True; password_edit = True; email_edit = True;
+    if name != '':
+        name_edit = pim.modify(user_id, 2, name)['status']
+    if password != '':
+        password_edit = pim.modify(user_id, 1, password)['status']
+    if email != '':
+        email_edit = pim.modify(user_id, 3, email)['status']
+    if name_edit and password_edit and email_edit:
+        result = True
+    else:
+        result = False
+    return HttpResponse(result)
+
+
+def user_info(request):
+    user_id = request.POST.get('user_id')
+    result_dict = pim.get_info_by_id(user_id)
+    result = {'name': result_dict['name'],
+              'email': result_dict['email'],
+              'password':result_dict['password'],}
+    return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 def about_us(request):
     return render_to_response("BOT.html")
@@ -117,8 +159,6 @@ def upload_image(request):
     if request.method=="POST":
         img = ""
         name = ""
-        if 'image' in request.POST:
-            img = request.POST['image'].split(',')[1]
         if 'name' in request.POST:
             name = request.POST['name']
         if name=="":
@@ -145,6 +185,56 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+def face_camera(request):
+    return render_to_response("camera.html")
+
+def face_enter(request):
+    data = {'success': 0}
+
+    temp_save_path = "./bigRiver/static/temp"
+    if not os.path.exists(temp_save_path):
+        os.makedirs(temp_save_path)
+
+    if request.method=="GET":
+        userID=""
+        stop=""
+        if not 'stop' in request.GET or not 'user_id' in request.GET:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        stop=request.GET['stop']
+        userID=request.GET['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        success=face_model.face_enter_url(userID,save_path)
+        data['success']=success
+        os.remove(save_path)
+
+    if request.method=="POST":
+        userID=""
+        img=""
+
+        if not 'user_id' in request.POST or not 'image' in request.POST:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        userID=request.POST['user_id']
+
+        save_path = os.path.join(temp_save_path, userID)
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+
+        img_num=len(os.listdir(save_path))
+        img_save_path=os.path.join(save_path,"{}.jpg".format(img_num+1))
+
+
+        img = request.POST['image'].split(',')[1]
+        img=base64.b64decode(img)
+        with open(img_save_path,'w') as file:
+            file.write(img)
+        if face_model.is_useful(img_save_path):
+            data['success']=1
+        else:
+            os.remove(img_save_path)
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 def admin_employees(request):
     # user_table = {
@@ -211,7 +301,6 @@ def boss_admins(request):
             result=cm.delete_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
         elif request.POST.get('content') == 'add admin':
-            print("here")
             result=cm.set_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
 
@@ -246,3 +335,20 @@ def handle_requests(request):
         else:
             confirm_data = '操作失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+
+def send_requests(request):
+    if request.method =='GET':
+        return render_to_response('calendar_request.html')
+    if request.method == 'POST':
+        sender_id=request.POST.get('user_id')
+        type=request.POST.get('request_type')
+        content=request.POST.get('request_content')
+        month=request.POST.get('month')
+        date=request.POST.get('date')
+        confirm_code=mm.send_request(sender_id,month,date,4-type,content)
+        if confirm_code:
+            confirm_data='申请成功'
+        else:
+            confirm_data = '申请失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+

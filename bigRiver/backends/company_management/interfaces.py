@@ -111,4 +111,12 @@ def get_cominfo_by_id(companyID):
     except BaseException:
         print('invalid companyID. In backends.company_management.get_cominfo_by_id().')
         return False
+    cominfo_dict = {
+        'taxNumber': the_model.taxNumber,
+        'bossID': the_model.bossID,
+        'adminID': the_model.adminID,
+        'departNames': the_model.departNames,
+        'name': the_model.name
+    }
+    return cominfo_dict
     return the_model.taxNumber, the_model.bossID, the_model.adminID, the_model.departNames, the_model.name

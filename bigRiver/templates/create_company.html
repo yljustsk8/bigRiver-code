@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建新公司</title>
+    <link rel="stylesheet" href="/static/css/style_user.css">
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/static/js/user_company.js"></script>
+</head>
+<body>
+<div id="create-bar-container">
+    <div id="user_id" class = "create_bar">
+        <label>用户</label>
+        <input class="create_input" id="user_id_create" placeholder="请输入您的ID" type="text"/>
+    </div>
+    <div id="company_name" class = "create_bar">
+        <label>名称</label>
+        <input class="create_input" id="name_create" placeholder="请输入公司名称" type="text"/>
+    </div>
+    <div id="taxNumber" class = "create_bar">
+        <label>税号</label>
+        <input class="create_input" id="taxNumber_create" placeholder="请输入公司税号" type="text"/>
+    </div>
+    <button id="create-submit">提交</button>
+</div>
+
+<script>
+/**提交更改*/
+$(document).on('click','#create-submit',function (){
+    var new_name = $('#name_create').val();
+    var taxNumber_create = $('#taxNumber_create').val();
+    alert(new_name);
+    $.ajax({
+            type: 'POST',
+            url: "/createcompany/",
+            data: { 'user_id_create': $('#user_id_create').val().toString(),
+                    'name_create': new_name.toString(),
+                    'taxNumber_create': taxNumber_create.toString(), },
+            success:function(data) {
+                if(data['status']){
+                    alert("创建成功！请重新登录！");
+                    window.location.href = "../login";
+                }
+                else
+                    alert(data['content']);
+            },
+            error : function() {
+                alert("数据库异常，创建公司时收不到回调函数！");
+            }
+        })
+})
+</script>
+</body>
+</html>

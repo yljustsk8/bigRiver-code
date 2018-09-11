@@ -109,7 +109,7 @@
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-content-inner active" data-content="signup">
-                                                <!--<form action="regist/" method="post" enctype="multipart/form-data">-->{% csrf_token %}
+                                                <form action="regist/" method="post" enctype="multipart/form-data">{% csrf_token %}
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
                                                             <label for="name_signUp">Real Name</label>
@@ -134,17 +134,17 @@
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
                                                             <label for="e-mail_signUp">E-mail</label>
-                                                            <input type="text" class="form-control" id="e-mail_signUp"
-                                                                   name = "e-mail_signUp" placeholder="请输入注册邮箱">
+                                                            <input type="text" class="form-control" id="email_signUp"
+                                                                   name = "email_signUp" placeholder="请输入注册邮箱">
                                                         </div>
                                                     </div>
 
                                                     <div class="row form-group">
                                                         <div class="col-md-12">
-                                                            <button id = register class="btn btn-primary">Sign Up</button>
+                                                            <button id = "register" class="btn btn-primary">Sign Up</button>
                                                         </div>
                                                     </div>
-                                                <!--</form>-->
+                                                </form>
                                             </div>
 
                                             <div class="tab-content-inner" data-content="login">
@@ -192,8 +192,11 @@
             <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
 
+        <!-- jQuery -->
+        <script src="/static/jquery.min.js"></script>
+
         <script>
-            $(ducument).on("click",'#login',function () {
+            $(document).on("click",'#login',function () {
                 $.ajax({
                     type: 'POST',
                     url: "/login/",
@@ -205,17 +208,19 @@
                 })
             })
 
-            $(ducument).on("click",'#register',function () {
+            $(document).on("click",'#register',function () {
                 $.ajax({
                     type: 'POST',
-                    url: "/register/",
+                    url: "login/regist/",
                     data: {'password':$(document).getElementById('password_signUp'),
-                            'user_id':$(document).getElementById('user_id_signUp'),
-                            'e-mail':$(document).getElementById('e-mail_signUp'),
+                            'user_id':$(document).getElementById('userID_signUp'),
+                            'e-mail':$(document).getElementById('email_signUp'),
                             'name':$(document).getElementById('name_signUp'),},
                     success:function (data) {
-                        if (data!= False)
+                        if (data[0]){
                             alert("Register successed!");
+                            window.location.href='/login/';
+                        }
                         else
                             alert('Repeated ID!');
                     }
@@ -224,8 +229,7 @@
 
         </script>
 
-        <!-- jQuery -->
-        <script src="/static/jquery.min.js"></script>
+
         <!-- jQuery Easing -->
         <script src="/static/js/jquery.easing.1.3.js"></script>
         <!-- Bootstrap -->

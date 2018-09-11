@@ -11,9 +11,14 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/style_user.css" />
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="/static/css/style.css">
         <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="/static/js/modernizr.custom.79639.js"></script>
         <script type="text/javascript" src="/static/js/user_company.js"></script>
+        <script type="text/javascript" src="/static/js/edit_info.js"></script>
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="/static/css/simple.css" />
 		<![endif]-->
@@ -53,11 +58,13 @@
                         <tbody id = 'company-body' class="animated fadeInUp">
                         <div id='search-container'>
                             <p>您还未加入公司，请选择加入。</p>
+                            <p id="new_company"><img src="/static/images/building.png" height="50" width="50" title="新建一个"></p>
                             <div id='search-container'>
                                 <div class='search-bar'>
-                                    <form><input id="input-company" type='text' placeholder='请输入公司名称或确切ID...'><button id = 'submit-company'></button></form>
+                                    <form><input id="input-company" type='text' placeholder='请输入公司确切ID...'><button id = 'submit-company'></button></form>
                                 </div>
                             </div>
+                        </div>
                         </tbody>
 					</section>
 					
@@ -67,9 +74,27 @@
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-4">
-						<a class="st-deco" data-icon="a"><span>退出登录</span></a>
-						<h2>EditInfo</h2>
-						<p>修改信息HTML插入</p>
+						<a class="st-deco" id="exit" data-icon="a" title="退出登录"></a>
+                            <div id="edit-container">
+                                <div class="col-md-12">
+                                    <label for="name_edit">Real Name</label>
+                                    <input type="text" class="form-control" name = "name_edit"
+                                           id="name_edit" placeholder="原来姓名">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="name_edit">Password</label>
+                                    <input type="password" class="form-control" name = "password_edit"
+                                           id="password_edit" placeholder="原来密码">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="name_edit">E-mail</label>
+                                    <input type="text" class="form-control" name = "email_edit"
+                                           id="email_edit" placeholder="原来邮箱">
+                                </div>
+                            </div>
+                            <br>
+                                <button id = submit-edit class="btn btn-primary">提交更改</button>
+
 					</section>
 					
 					<section class="st-panel" id="st-panel-5">
