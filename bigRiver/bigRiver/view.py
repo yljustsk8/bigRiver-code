@@ -343,7 +343,10 @@ def send_requests(request):
         content=request.POST.get('request_content')
         month=request.POST.get('month')
         date=request.POST.get('date')
-        confirm_code=mm.send_request(sender_id,month,date,4-type,content)
+        if type:
+            confirm_code=mm.send_request(sender_id,month,date,3,content)
+        else:
+            confirm_code = mm.send_request(sender_id, month, date, 4, content)
         if confirm_code:
             confirm_data='申请成功'
         else:

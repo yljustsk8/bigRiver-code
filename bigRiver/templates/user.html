@@ -79,21 +79,21 @@
                                 <div class="col-md-12">
                                     <label for="name_edit">Real Name</label>
                                     <input type="text" class="form-control" name = "name_edit"
-                                           id="name_edit" placeholder="原来姓名">
+                                           id="name_edit" placeholder="姓名">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="name_edit">Password</label>
                                     <input type="password" class="form-control" name = "password_edit"
-                                           id="password_edit" placeholder="原来密码">
+                                           id="password_edit" placeholder="密码">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="name_edit">E-mail</label>
                                     <input type="text" class="form-control" name = "email_edit"
-                                           id="email_edit" placeholder="原来邮箱">
+                                           id="email_edit" placeholder="邮箱">
                                 </div>
                             </div>
                             <br>
-                                <button id = submit-edit class="btn btn-primary">提交更改</button>
+                                <button id = submit-edit class="btn btn-primary" onclick="submit()">提交更改</button>
 
 					</section>
 					
@@ -108,5 +108,34 @@
 			</div><!-- // st-container -->
 			
         </div>
-	</body>
+        <script>
+        function submit() {
+            var name = document.getElementById('name_edit').value;
+            var email = document.getElementById('email_edit').value;
+            var password = document.getElementById('password_edit').value;
+            if(name==''&&email==''&&password==''){
+                alert("您没有填写任何信息。")
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: "/useredit/",
+                    data: {
+                        'user_id': getCookie('user_id'),
+                        'name': name,
+                        'email': email,
+                        'password': password
+                    },
+                    success: function (data) {
+                        if (data)
+                            alert("修改资料成功！")
+                        else
+                            alert("fail.")
+                        window.location.reload();
+                    }
+                })
+            }
+        }
+        </script>
+    </body>
 </html>

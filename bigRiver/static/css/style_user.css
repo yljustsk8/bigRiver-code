@@ -1,88 +1,3 @@
-#edit-container{
-	margin:20% 30%;
-	padding: 30px 30px 0px 30px;
-	background: #f0e3e4;
-	width: 40%;
-	height: 30%;
-	position: center;
-	border-radius: 10px;
-}
-
-#new_company{
-    cursor: pointer;
-    padding-top: 50px;
-    size: 55px;
-    height: 55px;
-    width: 460px;
-}
-#create-bar-container{
-    position:absolute;
-    left:40%;
-    top:20%;
-}
-.create_bar{
-	margin-top: 3px;
-  position:relative;
-  transform:translate(-50%,-50%);
-}
-
-.create_bar input{
-  height:10px;
-  border:2px solid #ddd;
-  outline:none;
-  font-size:20px;
-  padding:20px;
-  transition:all 0.3s;
-  background:none;
-  z-index:5;
-}
-.create_bar input:focus{
-  border:2px solid #00a2f9;
-  transition:all 0.3s;
-}
-.create_bar input.focus label{
-  top:-25px;
-  left:-5px;
-  color:#262626;
-  transform:scale(0.9);
-}
-
-#create-submit{
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-color: #00a2f9;
-  color: white;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 10px 20px;
-  font-size: 14px;
-  line-height: 1.42857;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-#create-submit:hover{
-    background-color: #89cff9;
-}
-
-#exit{
-	cursor: pointer;
-}
-
-
-#submit-edit{
-	position: absolute;
-	left:55%;
-	top:55%;
-}
-
 .st-container {
 	position: absolute;
 	width: 100%;
@@ -242,43 +157,44 @@
 
 #search-container {
 	width:500px;
-	height:500px;
+	height:820px;
 	margin:0 auto;
 }
 
 /*加入公司*/
-div.search-bar {
-	padding:66% 0;
+#search-container.search-bar {
+	height:50px;
+	padding:30px 0;
 }
-
-form{
+.search-bar form{
 	position:relative;
 	width:300px;
 	margin:0 auto;
 }
 
-.search-bar input ,.search-bar button {
-	border: none; outline: none;
+.search-bar form>input,.searchbar form>button {
+	border:none;
+	outline:none;
 	border-radius:3px;
 }
-.search-bar input {
-	width: 100%;
-	height: 42px;
-	padding-left: 13px;
-	padding-right: 33px;
+.search-bar form>input {
+	width:100%;
+	height:42px;
+	padding-left:13px;
 	background:white;
 }
-
-.search-bar button {
+.search-bar form>button {
+	height:42px;
+	width:42px;
+	cursor:pointer;
+	position:absolute;
 	height:26px;
 	width:26px;
-	cursor:pointer;
-	position: absolute;
 	top:8px;
 	right:8px;
-	background:LightCoral;
+	background:coral;
 }
-.search-bar button:before {
+.search-bar form>button:before {
 	content:"\f105";
 	font-family:FontAwesome;
 	color:#F9F0DA;
