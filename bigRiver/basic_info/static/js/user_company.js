@@ -17,6 +17,7 @@ function get_company_id(){
     $.ajax({
             type: 'POST',
             url: "/usercompany/",
+
             data: {'user_id':getCookie('user_id')},
             success:function(data) {
                 company=data.toString();

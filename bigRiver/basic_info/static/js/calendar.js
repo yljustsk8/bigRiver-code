@@ -30,6 +30,7 @@
     }*/
 
     function getCookie(name) {
+
          var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
 
          if(arr=document.cookie.match(reg))
@@ -45,6 +46,7 @@
      var x = date_obj.getMonth() + 1;
      var n = date_obj.getMonth();
      var monthCheck = (date_obj.getMonth() + 1);
+
 
      var month_first_day = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
      var curr_month_obj = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
@@ -89,6 +91,7 @@
 
     /**调整表格行数，并把每个用到的td加上内容&赋予id*/
     function dateHandler(month_first_day, curr_month_obj, curr_month_day_num, curr_month_str) {
+
 
          var blank = true;
          var $tbody = $('#tbody'), //日历网格
@@ -139,8 +142,10 @@
          }
      }
 
+
     //确认本月签到日期，并把他们加上标红buff
     function checkDate(prep) {
+
         for (var i = 0; i < 32; i++) {
             var item_id = "#td" + i;
             $(document).off('click', item_id);
@@ -170,9 +175,14 @@
      }
 
 
+    function pop_up(list){
+        alert("第"+list[0]+"日\n上班时间："+ list[1]+"\n下班时间："+ list[2]);
+    }
+
     $(document).on('mouseover','#sign_btn',function () {
         $("#sign_btn").addClass("animated tada");
     })
+
     //当天签到添加样式
     $(document).on('click','#sign_btn',function () {
         $("tr").remove();
@@ -218,6 +228,7 @@
         $("tr").remove();
         $("p").remove();
         if (curr_month_num > 0 && n > 0) {
+
              curr_month_num--;n--;
          }
         var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
@@ -234,6 +245,7 @@
         $("tr").remove();
         $("p").remove();
         if (curr_month_num < x) {
+
              curr_month_num++;n++;
         }
         var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
