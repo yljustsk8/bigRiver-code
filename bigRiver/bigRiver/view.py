@@ -68,6 +68,7 @@ def search_company(request):
     else:
         return HttpResponse(False)
 
+
 def confirm_join(request):
     user_id = request.POST.get('user_id')
     company_id = request.POST.get('company_id')
