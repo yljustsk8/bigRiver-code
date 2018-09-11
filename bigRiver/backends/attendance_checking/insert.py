@@ -56,7 +56,7 @@ def get_current_time():
 
 class data(object):
     #初始化函数
-    def __init__(self, userID, month, date):
+    def __init__(self, userID, month='', date=''):
         self.userID = userID
         self.month, self.date, _, _ = get_current_time()
         #可能是一个debug点

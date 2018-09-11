@@ -142,6 +142,36 @@ def calendar(request):
 def face(request):
     return render_to_response('face.html')
 
+def face_identify(request):
+    data = {'success': 0}
+    temp_identify_path="bigRiver/static/temp/identify"
+    if not os.path.exists(temp_identify_path):
+        os.makedirs(temp_identify_path)
+    temp_file_num=len(os.listdir(temp_identify_path))
+    img_save_path=os.path.join(temp_identify_path,"temp_{}".format(temp_file_num))
+    if not os.path.exists(img_save_path):
+        os.makedirs(img_save_path)
+    imgs=[]
+    img_urls=[]
+    if request.method=="POST":
+        if  not 'image1' in request.POST and not 'image2' in request.POST and not 'image3' in request.POST:
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        imgs.append(base64.b64decode(request.POST['image1'].split(',')[1]))
+        imgs.append( base64.b64decode(request.POST['image2'].split(',')[1]))
+        imgs.append( base64.b64decode(request.POST['image3'].split(',')[1]))
+        for i in range(3):
+            img_url="{}.jpg".format(i)
+            img_urls.append(os.path.join(img_save_path,img_url))
+            with open(img_urls[i],'wb') as file:
+                file.write(imgs[i])
+        data['success']=ac.check_in(img_urls)
+        shutil.rmtree(img_save_path)
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+
+
+
 def upload_image(request):
     data = {'success': 0}
     if request.method=="POST":
@@ -173,6 +203,7 @@ def upload_image(request):
                 file.write(img)
             data['success']=1
     return HttpResponse(json.dumps(data),content_type="application/json")
+
 def face_camera(request):
     return render_to_response("camera.html")
 

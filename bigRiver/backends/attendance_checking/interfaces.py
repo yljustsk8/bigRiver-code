@@ -20,14 +20,26 @@ import datetime
 #
 
 #正常打卡
-def check_in(img_url):
-    img = cv2.imread(img_url)
-    userID = face_identify(img)
-    print(userID)
-    if(userID):
-        #识别成功
-        the_data = insert.data(userID=userID)
+def check_in(img_urls):
+    print(img_urls)
+    if len(img_urls)!=3:
+        return False
+    res=[]
+    for img_url in img_urls:
+        img = cv2.imread(img_url)
+        userID = face_identify(img)
+        print("userID",userID)
+        if userID is None:
+            return False
+        else:
+            res.append(userID)
+    #识别成功
+    if len(res)==3 and res[0]==res[1] and res[0]==res[2]:
+        user_id=res[0]
+        print(user_id)
+        the_data = insert.data(userID=user_id)
         the_data.check()
+        return True
     else:
         return False
 

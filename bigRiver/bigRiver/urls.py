@@ -42,6 +42,7 @@ urlpatterns = [
     path('face/uploadimage/',view.upload_image),
     path('face/face_enter/',view.face_enter),
     path('face/camera/',view.face_camera),
+    path('face/identify/',view.face_identify),
     path('admin/', view.admin_employees),
     path('admin/employees/', view.admin_employees),
     path('admin/requests/', view.admin_requests),

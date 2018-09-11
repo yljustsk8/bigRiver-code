@@ -13,54 +13,45 @@ django.setup()
 from basic_info.models import personal_info
 
 def identify(matrix):
-    model=light_cnn.loadModel("./model/LightCNN_29Layers_checkpoint.pth.tar")
+    model=light_cnn.loadModel("./bigRiver/backends/ai/model/LightCNN_29Layers_checkpoint.pth.tar")
     if model is None:
         print("加载模型失败")
         return None
     if matrix.shape!=(1,1,128,128) or matrix is None:
         print("matrix格式不合法")
         return None
-        #循环获取所有分组
-    identify_group=-1
-    identify_person=-1
     max_possi=0.9
+    user_id=None
 
-    groups_path="./groups"
-    groups=os.listdir(groups_path)
-    for group in groups:
-        group_path=os.path.join(groups_path,group)
-        possi=[]
-        people=os.listdir(group_path)
-        for person in people:
-            imgs = []
-            person_path=os.path.join(group_path,person)
-            img_num = len(os.listdir(person_path))
-            r=np.random.permutation(range(img_num))
-            select=r[0:20]
-            for i in range(20):
-                img_path = os.path.join(person_path, "{}.jpg".format(select[i]))
-                img=cv2.cvtColor(cv2.imread(img_path),cv2.COLOR_BGR2GRAY)
-                imgs.append(img)
-            imgs=np.array(imgs,dtype=np.float32)
-            imgs=imgs[:,:,:,np.newaxis]
-            imgs=np.transpose(imgs,[0,3,1,2])
-            matrix=matrix.astype(np.float32)
-            Cos=light_cnn.CosSim(model,matrix,imgs)
-            if Cos is None:
-                return None
-            possi.append(np.mean(Cos))
-        np_possi=np.array(possi)
-        current_max=np.max(np_possi)
-        if current_max >max_possi:
-            max_possi=current_max
-            identify_group=int(group)
-            identify_person=np.argmax(np_possi)
-    if identify_group==-1 or identify_person==-1:
-        return None
-    else:
-        location="{0}_{1}".format(identify_group,identify_person)
-        user=personal_info.objects.get(modelLocation=location)
-        return user.userID
+    people_path="./bigRiver/backends/ai/people"
+    people=os.listdir(people_path)
+    possi=[]
+    for user in people:
+        imgs = []
+        user_path=os.path.join(people_path,user)
+        img_num = len(os.listdir(user_path))
+        r=np.random.permutation(range(img_num))
+        select=r[0:20]
+        for i in range(20):
+            img_path = os.path.join(user_path, "{}.jpg".format(select[i]))
+            img=cv2.cvtColor(cv2.imread(img_path),cv2.COLOR_BGR2GRAY)
+            imgs.append(img)
+
+        imgs=np.array(imgs,dtype=np.float32)
+        imgs=imgs[:,:,:,np.newaxis]
+        imgs=np.transpose(imgs,[0,3,1,2])
+        matrix=matrix.astype(np.float32)
+        Cos=light_cnn.CosSim(model,matrix,imgs)
+        if Cos is None:
+            return None
+        possi.append(np.mean(Cos))
+    np_possi=np.array(possi)
+    current_max=np.max(np_possi)
+    print(current_max)
+    if current_max >max_possi:
+        person_index=np.argmax(np_possi)
+        user_id=people[int(person_index)]
+    return user_id
 
 def face_enter(userID,imgs):
     # 调用face_identify.imgs2faces(imgs)把图片变为矩阵
@@ -76,32 +67,23 @@ def face_enter(userID,imgs):
         count-=1
 
     #将matrices存到相应的模型源文件下
-    file_name="./bigRiver/backends/ai/groups/{0}/person_{1}".format(count//10,count%10)
+    file_name="./bigRiver/backends/ai/people/{}".format(userID)
     if os.path.exists(file_name) == False:
         os.makedirs(file_name)
     success=save_faces(file_name,matrices)
-    if success==False:
-        return success
-    model,person=count//10,count%10
-
-    #将模型位置存入数据库
-    model_location="{0}_{1}".format(model,person)
-    user=personal_info.objects.get(userID=userID)
-    user.modelLocation=model_location
-    user.save()
-
-    return True
+    return success
 
 def face_identify(img):
+    if img is None:
+        return None
     # 将img变成增加一个维度，符合输入要求
     img_list=[]
     img_list.append(img)
     img_list=np.array(img_list)
+    print("identify img shape",img_list.shape)
     # 调用face_identify.img2face(img)
     matrix=imgs2faces(img_list)
-    if matrix is None:
-        return None
-    if matrix.shape!=(1,128,128):
+    if matrix is None or matrix.shape!=(1,128,128):
         return None
     matrix=matrix[:,:,:,np.newaxis]
     matrix=np.transpose(matrix,[0,3,1,2])
@@ -221,19 +203,17 @@ def test_face_enter():
     face_enter("100004", imgs)
 
 def test_face_identify():
-    img_path = "C:/Users/87216/Documents/bigRiverSystem/python/FaceProject1/image/test_image/11.jpg"
+    img_path = "C:/Users/87216/Documents/bigRiverSystem/python/FaceProject1/image/test_image/53.jpg"
     img=cv2.imread(img_path)
-
-    print("img shape:",img.shape)
     userID=face_identify(img)
     print("user ID:",userID)
 
 if __name__=="__main__":
-   # test_face_enter()
-   # test_face_identify()
-   # user3=personal_info(userID="100003",password="100003")
-   # user4 = personal_info(userID="100004", password="100004")
-   # user3.save()
-   # user4.save()
-   #  img=cv2.imread("C:/Users/87216/Documents/bigRiverSystem/bigRiver-code/bigRiver/static/temp/100003/1.jpg")
+    # test_face_enter()
+    # test_face_identify()
+    # user3=personal_info(userID="100003",password="100003")
+    # user4 = personal_info(userID="100004", password="100004")
+    # user3.save()
+    # user4.save()
+    #  img=cv2.imread("C:/Users/87216/Documents/bigRiverSystem/bigRiver-code/bigRiver/static/temp/100003/1.jpg")
     pass
