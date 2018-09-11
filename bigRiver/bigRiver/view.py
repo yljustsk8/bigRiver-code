@@ -32,16 +32,16 @@ def login(request):
 
 
 def regist(request):
-    if request.method=="GET":
+    if request.method== "GET":
         return render_to_response("login.html");
     if request.method=="POST":
-        user_id = request.POST.get('user_id')
-        password = request.POST.get('password')
-        name = request.POST.get('name')
-        email = request.POST.get('e-mail')
+        user_id = request.POST.get('userID_signUp')
+        password = request.POST.get('password_signUp')
+        name = request.POST.get('name_signUp')
+        email = request.POST.get('email_signUp')
         result = pim.register(user_id, password, name, email)
         if result['status']:
-            return HttpResponse(True)
+            return HttpResponse(result['content'])
         else:
             return HttpResponse(False)
 
@@ -82,17 +82,16 @@ def confirm_join(request):
         return HttpResponse(False)
 
 def create_company(request):
-    if request.method =='GET':
+    if request.method == 'GET':
         return render_to_response("create_company.html")
-    if request.method =='POST':
-        user_id = request.POST.get('user_id')
-        company_name = request.POST.get('company_name')
-        taxNumber = request.POST.get('taxNumber')
-        result = pim.create_company(user_id, company_name, taxNumber)
-        if result['status']:
-            return HttpResponse(True)
-        else:
-            return HttpResponse(result['content'])
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id_create')
+        company_name = request.POST.get('name_create')
+        taxNumber_create = request.POST.get('taxNumber_create')
+        print(user_id+" "+company_name +" "+taxNumber_create)
+        result = pim.create_company(user_id, company_name, taxNumber_create)
+        return HttpResponse(json.dumps(result), content_type="application/json")
+
 
 
 
@@ -119,7 +118,7 @@ def user_info(request):
     user_id = request.POST.get('user_id')
     result_dict = pim.get_info_by_id(user_id)
     result = {'name': result_dict['name'],
-              'email':result_dict['email'],
+              'email': result_dict['email'],
               'password':result_dict['password'],}
     return HttpResponse(json.dumps(result), content_type="application/json")
 
@@ -330,7 +329,9 @@ def handle_requests(request):
             confirm_data = '修改失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
 
-def send_requsets(request):
+def send_requests(request):
+    if request.method =='GET':
+        return render_to_response('calendar_request.html')
     if request.method == 'POST':
         sender_id=request.POST.get('user_id')
         type=request.POST.get('request_type')

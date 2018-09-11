@@ -50,14 +50,14 @@ $(document).on('click','#submit-company',function () {
             type: 'POST',
             url: "/usercompany/search/",
             data: {'user_id':getCookie('user_id'),
-                    'company_id':$('#input-company').getValue},
+                    'company_id':$(document).getElementById('input-company'),},
             success:function(data) {
                 var ok = confirm("你将要要加入" + data.toString());
                     $.ajax({
                         type:'POST',
                         url:"/usercompany/confirm/",
                         data:{'status': ok,
-                            'company_id':$('#input-company').getValue,
+                            'company_id':$(document).getElementById('input-company'),
                             'user_id':getCookie('user_id')},
                         success:function (data) {
                             if (data)
@@ -77,45 +77,7 @@ $(document).on('click','#submit-company',function () {
 /**创建公司*/
 /**点击弹窗输入想要创建公司的信息*/
 $(document).on('click','#new_company',function () {
-       window.open("/createcompany", 'create_company', 'height=300, width=400, top=200, left=50, toolbar=no, scrollbars=no, resizable=no,location=no, status=no');
-})
-/**一些和css联动的效果*/
-var inp = document.getElementsByClassName("create_input");
-var main = document.getElementsByClassName("create_bar");
-inp.onfocus = function(){
-  if(inp.value == ""){
-      main.className += "focus";
-  }
-}
-inp.onblur = function(){
-  if(inp.value == ""){
-      main.className = "";
-  }
-}
-/**提交更改*/
-$(document).on('click','#create-submit',function (){
-    var new_company = $('#name_create').getValue;
-    var taxNumber =$('#taxNumber_create').getValue;
-    $.ajax({
-            type: 'POST',
-            url: "/createcompany",
-            data: {'user_id':getCookie('user_id'),
-                    'company_name':new_company,
-                    'taxNumber':taxNumber},
-            success:function(data) {
-                if(data==True){
-                    alert("创建成功！请重新登录！");
-                    window.location.href = "../login";
-                }
-                else
-                    alert(data.toString());
-
-            },
-            error : function() {
-                alert("数据库/cookie异常，创建公司时传不出去数据！");
-                //window.location.href="../login/";
-            }
-        })
+       window.open("/createcompany", 'create_company', 'height=300, width=600, top=200, left=150, toolbar=no, scrollbars=no, resizable=no,location=no, status=no');
 })
 
 function initial(){

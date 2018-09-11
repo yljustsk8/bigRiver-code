@@ -246,8 +246,8 @@
     })
 
     //联系
-    $(document).on('click','#sign_btn',function () {
-        
-    })
+    $(document).on('click','#ask_for_leave',function () {
+        window.location.href='/calendar_request/';
+    });
 
  window.addEventListener("load", initall, false);

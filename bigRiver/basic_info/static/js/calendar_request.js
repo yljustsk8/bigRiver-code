@@ -267,10 +267,9 @@
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     })
-
-    //联系
-    $(document).on('click','#sign_btn',function () {
-        
-    })
+     //返回
+    $(document).on('click','#return_calendar',function () {
+        window.location.href='/calendar/';
+    });
 
  window.addEventListener("load", initall, false);
