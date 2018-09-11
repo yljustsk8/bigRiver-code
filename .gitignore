@@ -11,3 +11,5 @@ bigRiver/backends/ai/.DS_Store
 *.xml
 bigRiver/.idea/bigRiver.iml
 *.pyc
+*.xml
+*.iml
