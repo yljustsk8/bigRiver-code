@@ -72,7 +72,9 @@ def view_all_calendar(m, d, uid):
     month = int(m)
     date = int(d)
     userID = uid
-    _, company, _, title, _ = pim.get_info_by_id(userID=uid)
+    info_dict = pim.get_info_by_id(userID=userID)
+    company = info_dict['company']
+    title = info_dict['title']
     result_dict = get_calendar.get_daily_calendar(month=month, date=date, company=company, query_title=title)
     # print(result_dict)
     result = {
@@ -82,7 +84,8 @@ def view_all_calendar(m, d, uid):
 
     i = 1
     for key, value in result_dict.items():
-        name, _, department, t,_ = pim.get_info_by_id(userID=key)
+        info_dict_tmp = pim.get_info_by_id(userID=key)
+        t = info_dict_tmp['title']
         # value的值模板：07:40&1@17:02&1
         # print(key + ': ' + str(t))
         # 决定title_rt的值
@@ -120,8 +123,8 @@ def view_all_calendar(m, d, uid):
         #构造result字典
         attendance_dict = {
             'user_id': key,
-            'name': name,
-            'dpmt': department,
+            'name': info_dict_tmp['name'],
+            'dpmt': info_dict_tmp['department'],
             'time_in': t1,
             'time_out': t2,
             'status': status,
