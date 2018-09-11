@@ -17,14 +17,13 @@ function get_company_id(){
     $.ajax({
             type: 'POST',
             url: "/usercompany/",
-            data: {'user_id':'123'},
-            //data: {'user_id':getCookie('user_id')},
+            data: {'user_id':getCookie('user_id')},
             success:function(data) {
                 company=data.toString();
                 add_company_to_page();
             },
             error : function() {
-                alert("数据库异常，get不到公司信息");
+                alert("数据库异常，加载用户对应公司名称时get不到公司信息");
                 //window.location.href="../login/";
             }
     })
@@ -33,7 +32,7 @@ function get_company_id(){
 /**如果有公司后调用的函数
  * 隐藏搜索栏并将公司信息印在屏幕*/
 function add_company_to_page(){
-    if (company != 'False'&& company != null){
+    if (company != 'False'&& company !='' &&company!=null){
         //hide
         $('#search-container').hide();
         var p = document.createElement('p');var h2 = document.createElement('h2');
@@ -50,15 +49,16 @@ $(document).on('click','#submit-company',function () {
        $.ajax({
             type: 'POST',
             url: "/usercompany/search/",
-            data: {'company_id':'111',},
-            //data: {'user_id':getCookie('user_id')},
+            data: {'user_id':getCookie('user_id'),
+                    'company_id':$('#input-company').getValue},
             success:function(data) {
                 var ok = confirm("你将要要加入" + data.toString());
                     $.ajax({
                         type:'POST',
                         url:"/usercompany/confirm/",
-                        data:{'status': ok,'company_id':'111',
-                                    'user_id':'123'},
+                        data:{'status': ok,
+                            'company_id':$('#input-company').getValue,
+                            'user_id':getCookie('user_id')},
                         success:function (data) {
                             if (data)
                                 alert("success.")
@@ -68,11 +68,55 @@ $(document).on('click','#submit-company',function () {
                     })
             },
             error : function() {
-                alert("数据库异常，get不到公司信息");
+                alert("数据库异常，搜索公司时get不到公司信息");
                 //window.location.href="../login/";
             }
         })
     })
+
+/**创建公司*/
+/**点击弹窗输入想要创建公司的信息*/
+$(document).on('click','#new_company',function () {
+       window.open("/createcompany", 'create_company', 'height=300, width=400, top=200, left=50, toolbar=no, scrollbars=no, resizable=no,location=no, status=no');
+})
+/**一些和css联动的效果*/
+var inp = document.getElementsByClassName("create_input");
+var main = document.getElementsByClassName("create_bar");
+inp.onfocus = function(){
+  if(inp.value == ""){
+      main.className += "focus";
+  }
+}
+inp.onblur = function(){
+  if(inp.value == ""){
+      main.className = "";
+  }
+}
+/**提交更改*/
+$(document).on('click','#create-submit',function (){
+    var new_company = $('#name_create').getValue;
+    var taxNumber =$('#taxNumber_create').getValue;
+    $.ajax({
+            type: 'POST',
+            url: "/createcompany",
+            data: {'user_id':getCookie('user_id'),
+                    'company_name':new_company,
+                    'taxNumber':taxNumber},
+            success:function(data) {
+                if(data==True){
+                    alert("创建成功！请重新登录！");
+                    window.location.href = "../login";
+                }
+                else
+                    alert(data.toString());
+
+            },
+            error : function() {
+                alert("数据库/cookie异常，创建公司时传不出去数据！");
+                //window.location.href="../login/";
+            }
+        })
+})
 
 function initial(){
     get_company_id();

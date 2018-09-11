@@ -8,6 +8,7 @@
 
      var curr_month_Date = {
                      date: [],
+                     date_num: [],
                      time_in:[],
                      status_in:[],
                      time_out:[],
@@ -57,7 +58,7 @@
      var y = date_obj.getDate();
 
     function initall() {
-        $.ajaxSetup({
+         $.ajaxSetup({
              headers: { "X-CSRFToken": getCookie("csrftoken") }
          });
          $.ajax({
@@ -150,7 +151,8 @@
              if (month_num == prep) {
                  var date_num = parseInt(localDate.date[i].substr(2,2));
                  var item_id = "#td" + date_num;
-                 curr_month_Date.date.push(date_num);
+                 curr_month_Date.date_num.push(date_num);
+                 curr_month_Date.date.push(localDate.date[i]);
                  curr_month_Date.time_in.push(localDate.time_in[i]);
                  curr_month_Date.time_out.push(localDate.time_out[i]);
                  if (localDate.status_in[i]==1 && localDate.status_out[i]==1) {
@@ -163,7 +165,28 @@
                  $(document).on('click',item_id,function () {
                      var item_id_str = $(this).attr("id").substr(2);
                      var item_id = parseInt(item_id_str) - 1;
-                     alert("第" + curr_month_Date.date[item_id] + "日\n上班时间："+ curr_month_Date.time_in[item_id] + "\n下班时间：" + curr_month_Date.time_out[item_id]);
+                     var month = curr_month_Date.date[item_id].substr(0,2);
+                     var date = curr_month_Date.date[item_id].substr(2,2);
+                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + '嘻嘻' + '吗？');
+                     if (confirm_code == true){
+                        $.ajax({
+                            type: 'POST',
+                            url: "/calendar/",
+                            data: {'user_id': getCookie('user_id'),
+                                    'request_type':'type',
+                                    'request_content':'content',
+                                    'date':date,
+                                    'month':month},
+                            success: function (data) {
+                                alert(data);
+                            },
+                            error: function () {
+                                alert("连接申请数据库异常，请刷新重试");
+                            }
+                        })
+                     } else{
+                         alert('申请失败，请重试！');
+                     }
                  })
              }
          }

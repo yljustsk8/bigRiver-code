@@ -118,4 +118,5 @@ def get_cominfo_by_id(companyID):
         'departNames': the_model.departNames,
         'name': the_model.name
     }
+    return cominfo_dict
     return the_model.taxNumber, the_model.bossID, the_model.adminID, the_model.departNames, the_model.name

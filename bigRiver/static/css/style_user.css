@@ -8,6 +8,82 @@
 	border-radius: 10px;
 }
 
+#new_company{
+    cursor: pointer;
+    padding-top: 50px;
+    size: 55px;
+    height: 55px;
+    width: 460px;
+}
+#create-bar-container{
+    position:absolute;
+    left:20%;
+    top:20%;
+}
+.create_bar{
+  position:relative;
+  transform:translate(-50%,-50%);
+}
+.create_bar label{
+  position:absolute;
+  top:50%;
+  left:22px;
+  transform:translate(0,-50%);
+  transition:all 0.3s;
+  color:#ddd;
+  z-index:-1;
+}
+.create_bar input{
+  height:10px;
+  border:2px solid #ddd;
+  outline:none;
+  font-size:20px;
+  padding:20px;
+  transition:all 0.3s;
+  background:none;
+  z-index:5;
+}
+.create_bar input:focus{
+  border:2px solid #00a2f9;
+  transition:all 0.3s;
+}
+.create_bar.focus label{
+  top:-25px;
+  left:-5px;
+  color:#262626;
+  transform:scale(0.9);
+}
+
+#create-submit{
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-color: #00a2f9;
+  color: white;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#create-submit:hover{
+    background-color: #89cff9;
+}
+
+#exit{
+	cursor: pointer;
+}
+
+
 #submit-edit{
 	position: absolute;
 	left:55%;

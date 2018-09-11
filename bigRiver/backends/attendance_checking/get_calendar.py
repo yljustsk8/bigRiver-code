@@ -23,8 +23,8 @@ model_list = [attendance_data_jan,
 def get_month_calendar(month, userID, query_title):
     model = model_list[month-1]
     #判断其是否为普通员工，若是，则查看其数据。
-    info_dict = pim.get_info_by_id(userID=userID)
-    if(int(query_title)<=int(info_dict['title'])):
+    title = pim.get_info_by_id(userID=userID)['title']
+    if(int(query_title)<=int(title)):
         #不为普通员工
         result_list = []
         return result_list

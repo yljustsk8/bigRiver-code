@@ -6,6 +6,7 @@ var myInfo={
 
 function getCookie(name) {
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
      if(arr=document.cookie.match(reg))
          return unescape(arr[2]);
      else
@@ -63,16 +64,16 @@ function initial(){
 
 /**修改信息*/
 $(document).on('click','#submit-edit',function () {
-    if ($('#name_edit').getValue()!='') myInfo.name = $('#name_edit').getValue();
-    if ($('#email_edit').getValue()!='') myInfo.email = $('#email_edit').getValue();
-    if ($('#password_edit').getValue()!='') myInfo.password = $('#password_edit').getValue();
+    if ($('#name_edit').getValue!='') myInfo.name = $('#name_edit').getValue;
+    if ($('#email_edit').getValue!='') myInfo.email = $('#email_edit').getValue;
+    if ($('#password_edit').getValue!='') myInfo.password = $('#password_edit').getValue;
 
     $.ajax({
         type:'POST',
         url:"/useredit/",
-        data:{'name': $('#name_edit').getValue(),
-            'email': $('#email_edit').getValue(),
-            'password': $('#password_edit').getValue(),},
+        data:{'name': $('#name_edit').getValue,
+            'email': $('#email_edit').getValue,
+            'password': $('#password_edit').getValue,},
         success:function (data) {
             if (data)
                 alert("修改资料成功！")
@@ -80,8 +81,11 @@ $(document).on('click','#submit-edit',function () {
                 alert("fail.")
         }
     })
+})
 
-
+/**退出登录*/
+$(document).on('click','#exit',function (){
+    window.location.href = "../login";
 })
 
 window.addEventListener("load",initial,false);

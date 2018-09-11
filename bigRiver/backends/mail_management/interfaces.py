@@ -155,7 +155,7 @@ def get_request(uID):
         else:
             info_dict = pim.get_info_by_id(msg.senderID)
             name = info_dict['name']
-            department = info_dict['departmentName']
+            department = info_dict['department']
         msg_dict = {
                         'request_id': msg.requestID,
                         'user_id': msg.senderID,
@@ -168,12 +168,11 @@ def get_request(uID):
     # 发出的
     for msg in send_list:
         if(msg.type == 2):
-            name = cm.get_cominfo_by_id(msg.senderID)['name']
-            department = ''
-        else:
             info_dict = pim.get_info_by_id(msg.senderID)
             name = info_dict['name']
-            department = info_dict['departmentName']
+            department = info_dict['department']
+        else:
+            name, _, department, _, _ = pim.get_info_by_id(msg.senderID)
         msg_dict = {
             'request_id': msg.requestID,
             'user_id': msg.receiverID,

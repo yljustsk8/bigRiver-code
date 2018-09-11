@@ -25,7 +25,7 @@ def login(request):
         if result['status']:
             titles = ('user','user','admin','boss')
             response = HttpResponseRedirect('../'+titles[result['title']]+'/')
-            response.set_cookie('user_id',request.POST.get('user_id'))
+            response.set_cookie('user_id', request.POST.get('user_id'))
             return response
         else:
             return HttpResponse(result['content'])
@@ -39,23 +39,22 @@ def regist(request):
         password = request.POST.get('password')
         name = request.POST.get('name')
         email = request.POST.get('e-mail')
-        result = pim.register(user_id,password,name,email)
+        result = pim.register(user_id, password, name, email)
         if result['status']:
-            return HttpResponse(result['userID'])
+            return HttpResponse(True)
         else:
             return HttpResponse(False)
 
 def user(request):
-    if request.method == "GET":
-        return render_to_response('user.html')
+    return render_to_response("user.html");
+
 
 def user_company(request):
     if request.method == "GET":
         return render_to_response('join_company.html')
     if request.method == "POST":
         user_id = request.POST.get('user_id')
-        #result = pim.get_company_ID('user_id')
-        result = False
+        result = pim.get_company_ID(user_id)
         if result != False:
             return HttpResponse(result)
         else:
@@ -81,6 +80,21 @@ def confirm_join(request):
             return HttpResponse(False)
     else:
         return HttpResponse(False)
+
+def create_company(request):
+    if request.method =='GET':
+        return render_to_response("create_company.html")
+    if request.method =='POST':
+        user_id = request.POST.get('user_id')
+        company_name = request.POST.get('company_name')
+        taxNumber = request.POST.get('taxNumber')
+        result = pim.create_company(user_id, company_name, taxNumber)
+        if result['status']:
+            return HttpResponse(True)
+        else:
+            return HttpResponse(result['content'])
+
+
 
 def user_edit(request):
     user_id = request.POST.get('user_id')
@@ -284,7 +298,6 @@ def boss_admins(request):
             result=cm.delete_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
         elif request.POST.get('content') == 'add admin':
-            print("here")
             result=cm.set_admin(pim.get_company_ID(request.POST.get('enforcer')), request.POST.get('employee'))
             return result
 
@@ -319,3 +332,18 @@ def handle_requests(request):
         else:
             confirm_data = '修改失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+
+def send_requsets(request):
+    if request.method == 'POST':
+        sender_id=request.POST.get('user_id')
+        type=request.POST.get('request_type')
+        content=request.POST.get('request_content')
+        month=request.POST.get('month')
+        date=request.POST.get('date')
+        confirm_code=mm.send_request(sender_id,month,date,type,content)
+        if confirm_code:
+            confirm_data='申请成功'
+        else:
+            confirm_data = '申请失败，请稍后重试'
+        return HttpResponse(json.dumps(confirm_data), content_type="application/json")
+
