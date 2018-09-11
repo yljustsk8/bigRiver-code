@@ -101,6 +101,8 @@ def user_edit(request):
     name = request.POST.get('name')
     password =request.POST.get('password')
     email = request.POST.get('email')
+    print(user_id)
+    print(name)
     name_edit = True; password_edit = True; email_edit = True;
     if name != '':
         name_edit = pim.modify(user_id, 2, name)['status']

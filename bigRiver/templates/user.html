@@ -79,17 +79,17 @@
                                 <div class="col-md-12">
                                     <label for="name_edit">Real Name</label>
                                     <input type="text" class="form-control" name = "name_edit"
-                                           id="name_edit" placeholder="原来姓名">
+                                           id="name_edit" placeholder="姓名">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="name_edit">Password</label>
                                     <input type="password" class="form-control" name = "password_edit"
-                                           id="password_edit" placeholder="原来密码">
+                                           id="password_edit" placeholder="密码">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="name_edit">E-mail</label>
                                     <input type="text" class="form-control" name = "email_edit"
-                                           id="email_edit" placeholder="原来邮箱">
+                                           id="email_edit" placeholder="邮箱">
                                 </div>
                             </div>
                             <br>
@@ -111,27 +111,31 @@
 
     <script>
         function submit() {
-            if ($('#name_edit').getValue!='')
-                var name = $('#name_edit').getValue;
-            if ($('#email_edit').getValue!='')
-                var email = $('#email_edit').getValue;
-            if ($('#password_edit').getValue!='')
-                var password = $('#password_edit').getValue;
-
-            $.ajax({
-                type:'POST',
-                url:"/useredit/",
-                data:{'name': name,
-                    'email': email,
-                    'password': password},
-                success:function (data) {
-                    if (data)
-                        alert("修改资料成功！")
-                    else
-                        alert("fail.")
-                    window.location.reload();
-                }
-            })
+            var name = document.getElementById('name_edit').value;
+            var email = document.getElementById('email_edit').value;
+            var password = document.getElementById('password_edit').value;
+            if(name==''&&email==''&&password==''){
+                alert("您没有填写任何信息。")
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: "/useredit/",
+                    data: {
+                        'user_id': getCookie('user_id'),
+                        'name': name,
+                        'email': email,
+                        'password': password
+                    },
+                    success: function (data) {
+                        if (data)
+                            alert("修改资料成功！")
+                        else
+                            alert("fail.")
+                        window.location.reload();
+                    }
+                })
+            }
         }
     </script>
 	</body>
