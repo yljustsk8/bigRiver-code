@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>日历签到功能</title>
         <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-        <script src="/static/js/calendar.js"></script>
+        <script src="/static/js/calendar_request.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/animate.css"/>
         <style type="text/css">
             * {
@@ -201,12 +201,28 @@
                 display:block;
             }*/
 
+            #return_calendar:hover{
+                opacity: 0.3;
+                border:coral;
+                cursor: pointer;
+            }
+
+            #back_container{
+                position: absolute;
+                left: 20%;
+                top: 22%;
+            }
+
         </style>
     </head>
 <body>
 <div id="background">
-    <div id="btn_container">
-        <a id="sign_btn" href="../face/" target="_top">今日打卡</a>
+    <div id="input_container">
+        <div id="back_container" style="font-family:'Microsoft JhengHei'; font-size:22px; padding-bottom:2px; color:gray; ">
+            <img id="return_calendar" src="/static/images/contact-admin.png" height="50" width="50" title="返回">
+            <label for="return_calendar" >返回</label>
+        </div>
+        <textarea id="content_info" rows="" cols="" placeholder="请输入具体请假内容…" style="position:absolute; left:20%; top:30%; width:25%; height:35%;" ></textarea>
     </div>
     <div class="container">
         <div id="apart">

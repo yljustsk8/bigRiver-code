@@ -1,14 +1,14 @@
 @import url('normalize.css');
 @font-face {
 	font-family: "Themify";
-	src:url("/static/fonts/themify-icons/themify.eot");
-	src:url("/static/fonts/themify-icons/themify.woff")format('woff'),
-		url("/static/fonts/themify-icons/themify.ttf")format('truetype'),
-		url("/static/fonts/themify-icons/themify.svg")format('svg');
+	src:url("../fonts/themify-icons/themify.eot");
+	src:url("../fonts/themify-icons/themify.woff")format('woff'),
+		url("../fonts/themify-icons/themify.ttf")format('truetype'),
+		url("../fonts/themify-icons/themify.svg")format('svg');
 }
 @font-face {
 	font-family:'RaphaelIcons';
-    src: url('raphaelicons-webfont.eot');
+    src: url('fonts/raphaelicons-webfont.eot');
     src: local('☺'), 
 		url('fonts/raphaelicons-webfont.woff') format('woff'), 
 		url('fonts/raphaelicons-webfont.ttf') format('truetype'), 

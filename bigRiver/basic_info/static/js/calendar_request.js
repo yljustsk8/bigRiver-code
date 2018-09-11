@@ -165,16 +165,22 @@
                  $(document).on('click',item_id,function () {
                      var item_id_str = $(this).attr("id").substr(2);
                      var item_id = parseInt(item_id_str) - 1;
-                     var month = curr_month_Date.date[item_id].substr(0,2);
-                     var date = curr_month_Date.date[item_id].substr(2,2);
-                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + '嘻嘻' + '吗？');
+                     var month = parseInt(curr_month_Date.date[item_id].substr(0,2));
+                     var date = parseInt(curr_month_Date.date[item_id].substr(2,2));
+                     var content = document.getElementById('content_info').value;
+                     var type = (month >= date_obj.getMonth() + 1) && (date >= y);
+                     if(type)
+                         var type_str = "请假";
+                     else
+                         var type_str = "补卡";
+                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + type_str + '吗？');
                      if (confirm_code == true){
                         $.ajax({
                             type: 'POST',
-                            url: "/calendar/",
+                            url: "/send_requests/",
                             data: {'user_id': getCookie('user_id'),
-                                    'request_type':'type',
-                                    'request_content':'content',
+                                    'request_type':type,
+                                    'request_content':content,
                                     'date':date,
                                     'month':month},
                             success: function (data) {
@@ -184,8 +190,6 @@
                                 alert("连接申请数据库异常，请刷新重试");
                             }
                         })
-                     } else{
-                         alert('申请失败，请重试！');
                      }
                  })
              }
@@ -267,10 +271,9 @@
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     })
-
-    //联系
-    $(document).on('click','#sign_btn',function () {
-        
-    })
+     //返回
+    $(document).on('click','#return_calendar',function () {
+        window.location.href='/calendar/';
+    });
 
  window.addEventListener("load", initall, false);

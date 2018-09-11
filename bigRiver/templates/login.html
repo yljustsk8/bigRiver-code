@@ -212,13 +212,15 @@
                 $.ajax({
                     type: 'POST',
                     url: "login/regist/",
-                    data: {'password':$('#password_signUp').getValue,
-                            'user_id':$('#userID_signUp').getValue,
-                            'e-mail':$('#email_signUp').getValue,
-                            'name':$('#name_signUp').getValue,},
+                    data: {'password':$(document).getElementById('password_signUp'),
+                            'user_id':$(document).getElementById('userID_signUp'),
+                            'e-mail':$(document).getElementById('email_signUp'),
+                            'name':$(document).getElementById('name_signUp'),},
                     success:function (data) {
-                        if (data)
-                            alert("Register successed!");window.location.href('/login/');
+                        if (data[0]){
+                            alert("Register successed!");
+                            window.location.href='/login/';
+                        }
                         else
                             alert('Repeated ID!');
                     }

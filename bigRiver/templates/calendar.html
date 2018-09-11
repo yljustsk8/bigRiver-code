@@ -188,9 +188,9 @@
                 height: 150px;
             }
             #btn_container{
-                position:relative;
-                top:400px;
-                left:300px;
+                position:absolute;
+                top:40%;
+                left:20%;
                 float:left;
                 clear: both;
                 z-index: 100;
@@ -200,11 +200,26 @@
                 content:'';
                 display:block;
             }*/
+            #ask_for_leave:hover{
+                opacity: 0.3;
+                border:coral;
+                cursor: pointer;
+            }
+
+            #ask_container{
+                position: absolute;
+                left: 20%;
+                top: 30%;
+            }
 
         </style>
     </head>
 <body>
 <div id="background">
+    <div id="ask_container" style="font-family:'Microsoft JhengHei'; font-size:22px; padding-bottom:2px; color:gray; ">
+        <img id="ask_for_leave" src="/static/images/contact-admin.png" height="50" width="50" title="请假申请">
+        <label for="ask_for_leave" >联系管理员</label>
+    </div>
     <div id="btn_container">
         <a id="sign_btn" href="../face/" target="_top">今日打卡</a>
     </div>

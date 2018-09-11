@@ -118,8 +118,7 @@ def train_model(input_x,input_y,save_path,test_x=None,test_y=None):
     batch_num = len(input_x) // batch_size
 
     model = LightCNN_29Layers(num_classes=11)
-    if torch.cuda.is_available():
-        model = nn.DataParallel(model).cuda()
+    model = nn.DataParallel(model).cuda()
     model.train()
     if os.path.exists(save_path):
         checkpoint=torch.load(save_path)
@@ -151,8 +150,7 @@ def train_model(input_x,input_y,save_path,test_x=None,test_y=None):
     cudnn.benchmark = True
 
     criterion = nn.CrossEntropyLoss()
-    if torch.cuda.is_available():
-        criterion.cuda()
+    criterion.cuda()
 
     for i in range(3):
         for j in range(10):
@@ -162,12 +160,8 @@ def train_model(input_x,input_y,save_path,test_x=None,test_y=None):
             for batch in range(batch_num):
                 batch_x = train_x[batch * batch_size:(batch + 1) * batch_size]
                 batch_y = train_y[batch * batch_size:(batch + 1) * batch_size]
-                batch_x=torch.from_numpy(batch_x)
-                batch_y=torch.from_numpy(batch_y)
-                if torch.cuda.is_available():
-                    batch_x=batch_x.cuda()
-                if torch.cuda.is_available():
-                    batch_y=batch_y.cuda()
+                batch_x=torch.from_numpy(batch_x).cuda()
+                batch_y=torch.from_numpy(batch_y).cuda()
                 batch_x_var=torch.autograd.Variable(batch_x)
                 batch_y_var=torch.autograd.Variable(batch_y)
 
@@ -208,8 +202,7 @@ def accuracy(output, target):
 
 def loadModel(model_path):
     model=LightCNN_29Layers()
-    if torch.cuda.is_available():
-        model = nn.DataParallel(model).cuda()
+    model = nn.DataParallel(model).cuda()
     model.eval()
     if os.path.exists(model_path):
         ckpt=torch.load(model_path)
