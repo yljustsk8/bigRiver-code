@@ -67,8 +67,12 @@ def face_enter(userID,imgs):
     matrices=imgs2faces(imgs)
 
     #获取数据库中userID对应的模型
-    entire_model=personal_info.objects.all()
-    count=len(entire_model)-1
+    entire_model=personal_info.objects.exclude(modelLocation="")
+    count = len(entire_model)
+    user=personal_info.objects.get(userID=userID)
+    if user.modelLocation!='':
+        count-=1
+
     #将matrices存到相应的模型源文件下
     file_name="./groups/{0}/person_{1}".format(count//10,count%10)
     if os.path.exists(file_name) == False:
@@ -202,7 +206,7 @@ def test_face_enter():
             imgs.append(cv2.imread(jpg))
     # new_user = personal_info(userID="1000002", password="1000002")
     # new_user.save()
-    face_enter("1000002", imgs)
+    face_enter("100004", imgs)
 
 def test_face_identify():
     img_path = "C:/Users/87216/Documents/bigRiverSystem/python/FaceProject1/image/test_image/11.jpg"
@@ -214,5 +218,11 @@ def test_face_identify():
 
 if __name__=="__main__":
    # test_face_enter()
-   test_face_identify()
+   # test_face_identify()
+   # user3=personal_info(userID="100003",password="100003")
+   # user4 = personal_info(userID="100004", password="100004")
+   # user3.save()
+   # user4.save()
+
+
    pass
