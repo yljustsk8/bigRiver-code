@@ -163,7 +163,6 @@ def get_info_by_id(userID):
         'password': the_model.password
     }
     return info_dict
-    return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
 # 接口8：（内外皆用接口）设置用户权限
 # 返回布尔值

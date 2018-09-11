@@ -330,7 +330,7 @@ def handle_requests(request):
             confirm_data = '修改失败，请稍后重试'
         return HttpResponse(json.dumps(confirm_data), content_type="application/json")
 
-def send_requsets(request):
+def send_requests(request):
     if request.method == 'POST':
         sender_id=request.POST.get('user_id')
         type=request.POST.get('request_type')

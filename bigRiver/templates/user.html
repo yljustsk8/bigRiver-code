@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <br>
-                                <button id = submit-edit class="btn btn-primary">提交更改</button>
+                                <button id = submit-edit class="btn btn-primary" onclick="submit()">提交更改</button>
 
 					</section>
 					
@@ -108,5 +108,31 @@
 			</div><!-- // st-container -->
 			
         </div>
+
+    <script>
+        function submit() {
+            if ($('#name_edit').getValue!='')
+                var name = $('#name_edit').getValue;
+            if ($('#email_edit').getValue!='')
+                var email = $('#email_edit').getValue;
+            if ($('#password_edit').getValue!='')
+                var password = $('#password_edit').getValue;
+
+            $.ajax({
+                type:'POST',
+                url:"/useredit/",
+                data:{'name': name,
+                    'email': email,
+                    'password': password},
+                success:function (data) {
+                    if (data)
+                        alert("修改资料成功！")
+                    else
+                        alert("fail.")
+                    window.location.reload();
+                }
+            })
+        }
+    </script>
 	</body>
 </html>
