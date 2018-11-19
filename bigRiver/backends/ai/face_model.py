@@ -3,6 +3,10 @@ import cv2
 from backends.ai import light_cnn
 import os
 import django
+<<<<<<< HEAD
+=======
+import random
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bigRiver.settings")
 django.setup()
@@ -28,9 +32,14 @@ def identify(matrix):
         user_path=os.path.join(people_path,user)
         img_num = len(os.listdir(user_path))
         r=np.random.permutation(range(img_num))
+<<<<<<< HEAD
         max_sub=min(20,img_num)
         select=r[0:max_sub]
         for i in range(max_sub):
+=======
+        select=r[0:20]
+        for i in range(20):
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
             img_path = os.path.join(user_path, "{}.jpg".format(select[i]))
             img=cv2.cvtColor(cv2.imread(img_path),cv2.COLOR_BGR2GRAY)
             imgs.append(img)
@@ -52,6 +61,7 @@ def identify(matrix):
     return user_id
 
 def face_enter(userID,imgs):
+<<<<<<< HEAD
     #如果图片已是格式化的图片 直接存入
     matrices=None
     if len(imgs.shape)>=3 and imgs.shape[1]==128 and imgs.shape[2]==128:
@@ -63,6 +73,20 @@ def face_enter(userID,imgs):
             print("matrices is None")
             return False
 
+=======
+    # 调用face_identify.imgs2faces(imgs)把图片变为矩阵
+    matrices=imgs2faces(imgs)
+    if matrices is None:
+        return False
+
+    #获取数据库中userID对应的模型
+    entire_model=personal_info.objects.exclude(modelLocation="")
+    count = len(entire_model)
+    user=personal_info.objects.get(userID=userID)
+    if user.modelLocation!='':
+        count-=1
+
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
     #将matrices存到相应的模型源文件下
     file_name="./bigRiver/backends/ai/people/{}".format(userID)
     if os.path.exists(file_name) == False:
@@ -77,6 +101,7 @@ def face_identify(img):
     img_list=[]
     img_list.append(img)
     img_list=np.array(img_list)
+    print("identify img shape",img_list.shape)
     # 调用face_identify.img2face(img)
     matrix=imgs2faces(img_list)
     if matrix is None or matrix.shape!=(1,128,128):
@@ -138,7 +163,10 @@ def imgs2faces(imgs):
     haar_path=os.path.join(cv2_path,"data/haarcascade_frontalface_alt2.xml")
     haar = cv2.CascadeClassifier(haar_path)
     if haar is None:
+<<<<<<< HEAD
         print("can't find haarcascade_frontalface_alt2.xml")
+=======
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
         return None
     faces = []
     for img in imgs:
@@ -153,7 +181,10 @@ def imgs2faces(imgs):
             faces.append(face)
 
     if len(faces)==0:
+<<<<<<< HEAD
         print("can't align faces")
+=======
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
         return None
     return np.array(faces)
 
@@ -212,7 +243,10 @@ def useful_imgs(img_urls,temp_save_path):
 
 def face_enter_url(userID,imgs_url):
     if not os.path.exists(imgs_url):
+<<<<<<< HEAD
         print("save url doesn't exist.")
+=======
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
         return False
     imgs=[]
     for i in os.listdir(imgs_url):
@@ -249,5 +283,8 @@ if __name__=="__main__":
     # user3.save()
     # user4.save()
     #  img=cv2.imread("C:/Users/87216/Documents/bigRiverSystem/bigRiver-code/bigRiver/static/temp/100003/1.jpg")
+<<<<<<< HEAD
     # face_enter_url("100003","C:/Users/87216/Documents/bigRiverSystem/bigRiver-code/bigRiver/static/temp/100003")
+=======
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
     pass

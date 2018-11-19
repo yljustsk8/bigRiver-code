@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<<<<<<< HEAD
     <style>
         #open{
             height:77px;
@@ -39,6 +40,8 @@
             border-radius: 10px;
         }
     </style>
+=======
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
 </head>
 <body>
 <div id = "video-container" class="animated fadeInUp">
@@ -64,10 +67,17 @@
 
     var counter=0;
     var timer_id;
+<<<<<<< HEAD
     var enter_img=[];
     var enter_img_count=0;
 
     var identify_timer;
+=======
+    var flag=1;
+
+    var identify_timer;
+    var identify_flag=1;
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
     var catch_img=[];
     var catch_img_count=0;
     //获取摄像头对象
@@ -170,6 +180,7 @@
     }
 
     function  initial() {
+<<<<<<< HEAD
         timer_id=self.setInterval("uploads()",500);
         {#identify_timer=self.setInterval("identify_upload()",500)#}
     }
@@ -290,6 +301,117 @@
         getMedia();
         getVedio();
     })
+=======
+        {#timer_id=self.setInterval("uploads()",500);#}
+        {#identify_timer=self.setInterval("identify_upload()",500)#}
+
+    }
+
+    function uploads(){
+        console.log(counter);
+        if(flag) {
+            flag=0;
+            uploadPhotos(canvas2.toDataURL("image/jpeg", 0.5))
+        }
+    }
+    function uploadPhotos(image) {
+        if(!image)
+        {
+            alert("上传照片为空");
+            return;
+        }
+        $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+        $.ajax({
+            type:'POST',
+            url:'/face/face_enter/',
+            aysnc:false,
+            data:{
+                {#'user_id': getCookie('user_id'),#}
+                'user_id': "100003",
+                'image': image
+            },
+            dataType:'json',
+            success:function (data) {
+                flag=1;
+                if(!data.success){
+
+                }
+                else{
+                    counter++;
+                    if(counter==50){
+                        $.ajax({
+                            type:'GET',
+                            url:'/face/face_enter/',
+                            data:{
+                                {#'user_id': getCookie('user_id'),#}
+                                'user_id': "100003",
+                                'stop':1
+                            },
+                            aysnc:false,
+                            dataType:'json',
+                            success:function (data) {
+                                if(data.success) {
+                                    alert('人脸录入成功！');
+                                }
+                                else{
+                                    alert('人脸录入失败！')
+                                }
+                            },
+                            error:function (err) {
+                                alert("录制结束错误");
+                            }
+                        });
+                    window.clearInterval(timer_id)
+                    }
+                }
+            },
+            error:function (err) {
+                alert("未知错误");
+            }
+        });
+    }
+
+    function identify_upload() {
+        console.log(catch_img_count);
+        if(catch_img_count<3)
+        {
+            catch_img.push(canvas2.toDataURL("image/jpeg", 0.5))
+            catch_img_count++;
+            if(catch_img_count==3){
+                $.ajaxSetup({
+                     headers: { "X-CSRFToken": getCookie("csrftoken") }
+                });
+                $.ajax({
+                    type:'POST',
+                    url:'/face/identify/',
+                    data:{
+                        image1:catch_img[0],
+                        image2:catch_img[1],
+                        image3:catch_img[2]
+                    },
+                    aysnc:false,
+                    dataType:'json',
+                    success:function (data) {
+                        catch_img_count=0;
+                        catch_img=[];
+                        if(data.success) {
+                            alert('打卡成功！');
+                            window.clearInterval(identify_timer);
+                        }
+                        else{
+                            alert("识别失败！")
+                        }
+                    },
+                    error:function (err) {
+                        alert("照片传输错误");
+                    }
+                });
+            }
+        }
+    }
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
 </script>
 </body>
 

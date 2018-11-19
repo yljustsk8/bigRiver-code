@@ -25,10 +25,14 @@ def check_in(img_urls):
     if len(img_urls)!=3:
         return False
     res=[]
+<<<<<<< HEAD
     i=0
     for img_url in img_urls:
         print("img ",i)
         i+=1
+=======
+    for img_url in img_urls:
+>>>>>>> 4a88147cb3c03e3b7071daf9c918cc8104489fb8
         img = cv2.imread(img_url)
         userID = face_identify(img)
         print("userID",userID)
