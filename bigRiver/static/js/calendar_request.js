@@ -8,7 +8,6 @@
 
      var curr_month_Date = {
                      date: [],
-                     date_num: [],
                      time_in:[],
                      status_in:[],
                      time_out:[],
@@ -58,7 +57,7 @@
      var y = date_obj.getDate();
 
     function initall() {
-         $.ajaxSetup({
+        $.ajaxSetup({
              headers: { "X-CSRFToken": getCookie("csrftoken") }
          });
          $.ajax({
@@ -146,15 +145,23 @@
             var item_id = "#td" + i;
             $(document).off('click', item_id);
         }
+        curr_month_Date = {
+                     date: [],
+                     time_in:[],
+                     status_in:[],
+                     time_out:[],
+                     status_out:[]
+                 };
         for (var i = 0; i < localDate.date.length; i++) {
             var month_num = parseInt(localDate.date[i].substr(0,2));
              if (month_num == prep) {
                  var date_num = parseInt(localDate.date[i].substr(2,2));
                  var item_id = "#td" + date_num;
-                 curr_month_Date.date_num.push(date_num);
                  curr_month_Date.date.push(localDate.date[i]);
                  curr_month_Date.time_in.push(localDate.time_in[i]);
                  curr_month_Date.time_out.push(localDate.time_out[i]);
+                 curr_month_Date.status_in.push(localDate.status_in[i]);
+                 curr_month_Date.status_out.push(localDate.status_out[i]);
                  if (localDate.status_in[i]==1 && localDate.status_out[i]==1) {
                      $(item_id).addClass("qiandao");
                  } else if (localDate.status_in[i]==1 && localDate.status_out[i]==0) {
@@ -162,36 +169,37 @@
                  } else if (!localDate.status_in[i]==0 && localDate.status_out[i]==1) {
                      $(item_id).addClass("out_time");
                  }
-                 $(document).on('click',item_id,function () {
-                     var item_id_str = $(this).attr("id").substr(2);
-                     var item_id = parseInt(item_id_str) - 1;
-                     var month = curr_month_Date.date[item_id].substr(0,2);
-                     var date = curr_month_Date.date[item_id].substr(2,2);
-                     var content = document.getElementById('content_info').value;
-                     var type = (month >= date_obj.getMonth() + 1) && (date >= y)
-                     alert('y='+y);
-                     var type_str = ["补卡","请假"];
-                     var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + type_str[type] + '吗？');
-                     if (confirm_code == true){
-                        $.ajax({
-                            type: 'POST',
-                            url: "/send_requests/",
-                            data: {'user_id': getCookie('user_id'),
-                                    'request_type':type,
-                                    'request_content':content,
-                                    'date':date,
-                                    'month':month},
-                            success: function (data) {
-                                alert(data);
-                            },
-                            error: function () {
-                                alert("连接申请数据库异常，请刷新重试");
-                            }
-                        })
-                     } else{
-                         alert('申请失败，请重试！');
-                     }
-                 })
+                $(document).on('click',item_id,function () {
+
+                    var item_id_str = $(this).attr("id").substr(2);
+                    var item_id = parseInt(item_id_str) - 1;
+                    var month = parseInt(curr_month_Date.date[item_id].substr(0,2));
+                    var date = parseInt(curr_month_Date.date[item_id].substr(2,2));
+                    var content = document.getElementById('content_info').value;
+                    var type = (month >= date_obj.getMonth() + 1) && (date >= y);
+                    if(type)
+                        var type_str = "请假";
+                    else
+                        var type_str = "补卡";
+                    var confirm_code = window.confirm('您确定要申请' + month + '月' + date + '日' + type_str + '吗？');
+                    if (confirm_code == true){
+                       $.ajax({
+                           type: 'POST',
+                           url: "/send_requests/",
+                           data: {'user_id': getCookie('user_id'),
+                                   'request_type':type,
+                                   'request_content':content,
+                                   'date':date,
+                                   'month':month},
+                           success: function (data) {
+                               alert(data);
+                           },
+                           error: function () {
+                               alert("连接申请数据库异常，请刷新重试");
+                           }
+                       })
+                    }
+                })
              }
          }
      }
@@ -271,9 +279,9 @@
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     })
-     //返回
+
+    //联系
     $(document).on('click','#return_calendar',function () {
         window.location.href='/calendar/';
     });
-
  window.addEventListener("load", initall, false);

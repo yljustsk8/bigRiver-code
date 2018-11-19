@@ -38,16 +38,25 @@ urlpatterns = [
     path('calendar_request/',view.send_requests),
     path('register/',view.regist),
     path('login/regist/', view.regist),
-    path('face/', view.face),
-    path('face/uploadimage/',view.upload_image),
-    path('face/faceenter/',view.face_enter),
-    path('face/camera/',view.face_camera),
-    path('admin/', view.admin_employees),
+    path('login/regist/face/', view.face),  # 录入界面
+    path('login/face_login/',view.face_login),
+    # path('face/uploadimage/', view.upload_image),
+    path('face/face_identify/',view.face_identify),
+    path('face/face_identify_login/',view.face_identify_login),
+    path('face/face_enter/', view.face_enter),
+    path('face/identify/', view.identify),
+    path('admin/', view.admin),
     path('admin/employees/', view.admin_employees),
     path('admin/requests/', view.admin_requests),
-    path('boss/', view.boss_admins),
+    path('boss/', view.boss),
     path('boss/employees/', view.boss_admins),
     path('boss/requests/', view.boss_requests),
     path('send_requests/',view.send_requests),
-    path('handle_requests/', view.handle_requests)
+    path('handle_requests/', view.handle_requests),
+    path('check_employee/', view.check_employee),
+    path('calendar_employee/',view.calendar_employee),
+    path('login/login/regist/', view.regist),
+    path('face/face_identify/',view.face_identify), #打卡界面
+
+
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

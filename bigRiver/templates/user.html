@@ -22,6 +22,15 @@
 		<!--[if lte IE 8]>
 			 <link rel="stylesheet" type="text/css" href="/static/css/simple.css" />
 		<![endif]-->
+        <style>
+            #new_company{
+                padding-top: 30px;
+                cursor:pointer;
+            }
+            #search-container{
+                padding-left:20px
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -48,7 +57,7 @@
 							<!--需要修改的链接-->
 
 							<a class="htmleaf-icon icon-home" href="../aboutBOT/" title="了解我们" target="_blank"></a> |
-							<a class="htmleaf-icon icon-arrow-right3" href="../face/" title="今日打卡" target="_blank"></a>
+							<a class="htmleaf-icon icon-arrow-right3" href="" title="影分身之术" target="_blank"></a>
 						</p>
 					</section>
 					
@@ -69,7 +78,6 @@
 					</section>
 					
 					<section class="st-panel" id="st-panel-3">
-						<div class="st-cal" data-icon="z"></div>
 						<IFRAME NAME="content_frame" width=100% height=100% marginwidth=0 marginheight=0 SRC="../calendar/" ></IFRAME>
 					</section>
 					
@@ -91,9 +99,10 @@
                                     <input type="text" class="form-control" name = "email_edit"
                                            id="email_edit" placeholder="邮箱">
                                 </div>
+                                <button id ="submit-edit" class="btn-primary" onclick="submit()">提交更改</button>
+                                <a id="modol-again" href="/login/regist/face" target="_blank">重新录入人脸</a>
                             </div>
-                            <br>
-                                <button id = submit-edit class="btn btn-primary" onclick="submit()">提交更改</button>
+
 
 					</section>
 					
@@ -109,33 +118,45 @@
 			
         </div>
         <script>
-        function submit() {
-            var name = document.getElementById('name_edit').value;
-            var email = document.getElementById('email_edit').value;
-            var password = document.getElementById('password_edit').value;
-            if(name==''&&email==''&&password==''){
-                alert("您没有填写任何信息。")
+            function getCookie(name) {
+                var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+                if(arr=document.cookie.match(reg))
+
+                    return unescape(arr[2]);
+                else
+                    return null;
             }
-            else {
-                $.ajax({
-                    type: 'POST',
-                    url: "/useredit/",
-                    data: {
-                        'user_id': getCookie('user_id'),
-                        'name': name,
-                        'email': email,
-                        'password': password
-                    },
-                    success: function (data) {
-                        if (data)
-                            alert("修改资料成功！")
-                        else
-                            alert("fail.")
-                        window.location.reload();
-                    }
-                })
+            function submit(){
+                var name = document.getElementById('name_edit').value;
+                var email = document.getElementById('email_edit').value;
+                var password = document.getElementById('password_edit').value;
+                if(name==''&&email==''&&password==''){
+                    alert("您没有填写任何信息。")
+                }
+                else {
+                    $.ajaxSetup({
+                        headers: { "X-CSRFToken": getCookie("csrftoken") }
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: "/useredit/",
+                        data: {
+                            'user_id': getCookie('user_id'),
+                            'name': name,
+                            'email': email,
+                            'password': password
+                        },
+                        success: function (data) {
+                            if (data)
+                                alert("修改资料成功！")
+                            else
+                                alert("修改资料失败！")
+                            window.location.reload();
+                        }
+                    })
+                }
             }
-        }
         </script>
     </body>
 </html>

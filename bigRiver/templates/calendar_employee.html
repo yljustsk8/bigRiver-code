@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>日历签到功能</title>
+        <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="/static/js/calendar_employee.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/animate.css"/>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding:0;
+
+            }
+            #background{
+                margin-right: auto;
+                margin-left: auto;
+                background: white;
+                z-index: 10;
+            }
+
+            #home {
+                width:500px;
+                font-family: "Microsoft JhengHei";
+                background: #fffbf4;
+            }
+            #home tbody>tr>td {
+                border-radius: 4px;
+                border:1px solid white;
+                width: 14.28%;
+                height: 55px;
+                text-align: center;
+            }
+
+            .container{
+                margin-left: auto;
+                margin-right: auto;
+                width:500px;
+                font-family: "Microsoft JhengHei";
+                z-index: 10;
+            }
+
+            #thead {
+                list-style: none;
+                width:500px;
+                border-bottom-left-radius: 9px;
+                border-bottom-right-radius: 9px;
+            }
+
+            #thead li {
+                float: left;
+                width: 14.28%;
+                height:30px;
+                padding-top: 5px;
+                border-top: 5px;
+                font-size:large;
+                font-weight: bold;
+                background: #ffccc6;
+                /*margin-left: 0.9px;
+                margin-right: 0.9px;*/
+                text-align: center;
+                color:white;
+            }
+            #thead li:hover{
+                -webkit-transform: rotateY(360grad);
+                -moz-transform: rotateY(360grad);
+                -ms-transform: rotateY(360grad);
+                -o-transform: rotateY(360grad);
+                transform: rotateY(360grad);
+                -webkit-transition: 0.4s ease-in-out;
+                -moz-transition: 0.4s ease-in-out;
+                -ms-transition: 0.4s ease-in-out;
+                -o-transition: 0.4s ease-in-out;
+                transition: 0.4s ease-in-out;
+            }
+
+            .other{
+                display: inline-block;
+                float:right;
+                width: 125px;
+                margin-bottom: 0;
+                font-weight: normal;
+                text-align: center;
+                vertical-align: middle;
+                touch-action: manipulation;
+                cursor: pointer;
+                border: 1px solid transparent;
+                white-space: nowrap;
+                padding: 10px 20px;
+                font-size: 14px;
+                line-height: 1.42857;
+                border-radius: 4px;
+                font-family: "Microsoft JhengHei";
+                background-color: LightGrey;
+            }
+            .other:hover{
+                background-color: Gainsboro;
+
+            }
+            #sign_btn{
+                width: 125px;
+                height: 33px;
+                float: right;
+                display: inline-block;
+                margin-bottom: 0;
+                font-weight: normal;
+                text-align: center;
+                vertical-align: middle;
+                touch-action: manipulation;
+                cursor: pointer;
+                border: 1px solid transparent;
+                white-space: nowrap;
+                padding: 14px 40px;
+                font-size: 22px;
+                line-height: 1.42857;
+                border-radius: 4px;
+                font-family: "Microsoft JhengHei";
+                background-image: url("/static/images/sign.png");
+                background-size: 60px;
+                background-repeat: no-repeat;
+                /*background-color: #d9534f;*/
+                color:white;
+            }
+            #sign_btn:hover{
+                background-color: LightCoral;
+            }
+
+            #month {
+                background-color:#d9534f;
+                padding-top: 16px;
+                width: 500px;
+                height: 66px;
+                color:white;
+                display:inline-block;
+                font-weight: lighter;
+                text-align: center;
+                font-size: xx-large;
+                border-top-left-radius: 12px;
+                border-top-right-radius: 12px;
+            }
+
+            .in_time{
+                text-align: center;
+                cursor:pointer;
+                background-image: url("/static/images/pink_point_up.png");
+                background-size: 40px 20px;
+                background-repeat: no-repeat;
+                background-position: center 22%;
+                color:#d9534f
+            }
+            .out_time{
+                text-align: center;
+                cursor:pointer;
+                background-image: url("/static/images/pink_point_down.png");
+                background-size: 40px 20px;
+                background-repeat: no-repeat;
+                background-position: center 75%;
+                color:#d9534f
+            }
+            .qiandao{
+                text-align: center;
+                cursor:pointer;
+                background-image: url("/static/images/pink_point.png");
+                background-size: 40px;
+                background-repeat: no-repeat;
+                background-position: center;
+                color:#d9534f
+            }
+
+            .switchleft{
+                float:left;
+                width:40px;
+                height: 40px;
+            }
+            .switchright{
+                float:right;
+                width:40px;
+                height: 40px;
+            }
+
+            .tele{
+                margin-top: 5px;
+                margin-left: 10px;
+                width:30px;
+                height: 30px;
+            }
+            #apart{
+                height: 70px;
+            }
+            #btn_container{
+                position:absolute;
+                top:40%;
+                left:20%;
+                float:left;
+                clear: both;
+                z-index: 100;
+            }
+            /*#btn_container:before,
+            #btn_container:after{
+                content:'';
+                display:block;
+            }*/
+            #ask_for_leave:hover{
+                opacity: 0.3;
+                border:coral;
+                cursor: pointer;
+            }
+
+            #ask_container{
+                position: absolute;
+                left: 20%;
+                top: 30%;
+            }
+
+        </style>
+    </head>
+<body>
+<div id="background">
+
+    <div class="container">
+        <div id="apart">
+            <!--空格-->
+        </div>
+        <div id="month" class="animated fadeInUp">
+            <input id="check_lastmonth" class="switchleft" type="image" src="/static/images/left.png" >
+            <input id="back" class="switchright" type="image" src="/static/images/right.png" >
+        </div>
+
+        <table cellspacing="1" cellpadding="1"  id="home">
+            <ul id="thead" class="animated fadeInUp">
+                <li>SUN</li>
+                <li>MON</li>
+                <li>TUE</li>
+                <li>WED</li>
+                <li>THU</li>
+                <li>FRI</li>
+                <li>SAT</li>
+            </ul>
+            <tbody id="tbody" class="animated fadeInUp"></tbody>
+        </table>
+        <!--<button id="sign_days" class="other" >天数</button>-->
+    </div>
+
+</div>
+</body>

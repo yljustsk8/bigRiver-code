@@ -68,45 +68,45 @@ def delete_demo():
         the_model.delete()
 
 def basic_db_initialize():
-    cimodel1 = company_info(companyID='10001', taxNumber='91440300708461136T', bossID='1000001', name='tencent',
-                            adminID='1000004@1000005', departNames='Project@Propaganda@HumanResources')
-    cimodel2 = company_info(companyID='10002', taxNumber='91110108717743469K', bossID='1000002', name='baidu',
-                            adminID='1000006@1000007', departNames='Project@PublicRelations@HumanResources')
-    cimodel3 = company_info(companyID='10003', taxNumber='91330100716105852F', bossID='1000003', name='ali',
-                            adminID='1000008@1000009', departNames='Technique@Market@HumanResources')
+    cimodel1 = company_info(companyID='10001', taxNumber='91440300708461136T', bossID='1000001', name='腾讯',
+                            adminID='1000004@1000005', departNames='项目部@宣传部@人资部')
+    cimodel2 = company_info(companyID='10002', taxNumber='91110108717743469K', bossID='1000002', name='百度',
+                            adminID='1000006@1000007', departNames='项目部@公关部@人资部')
+    cimodel3 = company_info(companyID='10003', taxNumber='91330100716105852F', bossID='1000003', name='阿里',
+                            adminID='1000008@1000009', departNames='技术部@市场部@人资部')
 
-    pimodel1 = personal_info(userID='1000001', password='pwd1', name='Huateng.M', company='10001',
-                             departName='Project', modelLocation='1_1', email='htm@qq.com', title=3)
-    pimodel2 = personal_info(userID='1000002', password='pwd2', name='Yanhong.L', company='10002',
-                             departName='PublicRelations', modelLocation='1_2', email='yhl@qq.com', title=3)
-    pimodel3 = personal_info(userID='1000003', password='pwd3', name='Yun.M', company='10003',
-                             departName='HumanResources', modelLocation='1_3', email='mayun@qq.com', title=3)
+    pimodel1 = personal_info(userID='1000001', password='pwd1', name='马化腾', company='10001',
+                             departName='项目部', modelLocation='1_1', email='htm@qq.com', title=3)
+    pimodel2 = personal_info(userID='1000002', password='pwd2', name='李彦宏', company='10002',
+                             departName='公关部', modelLocation='1_2', email='yhl@qq.com', title=3)
+    pimodel3 = personal_info(userID='1000003', password='pwd3', name='马云', company='10003',
+                             departName='人资部', modelLocation='1_3', email='mayun@qq.com', title=3)
 
-    pimodel4 = personal_info(userID='1000004', password='pwd4', name='jyl', company='10001',
-                             departName='Propaganda', modelLocation='1_4', email='jyl@qq.com', title=2)
-    pimodel5 = personal_info(userID='1000005', password='pwd5', name='ano', company='10001',
-                             departName='HumanResources', modelLocation='1_5', email='ano@qq.com', title=2)
-    pimodel6 = personal_info(userID='1000006', password='pwd6', name='lyw', company='10002',
-                             departName='Project', modelLocation='1_6', email='lyw@qq.com', title=2)
-    pimodel7 = personal_info(userID='1000007', password='pwd7', name='bno', company='10002',
-                             departName='HumanResources', modelLocation='1_7', email='htm@qq.com', title=2)
-    pimodel8 = personal_info(userID='1000008', password='pwd8', name='lqf', company='10003',
-                             departName='Technique', modelLocation='1_8', email='lqf@hotmail.com', title=2)
-    pimodel9 = personal_info(userID='1000009', password='pwd9', name='cno', company='10003',
-                             departName='Technique', modelLocation='1_9', email='cno@qq.com', title=2)
+    pimodel4 = personal_info(userID='1000004', password='pwd4', name='江胤霖', company='10001',
+                             departName='宣传部', modelLocation='1_4', email='jyl@qq.com', title=2)
+    pimodel5 = personal_info(userID='1000005', password='pwd5', name='李煜炜', company='10001',
+                             departName='人资部', modelLocation='1_5', email='ano@qq.com', title=2)
+    pimodel6 = personal_info(userID='1000006', password='pwd6', name='姜文玉', company='10002',
+                             departName='项目部', modelLocation='1_6', email='lyw@qq.com', title=2)
+    pimodel7 = personal_info(userID='1000007', password='pwd7', name='张三', company='10002',
+                             departName='人资部', modelLocation='1_7', email='htm@qq.com', title=2)
+    pimodel8 = personal_info(userID='1000008', password='pwd8', name='李四', company='10003',
+                             departName='技术部', modelLocation='1_8', email='lqf@hotmail.com', title=2)
+    pimodel9 = personal_info(userID='1000009', password='pwd9', name='王二麻子', company='10003',
+                             departName='技术部', modelLocation='1_9', email='cno@qq.com', title=2)
 
-    pimodel10 = personal_info(userID='1000010', password='pwd10', name='tx1', company='10001',
-                             departName='Project', modelLocation='1_10', email='tx1@qq.com', title=1)
-    pimodel11 = personal_info(userID='1000011', password='pwd11', name='bd1', company='10002',
-                             departName='PublicRelation', modelLocation='2_1', email='bd1@qq.com', title=1)
-    pimodel12 = personal_info(userID='1000012', password='pwd12', name='al1', company='10003',
-                             departName='Market', modelLocation='2_2', email='htm@qq.com', title=1)
-    pimodel13 = personal_info(userID='1000013', password='pwd13', name='tx2', company='10001',
-                             departName='Project', modelLocation='2_3', email='tx2@qq.com', title=1)
-    pimodel14 = personal_info(userID='1000014', password='pwd14', name='bd2', company='10002',
-                             departName='PublicRelation', modelLocation='2_4', email='bd1@qq.com', title=1)
-    pimodel15 = personal_info(userID='1000015', password='pwd15', name='al2', company='10003',
-                             departName='Market', modelLocation='2_5', email='htm@qq.com', title=1)
+    pimodel10 = personal_info(userID='1000010', password='pwd10', name='刘志', company='10001',
+                             departName='项目部', modelLocation='1_10', email='tx1@qq.com', title=1)
+    pimodel11 = personal_info(userID='1000011', password='pwd11', name='李米根', company='10002',
+                             departName='公关部', modelLocation='2_1', email='bd1@qq.com', title=1)
+    pimodel12 = personal_info(userID='1000012', password='pwd12', name='蓝蓝路', company='10003',
+                             departName='市场部', modelLocation='2_2', email='htm@qq.com', title=1)
+    pimodel13 = personal_info(userID='1000013', password='pwd13', name='葛平', company='10001',
+                             departName='项目部', modelLocation='2_3', email='tx2@qq.com', title=1)
+    pimodel14 = personal_info(userID='1000014', password='pwd14', name='孙笑川', company='10002',
+                             departName='公关部', modelLocation='2_4', email='bd1@qq.com', title=1)
+    pimodel15 = personal_info(userID='1000015', password='pwd15', name='本塔特', company='10003',
+                             departName='市场部', modelLocation='2_5', email='htm@qq.com', title=1)
 
     model_list = [cimodel1, cimodel2, cimodel3, pimodel1, pimodel2, pimodel3, pimodel4, pimodel5, pimodel6,
                   pimodel7, pimodel8, pimodel9, pimodel10, pimodel11, pimodel12,pimodel13, pimodel14, pimodel15]
@@ -114,7 +114,30 @@ def basic_db_initialize():
         model.save()
 
 def request_data_initialize():
-    return True
+    rmodel1 = requests(requestID='1', senderID='1000010', receiverID='10001', date='2018-09-10', type=3,
+                       content='9月14日：请病假', dealed=0, result=-1, requestdate='9@14')
+    rmodel2 = requests(requestID='2', senderID='1000010', receiverID='10001', date='2018-09-10', type=4,
+                       content='9月1日：补卡', dealed=0, result=-1, requestdate='9@1')
+    rmodel3 = requests(requestID='3', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='9月3日：补卡', dealed=0, result=-1, requestdate='9@3')
+    rmodel4 = requests(requestID='4', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月1日：补卡', dealed=0, result=-1, requestdate='8@1')
+    rmodel5 = requests(requestID='5', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月2日：补卡', dealed=0, result=-1, requestdate='8@2')
+    rmodel6 = requests(requestID='6', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月3日：补卡', dealed=0, result=-1, requestdate='8@3')
+    rmodel7 = requests(requestID='7', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月4日：补卡', dealed=0, result=-1, requestdate='8@4')
+    rmodel8 = requests(requestID='8', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月5日：补卡', dealed=0, result=-1, requestdate='8@5')
+    rmodel9 = requests(requestID='9', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月6日：补卡', dealed=0, result=-1, requestdate='8@6')
+    rmodel10 = requests(requestID='10', senderID='1000013', receiverID='10001', date='2018-09-10', type=4,
+                       content='8月7日：补卡', dealed=0, result=-1, requestdate='8@7')
+    model_list = [rmodel1, rmodel2, rmodel3, rmodel4, rmodel5, rmodel6, rmodel7, rmodel8, rmodel9, rmodel10,]
+    for m in model_list:
+        m.save()
+
 
 def attendance_data_initialize():
     admodel1 = attendance_data_aug(userID='1000010',
@@ -190,3 +213,4 @@ if __name__=="__main__":
     print('yes!')
     # attendance_data_initialize()
     # basic_db_initialize()
+    request_data_initialize()

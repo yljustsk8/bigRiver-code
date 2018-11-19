@@ -1,21 +1,81 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">   
  <head>  
-  <title> 大江打卡系统管理系统 </title>
+  <title> 大江管理系统 </title>
   <meta charset='utf-8'>
   <link rel="stylesheet" href="/static/css/jquery.datatables.min.css" />
   <link rel="stylesheet" href="/static/css/buttons.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/animate.css"/>
   <style>
-  	tbody td{
+      body{
+          padding-top: 2%;
+       }
+      tbody td{
   		text-align: center;
-  	}
+  	    }
+
+      h1 {
+          text-align: center;
+          font-family: "微软雅黑";
+          font-weight: lighter;
+          color:gray;
+      }
+
+      #head {
+        list-style: none;
+        width:500px;
+        background-color: white;
+        color:gray;
+        border-radius: 9px;
+            }
+
+      .check{
+          width:80px;height:30px;border-radius:6px; curosr:pointer;border:transparent;color:white;background-color:#d9534f;
+      }
+      button.check :hover{
+
+          background-color:#ffccc6;
+      }
+
+      button.modify :hover{
+          background-color:#ffccc6 ;
+      }
+
+    #head li {
+        float: left;
+        width: 14.28%;
+        height:30px;
+        padding-top: 5px;
+        border-top: 5px;
+        font-size:large;
+        font-weight: bold;
+        background: #ffccc6;
+        /*margin-left: 0.9px;
+        margin-right: 0.9px;*/
+        text-align: center;
+        color:white;
+    }
+    #head li:hover{
+        -webkit-transform: rotateY(360grad);
+        -moz-transform: rotateY(360grad);
+        -ms-transform: rotateY(360grad);
+        -o-transform: rotateY(360grad);
+        transform: rotateY(360grad);
+        -webkit-transition: 0.4s ease-in-out;
+        -moz-transition: 0.4s ease-in-out;
+        -ms-transition: 0.4s ease-in-out;
+        -o-transition: 0.4s ease-in-out;
+        transition: 0.4s ease-in-out;
+    }
+
+
   </style>
  </head>  
   
  <body>  
- 	<h1>大江打卡系统管理系统</h1>
+ 	<h1>请求一览</h1>
  	<table id="user_table" class="display" role="grid" aria-describedby="user_table_info">
  		<thead>
-            <tr>
+            <tr id="head" class="animated fadeInUp">
                 <th>请求号</th>
                 <th>员工ID</th>
                 <th>姓名</th>
@@ -70,10 +130,10 @@
                     var paras_0 = value.request_id+'@'+value.type+'@0';
                     var item = "<tr><td>" + value.request_id + "</td><td>" + value.user_id +
                         "</td><td>" + value.name + "</td><td>" + value.dpmt +
-                        "</td><td>" + '<button style="width:70px;height:30px" onclick="show_content(&quot;'+value.content+'&quot;)">'+value.type+'</button>' +
-                        "</td><td>" + '<button style="width:60px;height:30px" onclick="check_employee('+value.user_id+')">查看</button>' +
-                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request(&quot;'+paras_1+'&quot;)">同意</button>' +
-                        "</td><td>" + '<button style="width:60px;height:30px" onclick="handle_request(&quot;'+paras_0+'&quot;)">否决</button>' + "</td></tr>" ;
+                        "</td><td>" + '<button class="check" onclick="show_content(&quot;'+value.content+'&quot;)">'+value.type+'</button>' +
+                        "</td><td>" + '<button class="check" onclick="check_employee(&quot;'+value.user_id+'&quot;)">查看</button>' +
+                        "</td><td>" + '<button class="check" onclick="handle_request(&quot;'+paras_1+'&quot;)">同意</button>' +
+                        "</td><td>" + '<button class="check" onclick="handle_request(&quot;'+paras_0+'&quot;)">否决</button>' + "</td></tr>" ;
 
                     $("#user_table tbody").append(item);
                 });
@@ -99,7 +159,7 @@
     }
 
     function check_employee(user_id) {
-        alert("id = " + user_id + " checked!");
+        window.open('/check_employee?employee_id='+user_id);
     }
 
     function handle_request(paras) {
@@ -156,7 +216,7 @@
                 {
                     text: '查看员工',
                     action: function(){
-                        window.location.href="../"
+                        window.location.href="../employees/"
                     }
                 }
 	        ]

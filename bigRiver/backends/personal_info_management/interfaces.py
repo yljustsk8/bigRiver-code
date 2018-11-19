@@ -54,6 +54,7 @@ def register(userID, password, name, email):
         #注册成功
         the_model = personal_info(userID=userID, password=password, name=name, email=email, title=0)
         the_model.save()
+        userID_rt = userID
         status = True
         content_rt = "register success!"
 
@@ -160,10 +161,9 @@ def get_info_by_id(userID):
         'title': the_model.title,
         'modelLocation': the_model.modelLocation,
         'email': the_model.email,
-        'password': the_model.password
+        'password': the_model.password,
     }
     return info_dict
-    return the_model.name, the_model.company, the_model.departName, the_model.title, the_model.modelLocation
 
 # 接口8：（内外皆用接口）设置用户权限
 # 返回布尔值

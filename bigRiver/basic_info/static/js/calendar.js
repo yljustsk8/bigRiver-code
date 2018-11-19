@@ -1,4 +1,4 @@
-     var localDate = {
+  var localDate = {
                      date: [],
                      time_in:[],
                      status_in:[],
@@ -63,7 +63,9 @@
          $.ajax({
              type: 'POST',
              url: "/calendar/",
-             data: {'user_id':getCookie('user_id')},
+             data: {
+                 'user_id':getCookie('user_id')
+             },
              success:function(data) {
                  for(var i = 1;i<12;i++){
                      value =data[i.toString()];
@@ -145,6 +147,13 @@
             var item_id = "#td" + i;
             $(document).off('click', item_id);
         }
+        curr_month_Date = {
+                     date: [],
+                     time_in:[],
+                     status_in:[],
+                     time_out:[],
+                     status_out:[]
+                 };
         for (var i = 0; i < localDate.date.length; i++) {
             var month_num = parseInt(localDate.date[i].substr(0,2));
              if (month_num == prep) {
@@ -153,6 +162,8 @@
                  curr_month_Date.date.push(date_num);
                  curr_month_Date.time_in.push(localDate.time_in[i]);
                  curr_month_Date.time_out.push(localDate.time_out[i]);
+                 curr_month_Date.status_in.push(localDate.status_in[i]);
+                 curr_month_Date.status_out.push(localDate.status_out[i]);
                  if (localDate.status_in[i]==1 && localDate.status_out[i]==1) {
                      $(item_id).addClass("qiandao");
                  } else if (localDate.status_in[i]==1 && localDate.status_out[i]==0) {
@@ -163,7 +174,19 @@
                  $(document).on('click',item_id,function () {
                      var item_id_str = $(this).attr("id").substr(2);
                      var item_id = parseInt(item_id_str) - 1;
-                     alert("第" + curr_month_Date.date[item_id] + "日\n上班时间："+ curr_month_Date.time_in[item_id] + "\n下班时间：" + curr_month_Date.time_out[item_id]);
+                     var content = '正常';
+                     if(curr_month_Date.status_in[item_id]=='0'&&curr_month_Date.status_out[item_id]=='1')
+                         content = '迟到';
+                     else if(curr_month_Date.status_in[item_id]=='1'&&curr_month_Date.status_out[item_id]=='0')
+                         content = '早退';
+                     else if(curr_month_Date.status_in[item_id]=='0'&&curr_month_Date.status_out[item_id]=='0')
+                         content = '迟到早退';
+                     else if(curr_month_Date.status_in[item_id]=='2'&&curr_month_Date.status_out[item_id]=='2')
+                         content = '请假';
+                     else if(curr_month_Date.status_in[item_id]=='3'&&curr_month_Date.status_out[item_id]=='3')
+                         content = '没上班';
+
+                     alert("第" + curr_month_Date.date[item_id] + "日状态：" + content + "\n上班时间："+ curr_month_Date.time_in[item_id] + "\n下班时间：" + curr_month_Date.time_out[item_id]);
                  })
              }
          }
@@ -174,16 +197,16 @@
         $("#sign_btn").addClass("animated tada");
     })
     //当天签到添加样式
-    $(document).on('click','#sign_btn',function () {
+    /*$(document).on('click','#sign_btn',function () {
         $("tr").remove();
         $("p").remove();
         //initall();
         dateHandler(month_first_day, curr_month_obj, curr_month_day_num, curr_month_str);
-        //给此月签到的加BUFF*/
+        //给此月签到的加BUFF
         checkDate(monthCheck);
         var thisDay = "#td" + y;
         var checkPic = false;
-        /**thisBlock="0909"*/
+        /**thisBlock="0909"
         if (curr_month_num > 10 && y < 10) {
             var thisBlock = curr_month_num.toString() + y.toString();
         } else if (curr_month_num < 10 && y> 10) {
@@ -206,7 +229,7 @@
             alert("已签到！");
             localDate.date.push(thisBlock);
         }
-    });
+    });*/
 
     //查询已签到天数
     $(document).on('click','#sign_days',function () {
@@ -214,12 +237,12 @@
     });
 
     //查询历史记录
-    $(document).on('click','#check_lastmonth',function () {
+    $(document).on('click','#check_lastmonth', function lastMonth() {
         $("tr").remove();
         $("p").remove();
         if (curr_month_num > 0 && n > 0) {
              curr_month_num--;n--;
-         }
+        }
         var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
         var d = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
         var conter = d.getDate(); //获取当前月的天数
@@ -230,20 +253,43 @@
     });
 
     //返回上月记录
-    $(document).on('click','#back',function () {
+    $(document).on('click','#back',function nextMonth() {
         $("tr").remove();
         $("p").remove();
-        if (curr_month_num < x) {
-             curr_month_num++;n++;
+        if (curr_month_num <13 && n < 13) {
+            curr_month_num++;
+            n++;
         }
         var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
         var d = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
         var conter = d.getDate(); //获取当前月的天数
-        var monthNum = "0" + (curr_month_num) + "月";
+        if(parseInt(curr_month_num)<10)
+            var monthNum = "0" + (curr_month_num) + "月";
+        else
+            var monthNum = (curr_month_num) + "月";
         var monthCheck = curr_month_num;
         dateHandler(monthFirst, d, conter, monthNum);
         checkDate(monthCheck);
     })
+
+  function nextMonth() {
+        $("tr").remove();
+        $("p").remove();
+        if (curr_month_num <13 && n < 13) {
+            curr_month_num++;
+            n++;
+        }
+        var monthFirst = new Date(date_obj.getFullYear(), parseInt(n), 1).getDay(); //获取当月的1日等于星期几
+        var d = new Date(date_obj.getFullYear(), parseInt(curr_month_num), 0); //获取月
+        var conter = d.getDate(); //获取当前月的天数
+        if(parseInt(curr_month_num)<10)
+            var monthNum = "0" + (curr_month_num) + "月";
+        else
+            var monthNum = (curr_month_num) + "月";
+        var monthCheck = curr_month_num;
+        dateHandler(monthFirst, d, conter, monthNum);
+        checkDate(monthCheck);
+    }
 
     //联系
     $(document).on('click','#ask_for_leave',function () {

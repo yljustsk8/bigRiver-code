@@ -47,7 +47,7 @@ def get_new_result(old_str):
 
 #获取当前时间
 def get_current_time():
-    nowtime = datetime.datetime.now()+datetime.timedelta(hours=8)
+    nowtime = datetime.datetime.now()
     month = int(nowtime.strftime('%m'))
     date = int(nowtime.strftime('%d'))
     hms = nowtime.strftime('%H:%M:%S')
@@ -56,7 +56,7 @@ def get_current_time():
 
 class data(object):
     #初始化函数
-    def __init__(self, userID, month, date):
+    def __init__(self, userID, month='', date=''):
         self.userID = userID
         self.month, self.date, _, _ = get_current_time()
         #可能是一个debug点

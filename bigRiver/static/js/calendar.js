@@ -145,6 +145,13 @@
             var item_id = "#td" + i;
             $(document).off('click', item_id);
         }
+        curr_month_Date = {
+                     date: [],
+                     time_in:[],
+                     status_in:[],
+                     time_out:[],
+                     status_out:[]
+                 };
         for (var i = 0; i < localDate.date.length; i++) {
             var month_num = parseInt(localDate.date[i].substr(0,2));
              if (month_num == prep) {
@@ -153,6 +160,8 @@
                  curr_month_Date.date.push(date_num);
                  curr_month_Date.time_in.push(localDate.time_in[i]);
                  curr_month_Date.time_out.push(localDate.time_out[i]);
+                 curr_month_Date.status_in.push(localDate.status_in[i]);
+                 curr_month_Date.status_out.push(localDate.status_out[i]);
                  if (localDate.status_in[i]==1 && localDate.status_out[i]==1) {
                      $(item_id).addClass("qiandao");
                  } else if (localDate.status_in[i]==1 && localDate.status_out[i]==0) {
@@ -163,7 +172,19 @@
                  $(document).on('click',item_id,function () {
                      var item_id_str = $(this).attr("id").substr(2);
                      var item_id = parseInt(item_id_str) - 1;
-                     alert("第" + curr_month_Date.date[item_id] + "日\n上班时间："+ curr_month_Date.time_in[item_id] + "\n下班时间：" + curr_month_Date.time_out[item_id]);
+                     var content = '正常';
+                     if(curr_month_Date.status_in[item_id]=='1'&&curr_month_Date.status_out[item_id]=='0')
+                         content = '迟到';
+                     else if(curr_month_Date.status_in[item_id]=='0'&&curr_month_Date.status_out[item_id]=='1')
+                         content = '早退';
+                     else if(curr_month_Date.status_in[item_id]=='1'&&curr_month_Date.status_out[item_id]=='1')
+                         content = '迟到早退';
+                     else if(curr_month_Date.status_in[item_id]=='2'&&curr_month_Date.status_out[item_id]=='2')
+                         content = '请假';
+                     else if(curr_month_Date.status_in[item_id]=='3'&&curr_month_Date.status_out[item_id]=='3')
+                         content = '没上班';
+
+                     alert("第" + curr_month_Date.date[item_id] + "日状态：" + content + "\n上班时间："+ curr_month_Date.time_in[item_id] + "\n下班时间：" + curr_month_Date.time_out[item_id]);
                  })
              }
          }
@@ -199,13 +220,9 @@
                 checkPic = true;
             }
         }
-        if (checkPic == true) {
-            alert("您今天已经签到了！");
-        } else {
-            $(thisDay).addClass("qiandao");
+            window.location.href="/face/face_identify/";
             alert("已签到！");
             localDate.date.push(thisBlock);
-        }
     });
 
     //查询已签到天数

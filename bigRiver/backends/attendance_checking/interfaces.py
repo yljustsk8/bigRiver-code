@@ -20,16 +20,36 @@ import datetime
 #
 
 #正常打卡
-def check_in(img_url):
-    img = cv2.imread(img_url)
-    userID = face_identify(img)
-    print(userID)
-    if(userID):
-        #识别成功
-        the_data = insert.data(userID=userID)
+def check_in(img_urls):
+    print(img_urls)
+    if len(img_urls)!=3:
+        return False
+    res=[]
+    i=0
+    for img_url in img_urls:
+        print("img ",i)
+        i+=1
+        img = cv2.imread(img_url)
+        userID = face_identify(img)
+        print("userID",userID)
+        if userID is None:
+            return False
+        else:
+            res.append(userID)
+    #识别成功
+    if len(res)==3 and res[0]==res[1] and res[0]==res[2]:
+        user_id=res[0]
+        print(user_id)
+        the_data = insert.data(userID=user_id)
         the_data.check()
+        return True
     else:
         return False
+
+def daka(userID):
+    the_data = insert.data(userID=userID)
+    the_data.check()
+    return True
 
 #查看单个员工单月日历
 def view_single_calendar(m, uid):
@@ -40,6 +60,7 @@ def view_single_calendar(m, uid):
 
 #查看单个员工单年日历
 def view_single_year_calendar(userID):
+    print(userID)
     result_dict = {}
     for month in range(12):
         result_dict[month+1] = view_single_calendar(month+1, uid=userID)
@@ -106,8 +127,12 @@ def view_all_calendar(m, d, uid):
             l = value.split('@')
             t1 = l[0].split('&')[0]
             status1 = int(l[0].split('&')[1])
-            t2 = l[1].split('&')[0]
-            status2 = int(l[1].split('&')[1])
+            if(len(l)==2):
+                t2 = l[1].split('&')[0]
+                status2 = int(l[1].split('&')[1])
+            else:
+                t2 = ''
+                status2 = 1
             if(status1==1 and status2==1):
                 status = '正常出席'
             elif(status1==0 and status2==1):
@@ -126,7 +151,7 @@ def view_all_calendar(m, d, uid):
         attendance_dict = {
             'user_id': key,
             'name': info_dict_tmp['name'],
-            'dpmt': info_dict_tmp['department'],
+            'dpmt': info_dict_tmp['departName'],
             'time_in': t1,
             'time_out': t2,
             'status': status,

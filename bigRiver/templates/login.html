@@ -46,6 +46,16 @@
     <script src="/static/js/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        #face-login{
+            position:relative;
+            top:-70px;
+            font-family: 微软雅黑;
+            color: #f35653;
+            font-size: x-large;
+        }
+    </style>
+
 </head>
 <body>
 <div class="gtco-loader"></div>
@@ -63,26 +73,6 @@
                     <div class="col-sm-4 col-xs-12">
                         <div id="gtco-logo"><a href="index.html">BOT <em>.</em></a></div>
                     </div><!--左上角logo-->
-
-                    <!--右上角横条菜单
-                    <div class="col-xs-8 text-right menu-1">
-                        <ul>
-                            <li><a href="features.html">Features</a></li>
-                            <li><a href="tour.html">Tour</a></li>
-                            <li class="has-dropdown">
-                                <a href="#">Dropdown</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">eCommerce</a></li>
-                                    <li><a href="#">Branding</a></li>
-                                    <li><a href="#">API</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li class="btn-cta"><a href="#"><span>Get started</span></a></li>
-                        </ul>
-                    </div><!--右上角横条菜单-->
                 </div>
 
             </div>
@@ -109,67 +99,48 @@
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-content-inner active" data-content="signup">
-                                                <form action="regist/" method="post" enctype="multipart/form-data">{% csrf_token %}
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="name_signUp">Real Name</label>
-                                                            <input type="text" class="form-control" name = "name_signUp"
-                                                                   id="name_signUp" placeholder="请输入姓名">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="userID_signUp">userID</label>
-                                                            <input type="text" class="form-control" name = "userID_signUp"
-                                                                   id="userID_signUp" placeholder="十位内的英文、数字和下划线">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="password_signUp">Password</label>
-                                                            <input type="password" class="form-control" name = "password_signUp"
-                                                                   id="password_signUp" placeholder="输入您的密码">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="e-mail_signUp">E-mail</label>
-                                                            <input type="text" class="form-control" id="email_signUp"
-                                                                   name = "email_signUp" placeholder="请输入注册邮箱">
-                                                        </div>
-                                                    </div>
+                                                <div class="col-md-12">
+                                                    <label for="name_signUp">Real Name</label>
+                                                    <input type="text" class="form-control" name = "name_signUp"
+                                                           id="name_signUp" placeholder="请输入姓名">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="userID_signUp">userID</label>
+                                                    <input type="text" class="form-control" name = "userID_signUp"
+                                                           id="userID_signUp" placeholder="十位内的英文、数字和下划线">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="password_signUp">Password</label>
+                                                    <input type="password" class="form-control" name = "password_signUp"
+                                                           id="password_signUp" placeholder="输入您的密码">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="e-mail_signUp">E-mail</label>
+                                                    <input type="text" class="form-control" id="email_signUp"
+                                                           name = "email_signUp" placeholder="请输入注册邮箱">
+                                                </div>
 
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <button id = "register" class="btn btn-primary">Sign Up</button>
-                                                        </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <button id = "register"  class="btn btn-primary">Sign Up</button>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
 
                                             <div class="tab-content-inner" data-content="login">
-                                                 <form action="../login/" method="post" enctype="multipart/form-data">{% csrf_token %}
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="username">Username or Email</label>
-                                                            <input type="text" class="form-control" autofocus="autofocus"
-                                                                   name="user_id" id="user_id" placeholder="请输入姓名或注册ID">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <label for="password">Password</label>
-                                                            <input type="password" class="form-control" id="password"
-                                                                   name="password" placeholder="输入您的密码">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row form-group">
-                                                        <div class="col-md-12">
-                                                            <button class="btn btn-primary" id="login">Login </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                <div class="col-md-12">
+                                                    <label for="username">UserID</label>
+                                                    <input type="text" class="form-control" autofocus="autofocus"
+                                                           name="user_id" id="user_id" placeholder="请输入注册ID">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" class="form-control" id="password"
+                                                           name="password" placeholder="输入您的密码">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button class="btn btn-primary" id="login">Login </button>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -184,6 +155,8 @@
         </header>
 
         <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+            <img src="/static/images/face.png" style="height: 40px;width: 40px;position: relative;top:-75px;">
+            <a id="face-login" href="/face/face_identify_login/" target="_blank">人脸识别打卡</a>
             <h2>大江打卡系统</h2>
             <p>@BigOldTwo有限公司</p>
         </div>
@@ -193,36 +166,72 @@
         </div>
 
         <!-- jQuery -->
-        <script src="/static/jquery.min.js"></script>
-
+        <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script>
             $(document).on("click",'#login',function () {
+                if ($('#user_id').val()==''){
+                    alert("您输入的用户名不能为空！");
+                    return;
+                }else if($('#password').val()==''){
+                    alert("您输入的密码不能为空！");
+                    return;
+                }
+                var userID=$('#user_id').val();
                 $.ajax({
                     type: 'POST',
                     url: "/login/",
-                    data: {'password':$(document).getElementById('password'),
-                            'user_id':$(document).getElementById('user_id')},
+                    data: {'password':$('#password').val(),
+                            'user_id':userID},
                     success:function (data) {
-                        alert(data);
+                        if(!data['status']){
+                            alert(data['content']);
+                            window.location.reload();
+                        }else{
+                            {#document.cookie="user_id="+userID;#}
+                            $.cookie('user_id',data.userID,{path:'/'});
+                            var titles = ['user', 'user', 'admin', 'boss']
+                            var jumpTo = titles[data['title']];
+                            window.location.href = "/" + jumpTo;
+                        }
                     }
                 })
             })
 
             $(document).on("click",'#register',function () {
+                if ($('#name_signUp').val() == ""){
+                    alert("请输入您的真实姓名！")
+                    return;
+                }else if($('#userID_signUp').val()==''){
+                    alert("您自定义的ID不能为空！");
+                    return;
+                }else if($('#password_signUp').val()==''){
+                    alert("您输入的密码不能为空！");
+                    return;
+                }else if($('#email_signUp').val()==''){
+                    alert("您输入的邮箱不能为空！");
+                    return;
+                }else if($('#email_signUp').val().search('@')==-1){
+                    alert("错误的邮箱格式！")
+                    return;
+                }
+                var userID=$('#userID_signUp').val();
                 $.ajax({
                     type: 'POST',
                     url: "login/regist/",
-                    data: {'password':$(document).getElementById('password_signUp'),
-                            'user_id':$(document).getElementById('userID_signUp'),
-                            'e-mail':$(document).getElementById('email_signUp'),
-                            'name':$(document).getElementById('name_signUp'),},
+                    data: {'password_signUp':$('#password_signUp').val(),
+                            'userID_signUp':userID,
+                            'email_signUp':$('#email_signUp').val(),
+                            'name_signUp':$('#name_signUp').val(),},
                     success:function (data) {
-                        if (data[0]){
-                            alert("Register successed!");
-                            window.location.href='/login/';
+                        if (data['status']){
+                            alert("基本信息已完善，下面开始录入人脸！");
+                            {#document.cookie="user_id="+userID;#}
+                            $.cookie('user_id',data.userID,{path:'./cookie'});
+                            window.open('/login/regist/face/');
                         }
                         else
-                            alert('Repeated ID!');
+                            alert(data['content']);
                     }
                 })
             })

@@ -134,15 +134,15 @@ def get_request(uID):
     title = pim.get_info_by_id(uID)['title']
     if(title == 0 or title == 1):
         #普通用户
-        receive_list = requests.objects.filter(receiverID=uID)
-        send_list = requests.objects.filter(senderID=uID)
+        receive_list = requests.objects.filter(receiverID=uID).filter(dealed=0)
+        send_list = requests.objects.filter(senderID=uID).filter(dealed=0)
         the_list = receive_list + send_list
     elif(title == 2 or title == 3):
         # 管理员/boss
         company_id = pim.get_company_ID(uID)
-        receive_list = requests.objects.filter(receiverID=company_id)
+        receive_list = requests.objects.filter(receiverID=company_id).filter(dealed=0)
         print(receive_list)
-        send_list = requests.objects.filter(senderID=company_id)
+        send_list = requests.objects.filter(senderID=company_id).filter(dealed=0)
         print(send_list)
         # the_list = receive_list + send_list
     result = {'count':10,
@@ -155,31 +155,35 @@ def get_request(uID):
         else:
             info_dict = pim.get_info_by_id(msg.senderID)
             name = info_dict['name']
-            department = info_dict['department']
+            department = info_dict['departName']
         msg_dict = {
                         'request_id': msg.requestID,
                         'user_id': msg.senderID,
                         'name': name,
                         'dpmt': department,
                         'type': msg_type[msg.type-1],
-                        'content': msg.content
+                        'content': msg.content,
+                        'date': msg.date
                     }
         result['info'].insert(len(result['info']), msg_dict)
     # 发出的
     for msg in send_list:
         if(msg.type == 2):
-            info_dict = pim.get_info_by_id(msg.senderID)
+            info_dict = pim.get_info_by_id(msg.receiverID)
             name = info_dict['name']
-            department = info_dict['department']
+            department = info_dict['departName']
         else:
-            name, _, department, _, _ = pim.get_info_by_id(msg.senderID)
+            info_dict = pim.get_info_by_id(msg.receiverID)
+            name = info_dict['name']
+            department = info_dict['departName']
         msg_dict = {
             'request_id': msg.requestID,
             'user_id': msg.receiverID,
             'name': name,
             'dpmt': department,
             'type': msg_type[msg.type - 1],
-            'content': msg.content
+            'content': msg.content,
+            'date': msg.date
         }
         result['info'].insert(len(result['info']), msg_dict)
     print(result)

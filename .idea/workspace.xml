@@ -2,13 +2,391 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec876c9f-4805-4aed-a0f2-4bf8c616a92b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/bigRiver/templates/camera-identify-login.html" />
       <change beforePath="$PROJECT_DIR$/.idea/bigRiver-code.iml" afterPath="$PROJECT_DIR$/.idea/bigRiver-code.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py" afterPath="$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/.idea/bigRiver.iml" afterPath="$PROJECT_DIR$/bigRiver/.idea/bigRiver.iml" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/.idea/misc.xml" afterPath="$PROJECT_DIR$/bigRiver/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/.idea/modules.xml" afterPath="$PROJECT_DIR$/bigRiver/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/.idea/workspace.xml" afterPath="$PROJECT_DIR$/bigRiver/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/__init__.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/admin.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/admin.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/apps.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/apps.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/migrations/0001_initial.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/migrations/__init__.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/migrations/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/models.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/models.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/tests.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/tests.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/attendance_data/views.py" afterPath="$PROJECT_DIR$/bigRiver/attendance_data/views.py" />
       <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/face_model.py" afterPath="$PROJECT_DIR$/bigRiver/backends/ai/face_model.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/0.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/1.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/10.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/100.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/101.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/102.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/103.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/104.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/105.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/106.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/107.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/108.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/109.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/11.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/110.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/111.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/112.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/113.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/114.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/115.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/116.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/117.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/118.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/119.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/12.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/120.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/121.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/122.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/123.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/124.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/125.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/126.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/127.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/128.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/129.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/13.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/130.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/131.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/132.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/133.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/134.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/135.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/136.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/137.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/138.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/139.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/14.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/140.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/141.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/142.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/143.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/144.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/145.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/146.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/147.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/148.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/149.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/15.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/150.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/151.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/152.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/153.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/154.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/155.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/156.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/157.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/158.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/159.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/16.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/160.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/161.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/162.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/163.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/164.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/165.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/166.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/167.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/168.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/169.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/17.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/170.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/171.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/172.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/173.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/174.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/175.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/176.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/177.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/178.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/179.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/18.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/19.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/20.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/21.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/22.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/23.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/24.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/25.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/26.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/27.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/28.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/29.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/3.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/30.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/31.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/32.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/33.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/34.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/35.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/36.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/37.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/38.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/39.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/40.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/41.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/42.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/43.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/44.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/45.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/46.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/47.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/48.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/49.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/5.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/50.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/51.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/52.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/53.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/54.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/55.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/56.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/57.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/58.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/59.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/6.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/60.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/61.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/62.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/63.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/64.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/65.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/66.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/67.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/68.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/69.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/7.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/70.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/71.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/72.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/73.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/74.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/75.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/76.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/77.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/78.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/79.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/8.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/80.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/81.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/82.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/83.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/84.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/85.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/86.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/87.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/88.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/89.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/9.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/90.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/91.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/92.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/93.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/94.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/95.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/96.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/97.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/98.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/groups/0/person_0/99.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/light_cnn.py" afterPath="$PROJECT_DIR$/bigRiver/backends/ai/light_cnn.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/model/LightCNN_29Layers_checkpoint.pth.tar" afterPath="$PROJECT_DIR$/bigRiver/backends/ai/model/LightCNN_29Layers_checkpoint.pth.tar" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/ai/test.py" afterPath="$PROJECT_DIR$/bigRiver/backends/ai/test.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/attendance_checking/insert.py" afterPath="$PROJECT_DIR$/bigRiver/backends/attendance_checking/insert.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/attendance_checking/interfaces.py" afterPath="$PROJECT_DIR$/bigRiver/backends/attendance_checking/interfaces.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/company_management/interfaces.py" afterPath="$PROJECT_DIR$/bigRiver/backends/company_management/interfaces.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/mail_management/interfaces.py" afterPath="$PROJECT_DIR$/bigRiver/backends/mail_management/interfaces.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/backends/personal_info_management/interfaces.py" afterPath="$PROJECT_DIR$/bigRiver/backends/personal_info_management/interfaces.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/__init__.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/admin.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/admin.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/apps.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/apps.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/migrations/0001_initial.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/migrations/0002_auto_20180827_1719.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/migrations/0002_auto_20180827_1719.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/migrations/__init__.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/migrations/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/models.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/models.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/animate.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/animate.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/bootstrap.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/bootstrap.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/buttons.dataTables.min.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/buttons.dataTables.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/default.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/default.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/demo.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/demo.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/Fontby.txt" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/Fontby.txt" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/license.txt" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/license.txt" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/raphaelicons-webfont.svg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/fonts/raphaelicons-webfont.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/icomoon.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/icomoon.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/jquery.datatables.min.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/jquery.datatables.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/magnific-popup.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/magnific-popup.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/normalize.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/normalize.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/owl.carousel.min.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/owl.carousel.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/owl.theme.default.min.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/owl.theme.default.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/sign.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/sign.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/simple.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/simple.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/style.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/style_user.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/style_user.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/css/themify-icons.css" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/css/themify-icons.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.eot" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.svg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.ttf" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.woff" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.eot" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.ttf" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.woff" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/icomoon/icomoon_user.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.eot" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.svg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.ttf" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.woff" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/fonts/themify-icons/themify.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_4.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_4.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_5.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_5.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_6.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_6.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_7.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_7.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_8.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_8.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/img_bg_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/iphone.png" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/iphone.png" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/loader.gif" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/loader.gif" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/lqf.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/lqf.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/macbook.png" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/macbook.png" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/images/person_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/bootstrap.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.flash.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.flash.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.html5.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.html5.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.print.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/buttons.print.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_request.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_request.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/dataTables.buttons.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/dataTables.buttons.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.countTo.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.countTo.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.datatables.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.datatables.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.easing.1.3.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.easing.1.3.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.magnific-popup.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.magnific-popup.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.stellar.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.stellar.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.waypoints.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jquery.waypoints.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jszip.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/jszip.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/magnific-popup-options.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/magnific-popup-options.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/main.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/main.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/modernizr-2.6.2.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/modernizr-2.6.2.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/modernizr.custom.79639.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/modernizr.custom.79639.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/owl.carousel.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/owl.carousel.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/pdfmake.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/pdfmake.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/respond.min.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/respond.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/user_company.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/user_company.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/static/js/vfs_fonts.js" afterPath="$PROJECT_DIR$/bigRiver/basic_info/static/js/vfs_fonts.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/tests.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/tests.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/basic_info/views.py" afterPath="$PROJECT_DIR$/bigRiver/basic_info/views.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/__init__.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/check_code.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/check_code.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py" />
       <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/urls.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/urls.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/view.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/view.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/bigRiver/wsgi.py" afterPath="$PROJECT_DIR$/bigRiver/bigRiver/wsgi.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/manage.py" afterPath="$PROJECT_DIR$/bigRiver/manage.py" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/animate.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/animate.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/bootstrap.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/bootstrap.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/buttons.dataTables.min.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/buttons.dataTables.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/default.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/default.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/demo.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/demo.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/fonts/Fontby.txt" afterPath="$PROJECT_DIR$/bigRiver/static/css/fonts/Fontby.txt" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/fonts/license.txt" afterPath="$PROJECT_DIR$/bigRiver/static/css/fonts/license.txt" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/fonts/raphaelicons-webfont.svg" afterPath="$PROJECT_DIR$/bigRiver/static/css/fonts/raphaelicons-webfont.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/icomoon.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/icomoon.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/jquery.datatables.min.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/jquery.datatables.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/magnific-popup.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/magnific-popup.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/normalize.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/normalize.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/owl.carousel.min.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/owl.carousel.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/owl.theme.default.min.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/owl.theme.default.min.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/sign.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/sign.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/simple.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/simple.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/style.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/style.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/style_user.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/style_user.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/css/themify-icons.css" afterPath="$PROJECT_DIR$/bigRiver/static/css/themify-icons.css" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/bootstrap/glyphicons-halflings-regular.woff2" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.eot" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.svg" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.ttf" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.woff" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/icomoon/icomoon.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.eot" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.eot" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.svg" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.svg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.ttf" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.ttf" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.woff" afterPath="$PROJECT_DIR$/bigRiver/static/fonts/themify-icons/themify.woff" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_4.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_4.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_5.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_5.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_6.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_6.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_7.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_7.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_8.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_8.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_bg_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_bg_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_bg_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_bg_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/img_bg_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/img_bg_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/iphone.png" afterPath="$PROJECT_DIR$/bigRiver/static/images/iphone.png" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/loader.gif" afterPath="$PROJECT_DIR$/bigRiver/static/images/loader.gif" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/lqf.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/lqf.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/macbook.png" afterPath="$PROJECT_DIR$/bigRiver/static/images/macbook.png" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/person_1.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/person_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/person_2.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/person_2.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/images/person_3.jpg" afterPath="$PROJECT_DIR$/bigRiver/static/images/person_3.jpg" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/bootstrap.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/buttons.flash.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/buttons.flash.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/buttons.html5.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/buttons.html5.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/buttons.print.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/buttons.print.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/calendar.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/calendar.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/calendar_request.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/calendar_request.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/dataTables.buttons.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/dataTables.buttons.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.countTo.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.countTo.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.datatables.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.datatables.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.easing.1.3.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.easing.1.3.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.magnific-popup.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.magnific-popup.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.stellar.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.stellar.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jquery.waypoints.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jquery.waypoints.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/jszip.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/jszip.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/magnific-popup-options.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/magnific-popup-options.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/main.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/main.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/modernizr-2.6.2.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/modernizr-2.6.2.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/modernizr.custom.79639.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/modernizr.custom.79639.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/owl.carousel.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/owl.carousel.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/pdfmake.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/pdfmake.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/respond.min.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/respond.min.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/user_company.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/user_company.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/static/js/vfs_fonts.js" afterPath="$PROJECT_DIR$/bigRiver/static/js/vfs_fonts.js" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/admin_employees.html" afterPath="$PROJECT_DIR$/bigRiver/templates/admin_employees.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/admin_requests.html" afterPath="$PROJECT_DIR$/bigRiver/templates/admin_requests.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/base.html" afterPath="$PROJECT_DIR$/bigRiver/templates/base.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/boss_admins.html" afterPath="$PROJECT_DIR$/bigRiver/templates/boss_admins.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/boss_requests.html" afterPath="$PROJECT_DIR$/bigRiver/templates/boss_requests.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/calendar.html" afterPath="$PROJECT_DIR$/bigRiver/templates/calendar.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/calendar_request.html" afterPath="$PROJECT_DIR$/bigRiver/templates/calendar_request.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/camera.html" afterPath="$PROJECT_DIR$/bigRiver/templates/camera.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/face.html" afterPath="$PROJECT_DIR$/bigRiver/templates/face.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/hello.html" afterPath="$PROJECT_DIR$/bigRiver/templates/hello.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/login.html" afterPath="$PROJECT_DIR$/bigRiver/templates/login.html" />
+      <change beforePath="$PROJECT_DIR$/bigRiver/templates/user.html" afterPath="$PROJECT_DIR$/bigRiver/templates/user.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,6 +396,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/bigRiver_code$databaseDemo.coverage" NAME="databaseDemo Coverage Results" MODIFIED="1536815089663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bigRiver/bigRiver" />
     <SUITE FILE_PATH="coverage/bigRiver_code$face_model.coverage" NAME="face_model Coverage Results" MODIFIED="1535646970431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bigRiver/backends/ai" />
     <SUITE FILE_PATH="coverage/bigRiver_code$S01_DataSets.coverage" NAME="S01_DataSets Coverage Results" MODIFIED="1535642631931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python/FaceProject" />
   </component>
@@ -71,18 +450,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
+      <file leaf-file-name="user.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2720">
-              <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+            <state relative-caret-position="470">
+              <caret line="155" column="25" lean-forward="true" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/urls.py">
+      <file leaf-file-name="style_user.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/css/style_user.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -91,72 +470,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="face_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/face_model.py">
+      <file leaf-file-name="light_cnn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/light_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="205" column="7" lean-forward="false" selection-start-line="205" selection-start-column="7" selection-end-line="205" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/python/Lib/site-packages/tensorflow/python/client/session.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="894" column="0" lean-forward="false" selection-start-line="894" selection-start-column="0" selection-end-line="894" selection-end-column="0" />
+            <state relative-caret-position="256">
+              <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="S01_DataSets.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python/FaceProject/S01_DataSets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CNN_Net.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="115" column="17" lean-forward="true" selection-start-line="115" selection-start-column="17" selection-end-line="115" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="databaseDemo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="haarcascade_frontalface_alt2.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/haarcascade_frontalface_alt2.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/wsgi.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -168,11 +493,59 @@
       <file leaf-file-name="view.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#76#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="4224">
+              <caret line="144" column="36" lean-forward="false" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/calendar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5984">
+              <caret line="187" column="25" lean-forward="false" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camera.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7360">
+              <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camera-identify.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera-identify.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4032">
+              <caret line="126" column="44" lean-forward="false" selection-start-line="126" selection-start-column="37" selection-end-line="126" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camera-identify-login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera-identify-login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4160">
+              <caret line="130" column="19" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -181,10 +554,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>save_faces</find>
-      <find>train(model)</find>
-      <find>one_</find>
-      <find>img2face</find>
+      <find>success</find>
+      <find>userID</find>
+      <find>HttpResponse</find>
+      <find>comin</find>
+      <find>search</find>
+      <find>no com</find>
+      <find>user</find>
+      <find>confirm</find>
+      <find>jax</find>
+      <find>company =</find>
+      <find>company</find>
+      <find>您</find>
+      <find>今日</find>
+      <find>usercompany/confirm/</find>
+      <find>HttpResponse(False)</find>
+      <find>face-login</find>
+      <find>getCookie</find>
+      <find>document.cookie</find>
+      <find>path</find>
+      <find>face_login</find>
+      <find>cookie</find>
+      <find>ajax</find>
+      <find>apart</find>
+      <find>face_enter</find>
+      <find>context</find>
+      <find>camera</find>
+      <find>人脸</find>
+      <find>#input-</find>
+      <find>input-company</find>
+      <find>search-bar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,12 +592,42 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bigRiver/templates/login.html" />
         <option value="$PROJECT_DIR$/bigRiver/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/bigRiver/bigRiver/settings.py" />
         <option value="$PROJECT_DIR$/../python/FaceProject/S01_DataSets.py" />
         <option value="$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/bigRiver/static/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/bigRiver/bigRiver/urls.py" />
+        <option value="$PROJECT_DIR$/bigRiver/static/js/user_company.js" />
+        <option value="$PROJECT_DIR$/bigRiver/backends/company_management/interfaces.py" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/js/user_company.js" />
+        <option value="$PROJECT_DIR$/bigRiver/static/js/calendar.js" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/camera-identify.html" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_request.js" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/camera-identify-login.html" />
+        <option value="$PROJECT_DIR$/bigRiver/backends/attendance_checking/insert.py" />
+        <option value="$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py" />
+        <option value="$PROJECT_DIR$/bigRiver/backends/mail_management/interfaces.py" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/boss_admins.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/boss_requests.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/admin_requests.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/admin_employees.html" />
+        <option value="$PROJECT_DIR$/bigRiver/backends/attendance_checking/interfaces.py" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/calendar.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/calendar_request.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/calendar_employee.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/check_employee.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/admin.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/boss.html" />
         <option value="$PROJECT_DIR$/bigRiver/backends/ai/face_model.py" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar.js" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_employee.js" />
+        <option value="$PROJECT_DIR$/bigRiver/bigRiver/view.py" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/camera.html" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/login.html" />
+        <option value="$PROJECT_DIR$/bigRiver/basic_info/static/css/style_user.css" />
+        <option value="$PROJECT_DIR$/bigRiver/templates/user.html" />
       </list>
     </option>
   </component>
@@ -208,11 +637,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="88" />
-    <option name="y" value="22" />
-    <option name="width" value="1227" />
-    <option name="height" value="778" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1102" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -264,18 +693,51 @@
               <item name="backends" type="462c0819:PsiDirectoryNode" />
               <item name="ai" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_info" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_info" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_info" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bigRiver-code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bigRiver" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../python/FaceProject" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/NLP" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\87216\Documents\bigRiverSystem\bigRiver-code\bigRiver\templates" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -289,7 +751,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.face_model">
+  <component name="RunManager" selected="Django server.bigRiver">
     <configuration name="S01_DataSets" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -304,6 +766,25 @@
       <module name="FaceProject" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../python/FaceProject/S01_DataSets.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="databaseDemo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bigRiver/bigRiver" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="bigRiver-code" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -332,10 +813,10 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="DJANGO_SETTINGS_MODULE" value="bigRiver.settings" />
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="bigRiver.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\87216\Downloads\python\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\87216\Anaconda3\envs\python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -351,15 +832,17 @@
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Django server.bigRiver" />
       <item index="1" class="java.lang.String" itemvalue="Python.face_model" />
       <item index="2" class="java.lang.String" itemvalue="Python.S01_DataSets" />
+      <item index="3" class="java.lang.String" itemvalue="Python.databaseDemo" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.face_model" />
-        <item index="1" class="java.lang.String" itemvalue="Python.S01_DataSets" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.databaseDemo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.face_model" />
+        <item index="2" class="java.lang.String" itemvalue="Python.S01_DataSets" />
       </list>
     </recent_temporary>
   </component>
@@ -380,22 +863,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
+    <frame x="-11" y="-11" width="1942" height="1102" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284091" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978448" sideWeight="0.50599897" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39468086" sideWeight="0.49400103" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299578" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -403,7 +885,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,15 +895,24 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bigRiver/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/haarcascade_frontalface_alt2.xml" />
     <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2624">
-          <caret line="82" column="27" lean-forward="false" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="2240">
+          <caret line="70" column="6" lean-forward="false" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -429,158 +920,258 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/view.py">
+    <entry file="file://$PROJECT_DIR$/../python/FaceProject/S01_DataSets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1856">
+          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/check_code.py">
+    <entry file="file://$USER_HOME$/Downloads/python/Lib/site-packages/tensorflow/python/client/session.py" />
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py" />
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="127">
+          <caret line="2591" column="19" lean-forward="false" selection-start-line="2591" selection-start-column="2" selection-end-line="2591" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/__init__.py">
+    <entry file="file://$PROJECT_DIR$/bigRiver/static/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="287">
+          <caret line="2596" column="18" lean-forward="false" selection-start-line="2596" selection-start-column="18" selection-end-line="2596" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/manage.py">
+    <entry file="file://$PROJECT_DIR$/bigRiver/static/js/user_company.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="e#22#31#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="96">
+          <caret line="60" column="36" lean-forward="false" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/personal_info_management/interfaces.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="3712">
+          <caret line="116" column="5" lean-forward="false" selection-start-line="116" selection-start-column="5" selection-end-line="116" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/.idea/workspace.xml">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="481248">
+          <caret line="15052" column="17" lean-forward="false" selection-start-line="15052" selection-start-column="17" selection-end-line="15052" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/js/user_company.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="130" column="17" lean-forward="false" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="1536">
+          <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/manage.py">
+    <entry file="file://$PROJECT_DIR$/bigRiver/static/js/calendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="e#22#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="e#22#31#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/check_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/testDB.py" />
-    <entry file="file://$PROJECT_DIR$/bigRiver/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/haarcascade_frontalface_alt2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="7104">
+          <caret line="222" column="12" lean-forward="false" selection-start-line="222" selection-start-column="12" selection-end-line="222" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
+          <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/databaseDemo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="134" column="37" lean-forward="false" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/mail_management/interfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="144" column="80" lean-forward="false" selection-start-line="144" selection-start-column="80" selection-end-line="144" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/admin_employees.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="52" lean-forward="false" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/admin_requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="189" column="59" lean-forward="true" selection-start-line="189" selection-start-column="59" selection-end-line="189" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/boss_requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/calendar_request.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="185" column="13" lean-forward="true" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/calendar_employee.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5952">
+          <caret line="186" column="19" lean-forward="false" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/boss_admins.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/check_employee.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="33" column="62" lean-forward="false" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="50" column="86" lean-forward="false" selection-start-line="50" selection-start-column="86" selection-end-line="50" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/boss.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="50" column="90" lean-forward="false" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/interfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/face_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/attendance_checking/insert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1536">
+          <caret line="48" column="23" lean-forward="false" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/attendance_checking/interfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/company_management/interfaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3328">
+          <caret line="106" column="4" lean-forward="false" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/mail_management/inside_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/company_management/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/company_management/inside_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="255" column="34" lean-forward="false" selection-start-line="255" selection-start-column="34" selection-end-line="255" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/js/calendar_employee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5672">
+          <caret line="246" column="5" lean-forward="false" selection-start-line="246" selection-start-column="5" selection-end-line="246" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/people/1000070/0.jpg" />
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/people/1000070/7.jpg" />
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/people/1000015/1.jpg" />
+    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/light_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/calendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5984">
+          <caret line="187" column="25" lean-forward="false" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera-identify-login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4160">
+          <caret line="130" column="19" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -588,55 +1179,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/view.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4224">
+          <caret line="144" column="36" lean-forward="false" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera-identify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4032">
+          <caret line="126" column="44" lean-forward="false" selection-start-line="126" selection-start-column="37" selection-end-line="126" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/camera.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/js/edit_info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="26" lean-forward="false" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7360">
+          <caret line="230" column="28" lean-forward="false" selection-start-line="230" selection-start-column="28" selection-end-line="230" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bigRiver/basic_info/static/css/style_user.css">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/bigRiver/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python/FaceProject/S01_DataSets.py">
+    <entry file="file://$PROJECT_DIR$/bigRiver/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+        <state relative-caret-position="470">
+          <caret line="155" column="25" lean-forward="true" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/python/Lib/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="894" column="0" lean-forward="false" selection-start-line="894" selection-start-column="0" selection-end-line="894" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/face_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="205" column="7" lean-forward="false" selection-start-line="205" selection-start-column="7" selection-end-line="205" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bigRiver/backends/ai/CNN_Net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="115" column="17" lean-forward="true" selection-start-line="115" selection-start-column="17" selection-end-line="115" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
